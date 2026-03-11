@@ -1,0 +1,253 @@
+/* --- Header Principal com CSS Grid --- */
+/* --- Header Principal Simplificado --- */
+.main-header {
+  display: grid; 
+  grid-template-columns: auto 1fr auto; 
+  align-items: center; 
+  width: 100%;
+  position: absolute; 
+  top: 0;
+  left: 0; 
+  z-index: 100;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  
+  /* ✨ REMOVA A ALTURA FIXA E CONTROLE COM PADDING ✨ */
+  /* height: 140px; REMOVIDO */
+  padding: 0px 25px; /* Ajuste o padding vertical (20px) e horizontal (40px) */
+  
+  box-sizing: border-box; 
+  background: transparent; 
+  border-bottom: none;
+  box-shadow: none;
+  
+}
+
+/* --- Estado Rolado (Scrolled) --- */
+.main-header.scrolled {
+  position: fixed; 
+  background-color: rgba(22, 27, 34, 0.85); 
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* --- Container do Logo --- */
+/* --- Container do Logo --- */
+.logo-container {
+  display: flex; 
+  align-items: center; 
+  text-decoration: none;
+  gap: 8px; 
+}
+
+/* --- Imagem do Logo --- */
+.site-logo {
+  height: 120px; /* Tente 50px ou 60px como ponto de partida */
+  width: auto;
+  margin: 0;
+  /* vertical-align: top; REMOVA */
+}
+/* --- Título do Site --- */
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration-color: transparent; 
+  text-decoration: none;
+  letter-spacing: 1px;
+  margin: 0; /* Remove margens extras */
+}
+
+/* --- Navegação Principal --- */
+.main-nav {
+  justify-self: center; /* Centraliza a NAV na coluna do meio */
+}
+
+/* O resto dos estilos da NAV (ul, a, ::after, :hover) parecem bons */
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Garante que a UL não tenha margens */
+  gap: 60px; /* Mantém seu espaçamento */
+}
+
+.main-nav a {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.main-nav a::after {
+
+  content: '';
+
+  position: absolute;
+
+  bottom: 0;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 0;
+
+  height: 2px;
+
+  background: #ffffff;
+
+  transition: width 0.3s;
+
+}
+
+.main-nav a:hover {
+
+  color: #f0f6fc;
+
+  background-color: rgba(91, 195, 226, 0.1);
+
+}
+
+.main-nav a:hover::after {
+
+  width: 80%;
+
+}
+/* (Seu CSS para .auth-buttons e .btn parece bom, mantenha como está) */
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  /* Não precisa de margem específica aqui, ele será empurrado para a direita */
+}
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid #fdfdfd;
+  color: #ffffff;
+  position: relative;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(91, 195, 226, 0.2);
+  transition: all 0.3s;
+}
+
+.user-info:hover {
+  background: rgba(91, 195, 226, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.user-info span {
+  font-weight: 600;
+  color: #f0f6fc;
+}
+
+.user-icon {
+  font-size: 1.6rem;
+  color: #ffffff;
+  transition: transform 0.3s;
+}
+
+.user-info:hover .user-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0px 5%;
+  }
+
+  .main-nav ul {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main-nav a {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+
+  .logo a {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

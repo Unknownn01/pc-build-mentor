@@ -1,0 +1,147 @@
+/* ARQUIVO: frontend/src/pages/SavedBuildsPage.css */
+
+.saved-builds-container {
+    padding: 40px 5%;
+    background-color: #0D1117;
+    min-height: calc(100vh - 150px);
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.page-header h1 {
+    font-size: 2.8rem;
+    flex-grow: 1;
+}
+
+.btn-clear-all {
+    background-color: transparent;
+    border: 1px solid #8b0000;
+    color: #ff7b72;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease-in-out;
+}
+.btn-clear-all:hover {
+    background-color: #8b0000;
+    color: white;
+}
+
+.no-builds-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #8b949e;
+}
+
+.saved-builds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.saved-build-card {
+    background-color: #161B22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-content {
+    padding: 25px;
+    cursor: pointer;
+}
+
+.saved-build-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #30363d;
+}
+
+.saved-build-specs {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #8b949e;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.saved-build-specs p {
+    margin-bottom: 5px;
+}
+
+.saved-build-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.btn-delete-card {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #484f58;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+.btn-delete-card:hover {
+    color: #ff7b72;
+    background-color: rgba(255, 123, 114, 0.1);
+}
+
+.build-actions {
+    display: flex;
+    gap: 0;
+    margin-top: auto;
+    border-top: 1px solid #30363d;
+}
+
+.btn-action {
+    flex-grow: 1;
+    padding: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    background-color: transparent;
+    color: #8b949e;
+}
+
+.btn-action:first-child {
+    border-right: 1px solid #30363d;
+}
+
+.btn-action:hover {
+    background-color: #21262d;
+    color: #c9d1d9;
+}

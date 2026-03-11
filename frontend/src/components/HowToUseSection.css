@@ -1,0 +1,51 @@
+.how-to-use-section {
+  padding: 80px 5%;
+}
+
+.how-to-use-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+}
+
+.how-to-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.how-to-card {
+  background-color: #161B22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 40px 30px;
+  text-align: center;
+  flex: 1;
+  min-width: 280px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.how-to-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.how-to-icon {
+  font-size: 2.5rem;
+  color: #7364fd;
+  margin-bottom: 25px;
+}
+
+.how-to-card h4 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #f0f6fc;
+}
+
+.how-to-card p {
+  color: #8b949e;
+  line-height: 1.6;
+}

@@ -1,0 +1,255 @@
+/* ARQUIVO: frontend/src/pages/GuiasPage.css */
+/* Estilização consistente com CatalogoPecas.css */
+
+.guias-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.guias-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.guias-header h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.guias-header p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Filtros */
+.filtros-container-guias {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.filtro-secao {
+  margin-bottom: 1.5rem;
+}
+
+.filtro-secao:last-child {
+  margin-bottom: 0;
+}
+
+.filtro-secao h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.filtros-uso,
+.filtros-preco {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filtro-btn {
+  padding: 0.7rem 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.filtro-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.filtro-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Resultados */
+.resultados-info {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Grid de Builds */
+.builds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.build-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.build-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(102, 126, 234, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.build-imagem {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.build-imagem:hover {
+  opacity: 0.9;
+}
+
+.build-info {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.build-info h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.build-info h3:hover {
+  color: #667eea;
+}
+
+.build-specs {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.build-specs p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.build-specs strong {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.build-preco {
+  color: #4ade80;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+
+/* Ações da Build */
+.build-actions-single {
+  margin-top: auto;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.btn-action-full {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-action-full:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Sem Resultados */
+.sem-resultados {
+  text-align: center;
+  padding: 3rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+}
+
+/* Loading */
+.loading-screen {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .guias-container {
+    padding: 1rem;
+  }
+
+  .guias-header h1 {
+    font-size: 2rem;
+  }
+
+  .filtros-uso,
+  .filtros-preco {
+    flex-direction: column;
+  }
+
+  .filtro-btn {
+    width: 100%;
+  }
+
+  .builds-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.build-imagem {
+  /* Faz a imagem ocupar 100% da largura do card */
+  width: 100%;
+
+  /* Define uma ALTURA FIXA. Este é o passo mais importante para alinhar todos os cards */
+  height: 200px; 
+  
+  /* Instrui a imagem a PREENCHER todo o espaço, cortando o excesso se necessário, sem distorcer. */
+  object-fit: contain;
+
+  /* Adiciona um espaço entre a imagem e o texto abaixo dela */
+  margin-bottom: 1rem; 
+  
+  /* Arredonda os cantos superiores da imagem para que combinem com os cantos do card */
+  border-top-left-radius: 8px; /* Ajuste o valor se os cantos do seu card forem diferentes */
+  border-top-right-radius: 8px;
+}

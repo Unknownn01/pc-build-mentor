@@ -1,0 +1,157 @@
+/* ARQUIVO: frontend/src/components/BuildDetailModal.css */
+/* Estilos específicos para o nosso novo modal reutilizável. */
+
+.modal-backdrop-shared {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content-shared {
+    background-color: #161B22;
+    padding: 30px 40px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.modal-close-btn-shared {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #8b949e;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 5px;
+}
+
+.modal-content-shared h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #30363d;
+}
+
+.modal-details-list-shared {
+    margin-bottom: 25px;
+}
+
+.modal-detail-item-shared {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    font-size: 1rem;
+    border-bottom: 1px solid #21262d;
+}
+
+.modal-detail-item-shared:last-child {
+    border-bottom: none;
+}
+
+.modal-detail-item-shared strong {
+    color: #8b949e;
+    margin-right: 15px;
+}
+
+.modal-detail-item-shared span {
+    text-align: right;
+    color: #c9d1d9;
+}
+
+.modal-total-price-shared {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: right;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #30363d;
+}
+
+.btn-salvar-modal {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    font-size: 1.1rem;
+    background-color: #5bc3e2;
+    color: #121212;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-salvar-modal:hover {
+    background-color: #4ab8d4;
+}
+
+/* Estilos para a seção de gargalo DENTRO do modal */
+.bottleneck-section-modal {
+  margin: 25px 0;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+.bottleneck-message-modal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bottleneck-message-modal svg {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.bottleneck-message-modal p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.bottleneck-section-modal.info {
+  border-color: #30363d;
+  background-color: rgba(88, 166, 255, 0.05);
+}
+.bottleneck-section-modal.info svg {
+  color: #8b949e;
+}
+
+.bottleneck-section-modal.good {
+  border-color: #3fb950;
+  background-color: rgba(63, 185, 80, 0.1);
+}
+.bottleneck-section-modal.good svg {
+  color: #3fb950;
+}
+
+.bottleneck-section-modal.warning {
+  border-color: #d29922;
+  background-color: rgba(210, 153, 34, 0.1);
+}
+.bottleneck-section-modal.warning svg {
+  color: #d29922;
+}

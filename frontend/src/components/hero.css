@@ -1,0 +1,98 @@
+/* ARQUIVO 6: frontend/src/components/Hero.css */
+/* Estilos da seção Hero. */
+
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 110vh;
+  position: relative;
+  background-image: 
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url('/images/martin-martz-Wa-3T6d0rBo-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-section::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* Altura do degradê, ajuste conforme o gosto */
+  background: linear-gradient(to top, #111111, transparent); /* Vai do seu fundo preto para transparente */
+  
+}
+
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  max-width: 1100px;
+  color: #c9d1d9;
+  margin-bottom: 40px;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn-comecar {
+  display: inline-block;
+  padding: 15px 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* COR ALTERADA */
+  color: #0d1117; /* Cor do texto alterada para melhor contraste */
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform 0.2s ease-out, background-color 0.2s ease;
+}
+
+.btn-comecar:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+
+/* 1. Defina a animação */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Começa um pouco abaixo e transparente */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Termina na posição final e visível */
+  }
+}
+
+
+/* 2. Aplique a animação aos seus elementos */
+.hero-title,
+.hero-subtitle,
+.btn-comecar {
+  /* Esconde os elementos inicialmente para a animação funcionar */
+  opacity: 0; 
+  /* Aplica a animação */
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* 3. (Opcional, mas recomendado) Crie um efeito de cascata */
+/* Isso faz com que os elementos apareçam um após o outro */
+.hero-subtitle {
+  animation-delay: 0.2s;
+}
+
+.btn-comecar {
+  animation-delay: 0.4s;
+}

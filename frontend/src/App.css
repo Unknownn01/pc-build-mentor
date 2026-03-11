@@ -1,0 +1,16 @@
+/* Estilos para o contêiner principal do App. */
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1; /* Faz o conteúdo principal ocupar o espaço restante */
+}
+
+.content-with-padding {
+  /* Empurra o conteúdo para baixo com a altura do seu header */
+  padding-top: 100px; /* Ajuste este valor para ser um pouco maior que a altura do seu header */
+}

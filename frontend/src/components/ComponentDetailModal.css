@@ -1,0 +1,233 @@
+/* ARQUIVO: frontend/src/components/ComponentDetailModal.css */
+
+.component-detail-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 20px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.component-detail-modal {
+    background: linear-gradient(135deg, #1a1f2e 0%, #16213e 100%);
+    border-radius: 16px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid #30363d;
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #8b949e;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #f0f6fc;
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    padding: 30px 30px 20px;
+    border-bottom: 1px solid #30363d;
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    margin: 0 0 8px 0;
+    color: #f0f6fc;
+}
+
+.component-brand {
+    display: inline-block;
+    padding: 4px 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    color: #0d1117;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.modal-image {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.modal-image img {
+    max-width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.modal-details {
+    padding: 25px 30px;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+    gap: 12px;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-icon {
+    color: #667eea;
+    font-size: 1.1rem;
+    min-width: 20px;
+}
+
+.detail-label {
+    color: #8b949e;
+    font-size: 0.95rem;
+    min-width: 140px;
+}
+
+.detail-value {
+    color: #f0f6fc;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+.score-badge {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.modal-footer {
+    padding: 20px 30px 30px;
+    border-top: 1px solid #30363d;
+}
+
+.price-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(99, 110, 114, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.price-label {
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.price-value {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+/* Scrollbar customization */
+.component-detail-modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.component-detail-modal::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.component-detail-modal::-webkit-scrollbar-thumb {
+    background: #5bc3e2;
+    border-radius: 10px;
+}
+
+.component-detail-modal::-webkit-scrollbar-thumb:hover {
+    background: #4a9fd8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .component-detail-modal {
+        max-width: 95%;
+        margin: 10px;
+    }
+
+    .modal-header {
+        padding: 20px 20px 15px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .modal-details {
+        padding: 20px;
+    }
+
+    .detail-label {
+        min-width: 100px;
+        font-size: 0.85rem;
+    }
+
+    .detail-value {
+        font-size: 0.9rem;
+    }
+
+    .modal-footer {
+        padding: 15px 20px 20px;
+    }
+
+    .price-value {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,82 @@
+/* ARQUIVO 21: frontend/src/pages/AuthPage.css */
+/* (NOVO ARQUIVO DE ESTILOS PARA LOGIN E CADASTRO) */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background-color: #0D1117;
+}
+
+.auth-form {
+  background-color: #161B22;
+  padding: 40px;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-form h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #8b949e;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  background-color: #0D1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #c9d1d9;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #5bc3e2;
+}
+
+.btn-auth {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  background-color: #5bc3e2;
+  color: #121212;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: #ff7b72;
+  background-color: rgba(255, 123, 114, 0.1);
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  color: #3fb950;
+  background-color: rgba(63, 185, 80, 0.1);
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 20px;
+}

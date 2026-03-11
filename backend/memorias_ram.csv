@@ -1,0 +1,27 @@
+id,nome,tipo,capacidade_gb,modulos,frequencia_mhz,preco_simulado,imagem_url
+201,Corsair Vengeance LPX 16GB(2x8),DDR4,16,2,3200,350,Corsair-Vengeance-LPX-16GB.jpg
+202,Kingston Fury Beast 8GB(1x8),DDR4,8,1,2666,169.90,Kingston-Fury-Beast-8GB.jpg
+203,HX HyperX Fury 16GB(2x8),DDR4,16,2,3200,359.00,HX-HyperX-Fury-16GB.jpg
+204,Corsair Dominator Platinum RGB 32GB(2x16),DDR5,32,2,5600,1199.90,Corsair-Dominator-Platinum-RGB-32GB.jpg
+205,ADATA XPG Gammix D30 16GB(2x8),DDR4,16,2,3200,329.90,ADATA-XPG-Gammix-D30-16GB.jpg
+206,Crucial Ballistix 8GB(1x8),DDR4,8,1,3000,179.00,Crucial-Ballistix-8GB.jpg
+207,Patriot Viper Steel 16GB(2x8),DDR4,16,2,3600,379.90,Patriot-Viper-Steel-16GB.jpg
+208,G.Skill Ripjaws V 16GB(2x8),DDR4,16,2,3200,349.90,G.Skill-Ripjaws-V-16GB.jpg
+209,G.Skill Trident Z RGB 32GB(2x16),DDR4,32,2,3600,799.00,G.Skill-Trident-Z-RGb-32GB.jpg
+210,XPG Lancer 32GB(2x16),DDR5,32,2,6000,1249.90,XPG-Lancer-32GB.jpg
+211,Corsair Vengeance RGB Pro 16GB(1x16),DDR4,16,2,3200,429.90,Corsair-Vengeance-RGB-Pro-16GB.jpg
+212,Geil Orion 8GB(1x8),DDR4,8,1,2666,149.90,Geil-Orion-8GB.jpg
+213,Team Group T-Force Delta RGB 16GB(2x8),DDR4,16,2,3200,379.00,Team-Group-T-Force-Delta-RGB-16GB.jpg
+214,Lexar Thor 16GB(1x16),DDR5,16,1,5200,589.90,Lexar-Thor-16GB.jpg
+215,Kingston ValueRAM 8GB(1x8),DDR4,8,1,2400,139.90,Kingston-ValueRAM-8GB.jpg
+216,Hynix Gold 4GB(1x4),DDR3,4,1,1600,99.90,Hynix-Gold-4GB.jpg
+217,Corsair Vengeance 32GB,DDR4,32,2,3200,699.00,Corsair-Vengeance-LPX-16GB.jpg
+218,Patriot Signature Line 8GB(2x4),DDR3,8,1,1600,129.90,Patriot-Signature-Line-8GB.jpg
+219,Crucial Basic 16GB(2x8),DDR4,16,1,2666,289.90,Crucial-Basic-16GB.jpg
+220,XPG Hunter 8GB(2x4),DDR4,8,1,3000,169.90,XPG-Hunter-8GB.jpg
+221,G.Skill Aegis 16GB(2x8),DDR4,16,2,3000,299.00,G.Skill-Aegis-16GB.jpg
+222,Team Elite Plus 4GB(1x4),DDR3,4,1,1333,89.00,Team-Elite-Plus-4GB.jpg
+223,Corsair Vengeance DDR5 32GB(2x16),DDR5,32,2,5200,1190.00,Corsair-Vengeance-DDR5-32GB.jpg
+224,ADATA XPG Spectrix D60G 16GB(2x8),DDR4,16,2,3200,399.00,ADATA-XPG-Spectrix-D60G-16GB.jpg
+225,Kingston Fury Renegade 32GB(4x8),DDR5,32,2,6000,1349.90,Kingston-Fury-Renegade-32GB.jpg
+226,Geil EVO Potenza 8GB(1x8),DDR4,8,1,3000,189.00,Geil-EVO-Potenza-8GB.jpg

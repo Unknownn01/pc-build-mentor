@@ -1,0 +1,141 @@
+/* ARQUIVO: frontend/src/components/NewsSection.css */
+/* Estilos da seção de Notícias com separador visual e transições. */
+
+.news-section {
+  padding: 80px 5%;
+  background-color: #0D1117;
+  position: relative;
+}
+
+.news-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #764ba2 , transparent);
+  box-shadow: 0 0 10px rgba(91, 195, 226, 0.5);
+}
+
+.news-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.2s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.featured-news-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #161B22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.4s forwards;
+  text-decoration: none; /* Remove qualquer sublinhado do link */
+  color: inherit; /* Faz o texto herdar a cor normal, em vez de ficar azul */
+  transition: transform 0.2s ease-out; /* Adiciona um efeito suave de hover */
+}
+
+.news-image {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.news-content {
+  padding: 40px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .news-image {
+    width: 50%;
+  }
+  .news-content {
+    width: 50%;
+  }
+}
+
+.news-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #f0f6fc;
+}
+
+.news-content p {
+  color: #8b949e;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.read-more-link {
+  color: #7364fd;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.read-more-link:hover {
+  transform: translateX(5px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .news-section {
+    padding: 60px 3%;
+  }
+
+  .news-section h2 {
+    font-size: 2rem;
+  }
+
+  .news-content {
+    padding: 30px;
+  }
+
+  .news-content h3 {
+    font-size: 1.5rem;
+  }
+}
+
+.see-all-news-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.see-all-news-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #58a6ff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.see-all-news-btn:hover {
+  background-color: #3398ff;
+}

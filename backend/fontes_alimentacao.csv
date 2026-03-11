@@ -1,0 +1,32 @@
+id,nome,potencia_w,certificacao,formato,preco_simulado,imagem_url
+401,Corsair CV550,550,80 Plus Bronze,ATX,299.90,Corsair-CV550--550-80-Plus-Bronze.jpg
+402,Corsair RM750x,750,80 Plus Gold,ATX,629.90,Corsair-RM750x-750-80PlusGold.jpg
+403,Gigabyte P450B,450,80 Plus Bronze,ATX,249.90,Gigabyte-P450B-450-8PlusBronze.jpg
+404,EVGA 500 W1,500,80 Plus White,ATX,219.99,EVGA-500-W1-500-80PlusWhite.jpg
+405,EVGA 600 BR,600,80 Plus Bronze,ATX,279.00,EVGA-600-BR600-80PlusBronze.jpg
+406,Cooler Master MWE 650,650,80 Plus Bronze,ATX,329.90,Cooler-Master-MWE-650-650-80PlusBronze.jpg
+407,XPG Pylon 750W,750,80 Plus Bronze,ATX,389.90,XPG-Pylon-750W-750-80PlusBronze.jpg
+408,Thermaltake Smart 500W,500,80 Plus White,ATX,239.90,Thermaltake-Smart-500W-500-80PlusWhite.jpg
+409,Seasonic S12III 550,550,80 Plus Bronze,ATX,309.90,Seasonic-S12III-550-80PlusBronze.jpg
+410,PCYes Electro V2,500,80 Plus White,ATX,199.90,PCYes-Electro-V2-500-80PlusWhite.jpg
+411,Corsair SF600,600,80 Plus Gold,SFX,699.90,Corsair-SF600-600-80PlusGold.jpg
+412,Corsair HX850,850,80 Plus Platinum,ATX,879.90,Corsair-HX850-80PlusPlatinum.jpg
+413,Gigabyte UD750GM,750,80 Plus Gold,SFX,659.90,Gigabyte-UD750GM-750-80PlusGold.jpg
+414,EVGA SuperNOVA 650 G5,650,80 Plus Gold,ATX,599.90,EVGA-SuperNOVA-650-80PlusGold.jpg
+415,Thermaltake Toughpower GF1,750,80 Plus Gold,ATX,649.90,Thermaltake-Toughpower-GF1-750-80PlusGold.jpg
+416,Seasonic Focus GX-550,550,80 Plus Gold,ATX,529.90,Seasonic-Focus-GX-550-80PlusGold.jpg
+417,Redragon RGPS 600W,600,80 Plus White,ATX,289.90,Redragon-RGPS-600W-80PlusWhite.jpg
+418,DeepCool PK550D,550,80 Plus Bronze,ATX,259.90,DeepCool-PK550-80PlusBronze.jpg
+419,SuperFrame SF-500W,500,Sem Certificação,ATX,159.90,SuperFrame-SF-500W.jpg
+420,Cooler Master V850 SFX,850,80 Plus Gold,SFX,799.90,cooler-Master-V850-SFX-850-80PlusGold.jpg
+421,XPG Core Reactor 750W,750,80 Plus Gold,ATX,599.00,XPG-Core-Reactor-750W-80Plus-Gold.jpg
+422,Corsair RM1000x,1000,80 Plus Gold,ATX,950,Corsair-RM1000x-80-Plus-Gold.jpg
+423,EVGA SuperNOVA 1200 G+,1200,80 Plus Gold,ATX,1200,EVGA-SuperNOVAG+-1200-80-Plus-Gold.jpg
+424,Seasonic PRIME TX-1600,1600,80 Plus Titanium,ATX,2300,Seasonic-PRIME-TX-1600-80PlusTitanium.jpg
+425,Cooler Master V1200,1200,80 Plus Platinum,ATX,1800,CoolerMaster-V1200-80PlusPlatinum.jpg
+426,Be Quiet! Dark Power Pro 12 1200W,1200,80 Plus Titanium,ATX,2100,BeQuiet!DarkPower-Pro12-1200W-80PlusTitanium.jpg
+427,ASUS ROG Thor 1200W,1200,80 Plus Platinum,ATX,2200,ASUSROG-Thor1200W-80PlusPlatinum.jpg
+428,Thermaltake Toughpower GF1 1200W,1200,80 Plus Gold,ATX,1500,Thermaltake-Toughpower-GF1-1200W-80PlusGold.jpg
+429,SilverStone Strider Platinum 1500W,1500,80 Plus Platinum,ATX,2400,SilverStone-Strider-Platinum-1500W-80PlusPlatinum.jpg
+430,Super Flower Leadex Platinum 1600W,1600,80 Plus Platinum,ATX,2500,Super-Flower-Leadex-Platinum-1600W-80-Plus-Platinum.jpg
+431,MSI MPG A1000G PCIE5,1000,80 Plus Gold,ATX,1400,MSI-MPG-A1000G-PCIE5-80PlusGold.jpg

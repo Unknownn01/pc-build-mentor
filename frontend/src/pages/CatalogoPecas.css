@@ -1,0 +1,292 @@
+.catalogo-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.catalogo-container h1 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Filtros */
+.filtros-container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.filtro-tipo h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.tipo-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tipo-buttons button {
+  padding: 0.7rem 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.tipo-buttons button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.tipo-buttons button.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Filtros Específicos */
+.filtros-especificos {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filtros-especificos h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.filtros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.filtro-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filtro-item label {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.filtro-item select {
+  padding: 0.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.filtro-item select:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.filtro-item select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.filtro-item select option {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.limpar-filtros {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  background: rgba(255, 59, 48, 0.2);
+  border: 2px solid rgba(255, 59, 48, 0.5);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.limpar-filtros:hover {
+  background: rgba(255, 59, 48, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Resultados */
+.resultados-info {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Grid de Peças */
+.pecas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.peca-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.peca-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(102, 126, 234, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.peca-imagem-container {
+  /* Define a altura fixa para o palco, isso alinha tudo */
+  height: 200px; 
+  width: 100%;
+
+  /* Adiciona um fundo cinza claro. É mais suave que branco puro. */
+  background-color: #f0f2f5; 
+
+  /* Cantos arredondados para um visual mais moderno */
+  border-radius: 8px; 
+  
+  /* Garante que a imagem fique centralizada se for menor que o palco */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Espaço abaixo do palco */
+  margin-bottom: 1rem; 
+}
+
+.peca-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.02);
+  mix-blend-mode: multiply;
+}
+
+.peca-info {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.peca-tipo {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.8rem;
+  align-self: flex-start;
+}
+
+.peca-info h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.peca-detalhes {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.peca-detalhes p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.peca-detalhes strong {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.peca-preco {
+  color: #4ade80;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: auto;
+}
+
+/* Sem Resultados */
+.sem-resultados {
+  text-align: center;
+  padding: 3rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .catalogo-container {
+    padding: 1rem;
+  }
+
+  .catalogo-container h1 {
+    font-size: 2rem;
+  }
+
+  .tipo-buttons {
+    flex-direction: column;
+  }
+
+  .tipo-buttons button {
+    width: 100%;
+  }
+
+  .filtros-grid {
+    grid-template-columns: 1fr;
+  }
+  .pecas-grid {
+    display: grid;
+    /* Você provavelmente já tem algo como as 2 linhas abaixo para criar as colunas */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem; /* O espaçamento entre os cards */
+
+    /* ✨ A LINHA MÁGICA QUE RESOLVE O ALINHAMENTO ✨ */
+    align-items: stretch; 
+  }
+
+}

@@ -1,0 +1,57 @@
+/* frontend/src/components/LoadingSpinner.css */
+
+.loading-overlay {
+  position: fixed; /* Ou 'absolute' se for para cobrir apenas um componente específico */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente escuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Garante que fique acima de tudo */
+}
+
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column; /* Logo acima do texto, se houver */
+  align-items: center;
+  gap: 15px; /* Espaço entre logo e texto */
+}
+
+.loading-spinner-logo {
+  height: 200px; /* Ajuste o tamanho do logo para o spinner */
+  width: auto;
+  /* Opcional: Adicionar uma animação sutil */
+  animation: pulse 1.5s infinite ease-in-out alternate; /* Exemplo de animação */
+}
+
+/* Animação de pulsação para o logo (opcional) */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* Opcional: Estilo para um spinner CSS se você quiser */
+/*
+.spinner-animation {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+*/

@@ -1,0 +1,52 @@
+
+/* ARQUIVO: frontend/src/pages/OrdersPage.css */
+/* (NOVO ARQUIVO) */
+
+.orders-container {
+  padding: 40px 5%;
+}
+
+.orders-container h1 {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.no-orders-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #8b949e;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.order-card {
+  padding: 20px;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  background-color: #161B22;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  border-color: #ffffff;
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: #8b949e;
+}
+
+.order-card-body strong {
+  color: #c9d1d9;
+}

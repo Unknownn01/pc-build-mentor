@@ -1,0 +1,36 @@
+id,nome,uso_principal,cpu_id,gpu_id,memoria_id,placaMae_id,armazenamento_id,cooler_id,gabinete_id,fonte_id,cpu_image,gpu_image
+1,PC Gamer Entry 1080p,Jogos,9,321,201,104,501,719,611,402,imagens_processadores/i3_12100f.jpg,imagens_placa_video/zotac-twin-edge-geforce-rtx-3050.jpg
+2,PC Gamer Budget 1080p,Jogos,6,308,202,112,502,702,610,403,imagens_processadores/i5_12400f.jpg,imagens_placa_video/zotac-twin-edge-geforce-gtx-1660-super.jpg
+3,PC Gamer Médio,Jogos,6,311,205,112,504,702,610,405,imagens_processadores/i5_12400f.jpg,imagens_placa_video/sapphire-pulse-radeon-rx-6600.jpg
+4,PC Gamer Avançado 1080p,Jogos,11,313,206,102,505,701,604,406,imagens_processadores/ryzen5_5gen.jpg,imagens_placa_video/xfx-speedster-qick-319-radeon-rx-6700-xt.jpg
+5,PC Gamer High-End 1080p,Jogos,2,302,207,103,506,703,602,407,imagens_processadores/ryzen7_5gen.jpg,imagens_placa_video/gigabyte-gaming-oc-geforce-rtx-3070.jpg
+6,PC Gamer Entry 1440p,Jogos,6,312,205,112,504,702,610,405,imagens_processadores/i5_12400f.jpg,imagens_placa_video/powercolor-fighter-radeon-rx-6600-xt.jpg
+7,PC Gamer Médio 1440p,Jogos,11,313,206,102,505,701,604,406,imagens_processadores/ryzen5_5gen.jpg,imagens_placa_video/xfx-speedster-qick-319-radeon-rx-6700-xt.jpg
+8,PC Gamer Avançado 1440p,Jogos,2,306,207,103,506,703,602,407,imagens_processadores/ryzen7_5gen.jpg,imagens_placa_video/gigabyte-windforce-oc-geforce-rtx-4070.jpg
+9,PC Gamer High-End 1440p,Jogos,21,327,210,113,507,704,603,408,imagens_processadores/ryzen7_5genx3d.jpg,imagens_placa_video/powercolor-hellhound-radeon-rx-7700-xt.jpg
+10,PC Gamer Ultra 1440p,Jogos,18,328,213,118,519,709,603,409,imagens_processadores/i5_13600kf.jpg,imagens_placa_video/sapphire-pulse-radeon-rx-7800-xt.jpg
+11,PC Gamer Entry 4K,Jogos,7,307,210,115,507,704,603,408,imagens_processadores/i7_12700k.jpg,imagens_placa_video/msi-gaming-x-trio-geforce-rtx-4080.jpg
+12,PC Gamer Médio 4K,Jogos,17,326,213,127,519,715,612,409,imagens_processadores/ryzen7_7gen.jpg,imagens_placa_video/msi-suprim-x-geforce-rtx-4070-ti.jpg
+13,PC Gamer High-End 4K,Jogos,19,330,221,117,521,715,612,410,imagens_processadores/i9_13900k.jpg,imagens_placa_video/gigabyte-aorus-master-geforce-rtx-4090.jpg
+14,PC Gamer Competitivo,Jogos,18,306,205,118,519,709,603,406,imagens_processadores/i5_13600kf.jpg,imagens_placa_video/gigabyte-windforce-oc-geforce-rtx-4070.jpg
+15,PC Gamer Streaming,Jogos,7,306,213,115,519,709,603,408,imagens_processadores/i7_12700k.jpg,imagens_placa_video/gigabyte-windforce-oc-geforce-rtx-4070.jpg
+16,Edição Básica,Edicao,6,311,205,112,504,702,610,405,imagens_processadores/i5_12400f.jpg,imagens_placa_video/sapphire-pulse-radeon-rx-6600.jpg
+17,Edição Intermediária,Edicao,2,312,207,103,506,703,602,407,imagens_processadores/ryzen7_5gen.jpg,imagens_placa_video/powercolor-fighter-radeon-rx-6600-xt.jpg
+18,Edição Avançada,Edicao,21,312,210,115,507,704,603,408,imagens_processadores/ryzen7_5genx3d.jpg,imagens_placa_video/powercolor-fighter-radeon-rx-6600-xt.jpg
+19,Edição Profissional,Edicao,17,327,217,127,515,712,613,409,imagens_processadores/ryzen7_7gen.jpg,imagens_placa_video/powercolor-hellhound-radeon-rx-7700-xt.jpg
+20,Edição 4K/8K,Edicao,20,330,221,117,521,715,612,410,imagens_processadores/ryzen9_7gen.jpg,imagens_placa_video/gigabyte-aorus-master-geforce-rtx-4090.jpg
+21,Trabalho Básico,Trabalho,22,310,201,120,501,719,611,401,imagens_processadores/i5_11400f.jpg,imagens_placa_video/asus-phoenix-geforce-rtx-2060.jpg
+22,Trabalho Intermediário,Trabalho,9,328,202,104,502,701,602,405,imagens_processadores/i3_12100f.jpg,imagens_placa_video/sapphire-pulse-radeon-rx-7800-xt.jpg
+23,Trabalho Avançado,Trabalho,6,309,205,112,504,702,610,403,imagens_processadores/i5_12400f.jpg,imagens_placa_video/gigabyte-oc-geforce-gtx-1050-ti.jpg
+24,Trabalho Multitarefa,Trabalho,1,311,206,101,505,701,604,404,imagens_processadores/ryzen5_5gen.jpg,imagens_placa_video/sapphire-pulse-radeon-rx-6600.jpg
+25,Trabalho Profissional,Trabalho,11,312,207,102,506,703,602,405,imagens_processadores/ryzen5_5gen.jpg,imagens_placa_video/powercolor-fighter-radeon-rx-6600-xt.jpg
+26,Modelagem Entry,Modelagem,6,312,205,112,504,702,610,405,imagens_processadores/i5_12400f.jpg,imagens_placa_video/powercolor-fighter-radeon-rx-6600-xt.jpg
+27,Modelagem Intermediária,Modelagem,2,313,210,103,507,704,603,407,imagens_processadores/ryzen7_5gen.jpg,imagens_placa_video/xfx-speedster-qick-319-radeon-rx-6700-xt.jpg
+28,Modelagem Avançada,Modelagem,21,327,213,115,519,709,603,408,imagens_processadores/ryzen7_5genx3d.jpg,imagens_placa_video/powercolor-hellhound-radeon-rx-7700-xt.jpg
+29,Modelagem Profissional,Modelagem,19,328,217,127,515,712,613,409,imagens_processadores/i9_13900k.jpg,imagens_placa_video/sapphire-pulse-radeon-rx-7800-xt.jpg
+30,Workstation Workstation,Modelagem,3,330,221,117,521,715,612,410,imagens_processadores/ryzen9_7gen.jpg,imagens_placa_video/gigabyte-aorus-master-geforce-rtx-4090.jpg
+31,IA Entry,IA,6,313,210,112,507,704,603,407,imagens_processadores/i5_12400f.jpg,imagens_placa_video/xfx-speedster-qick-319-radeon-rx-6700-xt.jpg
+32,IA Intermediária,IA,21,327,213,115,519,709,603,408,imagens_processadores/ryzen7_5genx3d.jpg,imagens_placa_video/powercolor-hellhound-radeon-rx-7700-xt.jpg
+33,IA Avançada,IA,17,328,217,127,515,712,613,409,imagens_processadores/ryzen7_7gen.jpg,imagens_placa_video/sapphire-pulse-radeon-rx-7800-xt.jpg
+34,IA Profissional,IA,3,330,221,117,521,715,612,410,imagens_processadores/ryzen9_7gen.jpg,imagens_placa_video/gigabyte-aorus-master-geforce-rtx-4090.jpg
+35,IA Deep Learning,IA,37,323,221,117,521,715,612,410,imagens_processadores/ryzen9_9genx3d.jpg,imagens_placa_video/asus-rog-strix-geforce-rtx-5090.jpg

@@ -1,0 +1,77 @@
+// backend/prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo para Usuários (substitui users.csv)
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String   // Importante: No futuro, salvaremos a senha criptografada aqui
+  isAdmin   Boolean  @default(false) // Para diferenciar admin de usuários comuns
+  createdAt DateTime @default(now())
+  
+  // Relacionamentos
+  builds    Build[]
+  orders    Order[]
+}
+
+// Modelo Mestre para Peças (substitui processadores.csv, placas_de_video.csv, etc.)
+model Component {
+  id          Int      @id @default(autoincrement())
+  
+  // 'categoria' vai guardar de qual CSV veio (ex: 'processador', 'placa_video', 'memoria_ram')
+  categoria   String   
+  
+  nome        String
+  marca       String?
+  preco       Float
+  imagem_url  String?
+  
+  // O CAMPO MÁGICO: 'specs'
+  // Aqui dentro salvamos as colunas específicas de cada CSV.
+  // Ex: Se for CPU, salva { "socket": "AM4", "nucleos": "6" }
+  // Ex: Se for Fonte, salva { "potencia": "600W", "selo": "80 Plus" }
+  specs       Json     
+
+  createdAt   DateTime @default(now())
+}
+
+// Modelo para Builds Salvas (substitui saved_builds.csv e builds.csv)
+model Build {
+  id          Int      @id @default(autoincrement())
+  nome        String
+  descricao   String?
+  precoTotal  Float
+  
+  // Aqui guardamos os IDs das peças usadas e a configuração da build
+  pecas       Json     
+
+  // Tipo da build: 'salva' (pelo usuário) ou 'pronta' (guia do site)
+  tipo        String   @default("salva") 
+
+  userId      Int?     // Opcional, pois as Builds Prontas não têm dono específico
+  user        User?    @relation(fields: [userId], references: [id])
+
+  createdAt   DateTime @default(now())
+}
+
+// Modelo para Pedidos (substitui orders.csv)
+model Order {
+  id              Int      @id @default(autoincrement())
+  total           Float
+  status          String   @default("Pendente")
+  assemblyOption  String   // Para saber se quer montado ou separado
+  address         String   // O campo que estava faltando!
+  items           Json     // Para salvar os dados das peças de forma estruturada
+  userId          Int
+  user            User     @relation(fields: [userId], references: [id])
+  createdAt       DateTime @default(now())
+}

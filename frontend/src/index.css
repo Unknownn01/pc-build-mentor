@@ -1,0 +1,20 @@
+/* 1. Reset Básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Estilos Globais para a página inteira */
+html, body {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: #0D1117; 
+  color: #FFFFFF;
+}
+
+/* 3. A CORREÇÃO PRINCIPAL: Força o contêiner do React a ocupar todo o espaço */
+#root {
+  width: 100%;
+  min-height: 100vh; /* Garante que o app ocupe pelo menos a altura toda da tela */
+}

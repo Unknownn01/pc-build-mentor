@@ -1,0 +1,22 @@
+id,nome,tipo,soquetes_suportados,altura_mm,tamanho_radiador_mm,preco_simulado,imagem_url
+701,DeepCool AG400,Air Cooler,"LGA1700, LGA1851, LGA1200, LGA1151, AM5, AM4",150,N/A,150,DeepCool-AG400-Air Cooler.jpg
+702,Cooler Master Hyper 212 Black,Air Cooler,"LGA1700, LGA1851, LGA1200, LGA1151, AM5, AM4",155,N/A,250,Cooler-Master-Hyper-212-Black.jpg
+703,Noctua NH-D15,Air Cooler,"LGA1700, LGA1851, LGA1200, LGA1151, AM5, AM4",165,N/A,800,Noctua-NH-D15-Air Cooler.jpg
+704,Cooler Master MasterLiquid ML240L,Water Cooler,"LGA1700, LGA1851, LGA1200, LGA1151, AM5, AM4",N/A,240,550,Cooler-Master-MasterLiquid-ML240L-Water Cooler.jpg
+705,Corsair H150i Elite Capellix,Water Cooler,"LGA1700, LGA1851, LGA1200, LGA1151, AM5, AM4",N/A,360,1200,Corsair-H150i-Elite-Capellix-Water-Cooler.jpg
+706,Rise Mode Z2,Air Cooler,"LGA1700, LGA1851, LGA1200, LGA1151, AM4",157,N/A,100,Rise-Mode-Z2-Air-Cooler.jpg
+707,Be Quiet! Dark Rock Pro 4,Air Cooler,"LGA1700, LGA1851, LGA1200, AM4",163,N/A,700,Be-Quiet!-Dark-Rock-Pro 4-Air-Cooler.jpg
+708,Noctua NH-U12S,Air Cooler,"LGA1700, LGA1851, LGA1200, AM4",158,N/A,500,Noctua-NH-U12S-Air Cooler.jpg
+709,Corsair iCUE H100i Elite,Water Cooler,"LGA1700, LGA1851, LGA1200, AM4",N/A,240,950,Corsair-iCUE-H100i-Elite-Water Cooler.jpg
+710,Arctic Liquid Freezer II 280,Water Cooler,"LGA1700, LGA1851, LGA1200, AM4",N/A,280,1100,Arctic-Liquid-Freezer-II-280-Water-Cooler.jpg
+711,DeepCool Assassin III,Air Cooler,"LGA1700, LGA1851, LGA1200, AM4",165,N/A,850,DeepCool-Assassin-III-Air-Cooler.jpg
+712,Scythe Mugen 5 Rev.B,Air Cooler,"LGA1700, LGA1851, LGA1200, AM4",154,N/A,430,Scythe-Mugen-5-Rev.B-Air-Cooler.jpg
+713,Cooler Master MasterLiquid ML360,Water Cooler,"LGA1700, LGA1851, LGA1200, AM4",N/A,360,1300,Cooler-Master-MasterLiquid-ML360-Water-Cooler.jpg
+714,EK-AIO 360 D-RGB,Water Cooler,"LGA1700, LGA1851, LGA1200, AM4",N/A,360,1400,EK-AIO-360-D-RGB-Water-Cooler.jpg
+715,Thermaltake Floe RC 360,Water Cooler,"LGA1700, LGA1851, LGA1200, AM4",N/A,360,1250,Thermaltake-Floe-RC-360-Water-Cooler.jpg
+716,Noctua NH-L9i,Air Cooler,"LGA1700, LGA1851, LGA1200",115,N/A,350,Noctua NH-L9i,Air Cooler,Noctua-NH-L9i-Air-Cooler.jpg
+717,Be Quiet! Pure Rock 2,Air Cooler,"LGA1700, LGA1851, LGA1200, AM4",155,N/A,280,Be-Quiet!-Pure-Rock-2-Air-Cooler.jpg
+718,Corsair Hydro Series H60,Water Cooler,"LGA1700, LGA1851, LGA1200, AM4",N/A,120,400,Corsair-Hydro-Series-H60-Water-Cooler.jpg
+719,DeepCool Gammaxx 400 V2,Air Cooler,"LGA1700, LGA1851, LGA1200, AM4",154,N/A,190,DeepCool-Gammaxx-400-V2-Air-Cooler.jpg
+720,Arctic Freezer 34 eSports DUO,Air Cooler,"LGA1700, LGA1851, LGA1200, AM4",160,N/A,320,Arctic-Freezer-34-eSports-DUO-Air-Cooler.jpg
+721,MSI MAG CORELIQUID 240R,Water Cooler,"LGA1700, LGA1851, LGA1200, AM4",N/A,240,900,MSI-MAG-CORELIQUID-240R-Water-Cooler.jpg

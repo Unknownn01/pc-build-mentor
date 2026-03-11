@@ -1,0 +1,327 @@
+/* ARQUIVO: frontend/src/components/GameSimulation.css */
+
+.game-simulation {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.simulation-title {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.simulation-title svg {
+    color: #00D9FF;
+}
+
+/* Resumo */
+.simulation-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.summary-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-icon {
+    font-size: 2.5rem;
+    color: #FFD700;
+}
+
+.summary-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00D9FF;
+    line-height: 1;
+}
+
+.summary-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+/* Seções de Jogos */
+.games-section {
+    margin-bottom: 24px;
+}
+
+.games-section h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.playable-section h4 {
+    border-bottom-color: rgba(0, 255, 136, 0.3);
+}
+
+.unplayable-section h4 {
+    border-bottom-color: rgba(255, 107, 107, 0.3);
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+/* Cards de Jogos */
+.game-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.game-card.playable {
+    border-left: 4px solid #00FF88;
+}
+
+.game-card.unplayable {
+    border-left: 4px solid #FF6B6B;
+    opacity: 0.8;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.game-name {
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0;
+    flex: 1;
+}
+
+.excellent-icon {
+    color: #00FF88;
+    font-size: 1.5rem;
+}
+
+.playable-icon {
+    color: #00D9FF;
+    font-size: 1.5rem;
+}
+
+.not-playable-icon {
+    color: #FF6B6B;
+    font-size: 1.5rem;
+}
+
+/* Demanda do Jogo */
+.game-demand {
+    margin-bottom: 12px;
+}
+
+.demand-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Configurações Recomendadas */
+.game-recommended {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.recommended-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.recommended-item:last-child {
+    margin-bottom: 0;
+}
+
+.rec-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.rec-value {
+    color: #00D9FF;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Detalhes de FPS */
+.game-fps-details {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.game-fps-details h6 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+}
+
+.fps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.fps-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+}
+
+.fps-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
+
+.fps-value {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Razão de Não Jogável */
+.unplayable-reason {
+    background: rgba(255, 107, 107, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 3px solid #FF6B6B;
+}
+
+.unplayable-reason p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Legenda de FPS */
+.fps-legend {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.fps-legend h5 {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0 0 12px 0;
+}
+
+.legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Nota de Simulação */
+.simulation-note {
+    background: rgba(0, 217, 255, 0.1);
+    padding: 16px;
+    border-radius: 8px;
+    border-left: 4px solid #00D9FF;
+}
+
+.simulation-note p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.simulation-note strong {
+    color: #00D9FF;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .legend-items {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .simulation-summary {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-simulation {
+        padding: 16px;
+    }
+
+    .simulation-title {
+        font-size: 1.2rem;
+    }
+
+    .game-name {
+        font-size: 1rem;
+    }
+}

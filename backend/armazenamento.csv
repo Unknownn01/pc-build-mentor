@@ -1,0 +1,21 @@
+id,nome,tipo,capacidade_gb,preco_simulado,imagem_url
+501,WD Black SN850,SSD M.2,1000,649.90,WD-Black-SN850.jpg
+502,Samsung 980 Pro,SSD M.2,1000,429.99,Samsung-980-Pro.jpg
+503,Kingston KC3000,SSD M.2,2000,1059.00,Kingston-KC3000.jpg
+504,Corsair MP600,SSD M.2,1000,599.90,Corsair-MP600.jpg
+505,ADATA XPG S70,SSD M.2,1000,559.00,ADATA-XPG-S70.jpg
+506,Crucial P5 Plus,SSD M.2,500,389.90,Crucial-P5-Plus.jpg
+507,Lexar NM800,SSD M.2,1000,539.90,Lexar-NM800.jpg
+508,Kingston A400,SSD SATA,240,139.90,Kingston-A400-SATA.jpg
+509,Sandisk SSD Plus,SSD SATA,480,199.99,Sandisk-SSD-Plus-SATA.jpg
+510,Crucial MX500,SSD SATA,1000,349.00,Crucial-MX500-SSD-SATA.jpg
+511,ADATA SU650,SSD SATA,480,189.00,ADATA-SU650-SATA.jpg
+512,WD Blue 3D NAND,SSD SATA,1000,359.90,WD-Blue-3D-NAND-SATA.jpg
+513,Samsung 870 EVO,SSD SATA,500,299.90,Samsung-870-EVO-SATA.jpg
+514,Gigabyte SSD,SSD SATA,240,129.99,Gigabyte-SSD-SATA.jpg
+515,Seagate Barracuda,HD,1000,249.90,Seagate-Barracuda-HD.jpg
+516,WD Blue,HD,2000,289.90,WD-Blue-HD-2000.jpg
+517,Toshiba P300,HD,1000,229.90,Toshiba-P300-HD-1000.jpg
+518,Seagate FireCuda,HD,2000,319.90,Seagate-FireCuda-HD-2000.jpg
+519,WD Purple,HD,4000,449.00,WD-Purple-HD-4000.jpg
+520,Samsung Spinpoint,HD,1000,239.90,Samsung-Spinpoint-HD.jpg

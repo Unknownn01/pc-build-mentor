@@ -1,0 +1,137 @@
+
+.hero-subtitle { 
+  font-size: 1.25rem;
+  max-width: 1200px;
+  color: #c9d1d9; /* Um branco um pouco mais suave */
+  margin-bottom: 40px;
+  /* Bônus: Sombra também no subtítulo */
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.btn-hero {
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #8b949e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-hero:hover {
+  background-color: #8b949e;
+}
+.hero-section { display: flex; justify-content: center; align-items: center; text-align: center; height: 100vh; padding: 0 20px; background-color: #010409; /* Cor de fundo escura como base */ 
+  background-image: 
+    /* 1. O overlay escuro (um gradiente preto semitransparente) */
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    /* 2. A sua imagem de fundo (coloque a URL correta aqui) */
+    url('https://s2-techtudo.glbimg.com/nHKzcfpKDlxWaSc2czlNTeNweyM=/0x0:1280x720/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/X/U/3trOAuQVOHUiSPquImzA/sub-pcgamer-setupgamer.png');;
+  background-size: cover; /* Faz a imagem cobrir toda a área da seção */
+  background-position: center; /* Centraliza a imagem */
+  position: relative; /* Essencial para o posicionamento da curva */
+  overflow: hidden; /* Garante que a curva não crie barras de rolagem indesejadas */
+
+}
+
+
+/* --- Estilos da Seção de Notícias --- */
+.news-section {
+  padding: 80px 5%;
+  background-color: #0D1117;
+}
+
+.news-section h2 {
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.featured-news-card {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  background-color: #161B22;
+  overflow: hidden;
+}
+
+.news-image {
+  width: 50%;
+  object-fit: cover;
+}
+
+.news-content {
+  padding: 40px;
+}
+
+.news-content h3 {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.news-content p {
+  margin-bottom: 25px;
+  color: #8b949e;
+  line-height: 1.6;
+}
+
+.read-more-link {
+  color: #58a6ff;
+  font-weight: 700;
+}
+
+/* --- Estilos da Seção "Como Usar" --- */
+.how-to-use-section {
+  padding: 80px 5%;
+  background-color: #0D1117; /* Garante o mesmo fundo das notícias */
+}
+
+.how-to-use-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px; /* Aumenta o espaço para o título */
+}
+
+.how-to-cards-container {
+  display: flex; /* Alinha os cards lado a lado */
+  justify-content: center; /* Centraliza o grupo de cards */
+  gap: 30px; /* Espaço entre os cards */
+  max-width: 1200px;
+  margin: 0 auto; /* Centraliza o container na página */
+  flex-wrap: wrap; /* Permite que os cards quebrem a linha em telas menores */
+}
+
+.how-to-card {
+  background-color: #161B22; /* Fundo do card */
+  border: 1px solid #30363d; /* Borda sutil */
+  border-radius: 8px;
+  padding: 40px 30px;
+  text-align: center;
+  flex: 1; /* Faz os cards ocuparem o espaço de forma igual */
+  min-width: 280px; /* Largura mínima para cada card */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Animação suave */
+}
+
+.how-to-card:hover {
+  transform: translateY(-10px); /* Efeito de "levantar" ao passar o mouse */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.how-to-icon {
+  font-size: 2.5rem; /* Tamanho do ícone */
+  color: #58a6ff;  /* Cor azul para os ícones */
+  margin-bottom: 25px;
+}
+
+.how-to-card h4 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #f0f6fc; /* Cor do título do card */
+}
+
+.how-to-card p {
+  color: #8b949e; /* Cor do texto do card */
+  line-height: 1.6;
+}
