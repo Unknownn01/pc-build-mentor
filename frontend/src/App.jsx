@@ -56,7 +56,7 @@ function App() {
         { id: 'placaMae', endpoint: 'placas-mae' }, { id: 'memoria', endpoint: 'memorias-ram' },
         { id: 'armazenamento', endpoint: 'armazenamento' }, { id: 'placaDeVideo', endpoint: 'placas-de-video' },
         { id: 'gabinete', endpoint: 'gabinetes' }, { id: 'fonte', endpoint: 'fontes' },
-        { id: 'builds', endpoint: 'builds' }
+        { id: 'buildsProntas', endpoint: 'builds-prontas' }
     ];
     const fetchAllData = async () => {
       setIsLoading(true);
@@ -132,7 +132,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/montador" element={<MontadorPage build={build} setBuild={setBuild} currentUser={currentUser}pecasDisponiveis={pecasDisponiveis}isLoading={isLoading}/>} />
-          <Route path="/guias" element={<GuiasPage buildsProntas={pecasDisponiveis.builds || []} currentUser={currentUser}isLoading={isLoading}setBuild={setBuild} />}/>
+          <Route path="/guias" element={<GuiasPage buildsProntas={pecasDisponiveis.buildsProntas || []} todasPecas={pecasDisponiveis} currentUser={currentUser} isLoading={isLoading} setBuild={setBuild} />} />
           <Route path="/login" element={<LoginPage setCurrentUser={handleSetCurrentUser} />} />
           <Route path="/noticias" element={<NewsPage />} /> 
           <Route path="/register" element={<RegisterPage />} />

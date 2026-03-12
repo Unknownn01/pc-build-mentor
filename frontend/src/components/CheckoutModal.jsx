@@ -33,7 +33,7 @@ function CheckoutModal({ build, currentUser, onClose }) {
     try {
         await axios.post(`${API_BASE_URL}/api/orders/create`, {
             userId: currentUser.id,
-            totalPrice: precoTotal.toFixed(2),
+            total: precoTotal.toFixed(2),
             assemblyChoice: assemblyOption,
             shippingAddress: address,
             items: buildData

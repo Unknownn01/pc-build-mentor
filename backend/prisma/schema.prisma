@@ -75,3 +75,18 @@ model Order {
   user            User     @relation(fields: [userId], references: [id])
   createdAt       DateTime @default(now())
 }
+
+model BuildPronta {
+  id              Int      @id @default(autoincrement())
+  nome            String
+  uso_principal   String
+  cpu_id          Int
+  gpu_id          Int
+  memoria_id      Int
+  placaMae_id     Int
+  armazenamento_id Int
+  cooler_id       Int
+  gabinete_id     Int
+  fonte_id        Int
+  build_image     String // CAMPO ÚNICO PARA A IMAGEM DA BUILD
+}

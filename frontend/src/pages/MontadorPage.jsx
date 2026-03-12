@@ -146,15 +146,18 @@ function MontadorPage({ build, setBuild, currentUser }) {
         
         // Filtro de Gabinete (Formato ATX/mATX)
         const formatoMobo = placaMae.specs?.formato || placaMae.specs?.fator_forma;
+        // Filtro de Gabinete
         filtradas.gabinete = pecasDisponiveis.gabinete?.filter(g => {
-            // 1. Descobre o formato da placa mãe (ATX, Micro-ATX, etc)
+            // 1. Pega o formato da placa (ex: ATX, Micro-ATX)
             const formatoMobo = placaMae.specs?.formato || placaMae.specs?.fator_forma || "ATX";
-            
-            // 2. Descobre o que o gabinete aceita (procura em vários nomes possíveis)
-            const formatosGabinete = g.specs?.formatos_suportados || g.specs?.placas_mae_compativeis || g.specs?.formato || "";
-            
-            // 3. Verifica se o texto do gabinete contém o formato da placa
-            // Ex: Se gabinete é "ATX, mATX" e placa é "ATX", retorna true.
+
+            // 2. Pega o que o gabinete aceita
+            const formatosGabinete = g.specs?.formatos_suportados || g.specs?.placas_mae_compativeis || "";
+
+            // 3. Se não houver informação no gabinete, mostramos por precaução (evita sumir tudo)
+            if (!formatosGabinete) return true;
+
+            // 4. Comparação em minúsculo para evitar erro de 'atx' vs 'ATX'
             return formatosGabinete.toLowerCase().includes(formatoMobo.toLowerCase());
         });
     }
@@ -164,6 +167,17 @@ function MontadorPage({ build, setBuild, currentUser }) {
         filtradas.cpu = pecasDisponiveis.cpu?.filter(p => 
             p.marca?.toLowerCase() === cpuFilter.toLowerCase()
         );
+    }
+
+    // --- Filtros visuais para Placa-mãe (Adicione este trecho) ---
+    if (!placaMae && moboFilter !== 'all') {
+        filtradas.placaMae = pecasDisponiveis.placaMae?.filter(p => {
+            // Pega a plataforma de dentro de specs
+            const plataformaPeca = p.specs?.plataforma || p.plataforma;
+            
+            // Compara com o estado do botão (amd ou intel)
+            return plataformaPeca?.toLowerCase() === moboFilter.toLowerCase();
+        });
     }
 
     return filtradas;
@@ -374,7 +388,9 @@ function MontadorPage({ build, setBuild, currentUser }) {
                     <span className="badge badge-amd">AMD</span> : 
                     <span className="badge badge-intel">Intel</span>;
             case 'placaMae':
-                return peca.plataforma === 'AMD' ? 
+                // Busca a plataforma dentro de specs ou na raiz (fallback)
+                const plataformaMobo = peca.specs?.plataforma || peca.plataforma;
+                return plataformaMobo === 'AMD' ? 
                     <span className="badge badge-amd">AMD</span> : 
                     <span className="badge badge-intel">Intel</span>;
             case 'placaDeVideo':
@@ -497,7 +513,7 @@ function MontadorPage({ build, setBuild, currentUser }) {
                                             </div>
                                             {showPowerScore && (
                                                 <div className="power-score-badge">
-                                                    <FaStar /> Score: {peca.power_score}/100
+                                                    <FaStar /> Score: {peca.specs?.power_score || peca.power_score}/100
                                                 </div>
                                             )}
                                         </div>

@@ -1,106 +1,119 @@
-// ARQUIVO: frontend/src/pages/GuiasPage.jsx
-// (ATUALIZADO COM FILTROS DE PREÇO)
-
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaWrench } from 'react-icons/fa';
+import { FaWrench, FaStar } from 'react-icons/fa';
 import BuildDetailModal from '../components/BuildDetailModal.jsx';
 import './GuiasPage.css';
-import { API_BASE_URL } from '../config'; // Ajuste o caminho se necessário
+import { API_BASE_URL } from '../config';
 
-function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild }) {
+function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild, todasPecas }) {
     const [filtroUso, setFiltroUso] = useState('Todos');
     const [filtroPreco, setFiltroPreco] = useState('Todos');
     const [viewingBuild, setViewingBuild] = useState(null);
     const navigate = useNavigate();
 
-    const usosPrincipais = useMemo(() => {
-        if (!buildsProntas || buildsProntas.length === 0) return ['Todos'];
-        const usos = buildsProntas.map(b => b.uso_principal).filter(Boolean);
-        return ['Todos', ...new Set(usos)];
-    }, [buildsProntas]);
+    const mapaUso = {
+        'Jogos': 'Gamer',
+        'Edicao': 'Edição',
+        'Trabalho': 'Home Office',
+        'Modelagem': 'Edição',
+        'IA': 'Gamer'
+    };
 
-    // Definir faixas de preço
     const faixasPreco = useMemo(() => [
         { label: 'Todos', min: 0, max: Infinity },
         { label: 'Até R$ 3.000', min: 0, max: 3000 },
-        { label: 'R$ 3.000 - R$ 4.000', min: 3000, max: 4000 },
-        { label: 'R$ 4.000 - R$ 5.000', min: 4000, max: 5000 },
-        { label: 'R$ 5.000 - R$ 6.000', min: 5000, max: 6000 },
-        { label: 'R$ 6.000 - R$ 8.000', min: 6000, max: 8000 },
-        { label: 'R$ 8.000 - R$ 10.000', min: 8000, max: 10000 },
-        { label: 'R$ 10.000 - R$ 15.000', min: 10000, max: 15000 },
-        { label: 'Acima de R$ 15.000', min: 15000, max: Infinity }
+        { label: 'R$ 3.000 - R$ 5.000', min: 3000, max: 5000 },
+        { label: 'R$ 5.000 - R$ 8.000', min: 5000, max: 8000 },
+        { label: 'R$ 8.000 - R$ 12.000', min: 8000, max: 12000 },
+        { label: 'Acima de R$ 12.000', min: 12000, max: Infinity }
     ], []);
 
-    const buildsFiltradas = useMemo(() => {
-        if (!buildsProntas) return [];
-        
-        let resultado = [...buildsProntas];
-
-        // Filtrar por uso
-        if (filtroUso !== 'Todos') {
-            resultado = resultado.filter(b => b.uso_principal === filtroUso);
+    // --- LÓGICA DE PROCESSAMENTO (BLINDADA CONTRA TELA AZUL) ---
+    const buildsProcessadas = useMemo(() => {
+        // Se as peças ainda não carregaram ou o objeto está vazio, retorna vazio e não processa
+        if (!buildsProntas || buildsProntas.length === 0 || !todasPecas || Object.keys(todasPecas).length === 0) {
+            return [];
         }
 
-        // Filtrar por preço
+        const buscarPeca = (id, categoriaAlvo) => {
+            if (!id) return null;
+            
+            // Tenta encontrar a chave correta no objeto todasPecas
+            const chaveReal = Object.keys(todasPecas).find(key => 
+                key.toLowerCase().replace(/-/g, '') === categoriaAlvo.toLowerCase().replace(/-/g, '')
+            );
+            
+            const lista = todasPecas[chaveReal || categoriaAlvo] || [];
+            // Compara IDs como Number para evitar erro de String vs Int
+            return lista.find(p => Number(p.id) === Number(id)) || null;
+        };
+
+        return buildsProntas.map(b => {
+            const cpu = buscarPeca(b.cpu_id, 'cpu');
+            const gpu = buscarPeca(b.gpu_id, 'placaDeVideo');
+            const mobo = buscarPeca(b.placaMae_id, 'placaMae');
+            const ram = buscarPeca(b.memoria_id, 'memoria');
+            const ssd = buscarPeca(b.armazenamento_id, 'armazenamento');
+            const psu = buscarPeca(b.fonte_id, 'fonte');
+            const cooler = buscarPeca(b.cooler_id, 'cooler');
+            const gabinete = buscarPeca(b.gabinete_id, 'gabinete');
+
+            const pecas = [cpu, gpu, mobo, ram, ssd, psu, cooler, gabinete];
+            const precoTotal = pecas.reduce((acc, p) => acc + parseFloat(p?.preco || 0), 0);
+
+            return {
+                ...b,
+                preco_total: precoTotal,
+                cpu_nome: cpu?.nome || 'Processador Indisponível',
+                gpu_nome: gpu ? `${gpu.marca} ${gpu.specs?.nome_chip || gpu.modelo_especifico || ''}` : 'GPU N/A',
+                buildData: { cpu, placaDeVideo: gpu, placaMae: mobo, memoria: ram, armazenamento: ssd, fonte: psu, cooler, gabinete }
+            };
+        });
+    }, [buildsProntas, todasPecas]);
+
+    const buildsFiltradas = useMemo(() => {
+        let res = [...buildsProcessadas];
+        if (filtroUso !== 'Todos') {
+            res = res.filter(b => mapaUso[b.uso_principal] === filtroUso || b.uso_principal === filtroUso);
+        }
         if (filtroPreco !== 'Todos') {
             const faixa = faixasPreco.find(f => f.label === filtroPreco);
-            if (faixa) {
-                resultado = resultado.filter(b => {
-                    const preco = parseFloat(b.preco_simulado);
-                    return preco >= faixa.min && preco < faixa.max;
-                });
-            }
+            if (faixa) res = res.filter(b => b.preco_total >= faixa.min && b.preco_total < faixa.max);
         }
-
-        return resultado;
-    }, [buildsProntas, filtroUso, filtroPreco,faixasPreco]);
+        return res;
+    }, [buildsProcessadas, filtroUso, filtroPreco]);
 
     const handleChooseBuild = (build) => {
-        const buildData = typeof build.buildData === 'string' ? JSON.parse(build.buildData) : build.buildData;
-        setBuild(buildData);
-        navigate('/montador');
+        if (build.buildData?.cpu) {
+            setBuild(build.buildData);
+            navigate('/montador');
+        }
     };
 
-    if (isLoading) return <div className="loading-screen">Carregando guias...</div>;
+    if (isLoading) return <div className="loading-screen">Carregando configurações...</div>;
 
     return (
         <div className="guias-container">
             <div className="guias-header">
                 <h1>PCs Pré-montados</h1>
-                <p>Builds de PC selecionadas por especialistas para cada orçamento e necessidade.</p>
+                <p>Builds selecionadas com base no estoque atual de Porto Velho.</p>
             </div>
 
             <div className="filtros-container-guias">
-                {/* Filtro de Propósito */}
                 <div className="filtro-secao">
                     <h3>Propósito</h3>
                     <div className="filtros-uso">
-                        {usosPrincipais.map(uso => (
-                            <button 
-                                key={uso} 
-                                className={`filtro-btn ${filtroUso === uso ? 'active' : ''}`} 
-                                onClick={() => setFiltroUso(uso)}
-                            >
-                                {uso}
-                            </button>
+                        {['Todos', 'Gamer', 'Home Office', 'Edição'].map(uso => (
+                            <button key={uso} className={`filtro-btn ${filtroUso === uso ? 'active' : ''}`} onClick={() => setFiltroUso(uso)}>{uso}</button>
                         ))}
                     </div>
                 </div>
 
-                {/* Filtro de Preço */}
                 <div className="filtro-secao">
                     <h3>Faixa de Preço</h3>
                     <div className="filtros-preco">
-                        {faixasPreco.map(faixa => (
-                            <button 
-                                key={faixa.label} 
-                                className={`filtro-btn ${filtroPreco === faixa.label ? 'active' : ''}`} 
-                                onClick={() => setFiltroPreco(faixa.label)}
-                            >
-                                {faixa.label}
-                            </button>
+                        {faixasPreco.map(f => (
+                            <button key={f.label} className={`filtro-btn ${filtroPreco === f.label ? 'active' : ''}`} onClick={() => setFiltroPreco(f.label)}>{f.label}</button>
                         ))}
                     </div>
                 </div>
@@ -114,45 +127,36 @@ function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild }) {
                 {buildsFiltradas.map(build => (
                     <div key={build.id} className="build-card">
                         <img 
-  // A correção está aqui: construímos a URL completa
-                            src={`${API_BASE_URL}/build-images/${build.imagem_url}`}
+                            src={`${API_BASE_URL}/${build.build_image}`} 
                             alt={build.nome} 
                             className="build-imagem" 
-                            onClick={() => setViewingBuild(build)} 
-                            />
+                            onClick={() => setViewingBuild(build)}
+                            onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=PC+Build'; }}
+                        />
                         <div className="build-info">
                             <h3 onClick={() => setViewingBuild(build)}>{build.nome}</h3>
                             <div className="build-specs">
-                                <p><strong>CPU:</strong> {build.buildData?.cpu?.nome || 'N/A'}</p>
-                                <p>
-                                    <strong>GPU:</strong> 
-                                    {/* Verifica se a placa de vídeo existe */}
-                                    {build.buildData.placaDeVideo 
-                                        // Se existir, monta o nome completo
-                                        ? `${build.buildData.placaDeVideo.marca} ${build.buildData.placaDeVideo.modelo_especifico} ${build.buildData.placaDeVideo.nome_chip}` 
-                                        // Se não existir, mostra 'N/A'
-                                        : 'N/A'
-                                    }
-                                </p>
+                                <p><strong>CPU:</strong> {build.cpu_nome}</p>
+                                <p><strong>GPU:</strong> {build.gpu_nome}</p>
                             </div>
-                            <p className="build-preco">R$ {parseFloat(build.preco_simulado).toFixed(2)}</p>
+                            <p className="build-preco">R$ {build.preco_total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
                         </div>
                         <div className="build-actions-single">
                             <button className="btn-action-full" onClick={() => handleChooseBuild(build)}>
-                                <FaWrench /> Levar para o Montador
+                                <FaWrench /> Personalizar no Montador
                             </button>
                         </div>
                     </div>
                 ))}
             </div>
 
-            {buildsFiltradas.length === 0 && (
-                <div className="sem-resultados">
-                    <p>Nenhuma build encontrada com os filtros selecionados.</p>
-                </div>
+            {viewingBuild && (
+                <BuildDetailModal 
+                    build={viewingBuild} 
+                    onClose={() => setViewingBuild(null)} 
+                    currentUser={currentUser} 
+                />
             )}
-
-            {viewingBuild && <BuildDetailModal build={viewingBuild} onClose={() => setViewingBuild(null)} currentUser={currentUser} />}
         </div>
     );
 }

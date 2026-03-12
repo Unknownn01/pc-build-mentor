@@ -30,6 +30,8 @@ const pastasDeImagens = [
     'imagens_gabinetes',
     'imagens_refrigeracao'
   ];
+
+  app.use('/imagens_geradas', express.static(path.join(__dirname, 'imagens_geradas')));
   
   pastasDeImagens.forEach(pasta => {
     // Diz ao servidor: "Se alguém pedir /images/foto.jpg, procure também dentro desta pasta aqui"
@@ -48,6 +50,16 @@ const pastasDeImagens = [
     } catch (error) {
       console.error("Erro no banco:", error);
       res.status(500).json({ error: "Erro interno" });
+    }
+  });
+
+    // Buscar todas as builds prontas do banco
+  app.get('/api/builds-prontas', async (req, res) => {
+    try {
+      const builds = await prisma.buildPronta.findMany();
+      res.json(builds);
+    } catch (error) {
+      res.status(500).json({ error: "Erro ao buscar builds prontas" });
     }
   });
 
