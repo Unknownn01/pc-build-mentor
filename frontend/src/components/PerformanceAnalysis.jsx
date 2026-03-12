@@ -4,13 +4,19 @@ import { FaTrophy, FaStar, FaExclamationTriangle, FaCheckCircle, FaInfoCircle } 
 import './PerformanceAnalysis.css';
 
 const PerformanceAnalysis = ({ analysis }) => {
+    // Blindagem inicial: Se o objeto base ou o score não existirem, oculta o componente
     if (!analysis || !analysis.overallScore) {
         return null;
     }
 
-    const { overallScore, bottleneckAnalysis, resolutionCapability, summary } = analysis;
+    // Extração segura com valores padrão
+    const { 
+        overallScore = {}, 
+        bottleneckAnalysis = { severity: 'info', strengths: [], bottlenecks: [], warnings: [] }, 
+        resolutionCapability = { capabilities: [] }, 
+        summary = {} 
+    } = analysis;
 
-    // Mapeia tier para descrição em português
     const tierDescriptions = {
         'ultra': { label: 'Ultra High-End', color: '#FFD700', icon: '👑' },
         'high': { label: 'High-End', color: '#00D9FF', icon: '🚀' },
@@ -23,7 +29,6 @@ const PerformanceAnalysis = ({ analysis }) => {
 
     const tierInfo = tierDescriptions[overallScore.tier] || tierDescriptions['incomplete'];
 
-    // Mapeia severidade para estilo
     const severityStyles = {
         'critical': 'severity-critical',
         'high': 'severity-high',
@@ -39,80 +44,49 @@ const PerformanceAnalysis = ({ analysis }) => {
                 <FaTrophy /> Análise de Desempenho
             </h3>
 
-            {/* Score Geral */}
+            {/* Score Geral com Círculo de Progressão */}
             <div className="overall-score-card">
                 <div className="score-circle" style={{ borderColor: tierInfo.color }}>
-                    <span className="score-number">{overallScore.score}</span>
+                    <span className="score-number">{overallScore.score || 0}</span>
                     <span className="score-label">/ 100</span>
                 </div>
                 <div className="score-info">
                     <h4 style={{ color: tierInfo.color }}>
                         {tierInfo.icon} {tierInfo.label}
                     </h4>
-                    <p className="score-description">{resolutionCapability.message}</p>
+                    <p className="score-description">{resolutionCapability.message || 'Análise de resolução pendente'}</p>
                 </div>
             </div>
 
-            {/* Breakdown de Componentes */}
+            {/* Barras de Contribuição: Crucial para o TCC mostrar o equilíbrio */}
             <div className="score-breakdown">
                 <h4>Contribuição dos Componentes</h4>
                 <div className="breakdown-bars">
-                    <div className="breakdown-item">
-                        <span className="breakdown-label">GPU</span>
-                        <div className="breakdown-bar">
-                            <div 
-                                className="breakdown-fill gpu-fill" 
-                                style={{ width: `${overallScore.breakdown.gpu}%` }}
-                            >
-                                {overallScore.breakdown.gpu}
+                    {['gpu', 'cpu', 'ram', 'storage'].map(comp => (
+                        <div className="breakdown-item" key={comp}>
+                            <span className="breakdown-label">{comp.toUpperCase()}</span>
+                            <div className="breakdown-bar">
+                                <div 
+                                    className={`breakdown-fill ${comp}-fill`} 
+                                    style={{ width: `${overallScore.breakdown?.[comp] || 0}%` }}
+                                >
+                                    {overallScore.breakdown?.[comp] || 0}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="breakdown-item">
-                        <span className="breakdown-label">CPU</span>
-                        <div className="breakdown-bar">
-                            <div 
-                                className="breakdown-fill cpu-fill" 
-                                style={{ width: `${overallScore.breakdown.cpu}%` }}
-                            >
-                                {overallScore.breakdown.cpu}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="breakdown-item">
-                        <span className="breakdown-label">RAM</span>
-                        <div className="breakdown-bar">
-                            <div 
-                                className="breakdown-fill ram-fill" 
-                                style={{ width: `${overallScore.breakdown.ram}%` }}
-                            >
-                                {overallScore.breakdown.ram}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="breakdown-item">
-                        <span className="breakdown-label">Storage</span>
-                        <div className="breakdown-bar">
-                            <div 
-                                className="breakdown-fill storage-fill" 
-                                style={{ width: `${overallScore.breakdown.storage}%` }}
-                            >
-                                {overallScore.breakdown.storage}
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
 
-            {/* Capacidade de Resolução */}
+            {/* Capacidade de Resolução Visual */}
             <div className="resolution-capability">
                 <h4>Capacidade de Resolução</h4>
                 <div className="resolution-primary">
-                    <span className="resolution-badge">{resolutionCapability.primary}</span>
+                    <span className="resolution-badge">{resolutionCapability.primary || 'N/A'}</span>
                     <span className="resolution-text">Resolução Ideal</span>
                 </div>
                 <div className="resolution-details">
-                    {resolutionCapability.capabilities && resolutionCapability.capabilities.map((cap, index) => (
+                    {resolutionCapability.capabilities?.map((cap, index) => (
                         <div 
                             key={index} 
                             className={`resolution-item ${cap.viable ? 'viable' : 'not-viable'}`}
@@ -130,18 +104,15 @@ const PerformanceAnalysis = ({ analysis }) => {
                 </div>
             </div>
 
-            {/* Análise de Gargalos */}
-            <div className={`bottleneck-analysis ${severityStyles[bottleneckAnalysis.severity]}`}>
+            {/* Análise de Gargalo - O diferencial do seu projeto */}
+            <div className={`bottleneck-analysis ${severityStyles[bottleneckAnalysis.severity] || 'severity-info'}`}>
                 <h4>
-                    {bottleneckAnalysis.severity === 'good' && <FaCheckCircle />}
-                    {bottleneckAnalysis.severity === 'info' && <FaInfoCircle />}
-                    {(bottleneckAnalysis.severity === 'low' || bottleneckAnalysis.severity === 'medium') && <FaExclamationTriangle />}
-                    {(bottleneckAnalysis.severity === 'high' || bottleneckAnalysis.severity === 'critical') && <FaExclamationTriangle />}
+                    {bottleneckAnalysis.severity === 'good' ? <FaCheckCircle /> : <FaExclamationTriangle />}
                     Análise de Gargalos
                 </h4>
 
-                {/* Pontos Fortes */}
-                {bottleneckAnalysis.strengths && bottleneckAnalysis.strengths.length > 0 && (
+                {/* Seção de Pontos Fortes */}
+                {bottleneckAnalysis.strengths?.length > 0 && (
                     <div className="strengths-section">
                         <h5>✅ Pontos Fortes</h5>
                         {bottleneckAnalysis.strengths.map((strength, index) => (
@@ -153,52 +124,38 @@ const PerformanceAnalysis = ({ analysis }) => {
                     </div>
                 )}
 
-                {/* Gargalos Críticos */}
-                {bottleneckAnalysis.bottlenecks && bottleneckAnalysis.bottlenecks.length > 0 && (
+                {/* Seção de Gargalos Críticos */}
+                {bottleneckAnalysis.bottlenecks?.length > 0 && (
                     <div className="bottlenecks-section">
                         <h5>🚨 Gargalos Detectados</h5>
-                        {bottleneckAnalysis.bottlenecks.map((bottleneck, index) => (
-                            <div key={index} className={`bottleneck-item severity-${bottleneck.severity}`}>
+                        {bottleneckAnalysis.bottlenecks.map((b, index) => (
+                            <div key={index} className={`bottleneck-item severity-${b.severity}`}>
                                 <div className="bottleneck-header">
-                                    <strong>{bottleneck.message}</strong>
-                                    <span className="severity-badge">{bottleneck.severity === 'critical' ? 'CRÍTICO' : 'ALTO'}</span>
+                                    <strong>{b.message}</strong>
+                                    <span className="severity-badge">{b.severity?.toUpperCase()}</span>
                                 </div>
-                                <p className="bottleneck-description">{bottleneck.description}</p>
-                                <p className="bottleneck-impact"><strong>Impacto:</strong> {bottleneck.impact}</p>
-                                <p className="bottleneck-suggestion">💡 <strong>Sugestão:</strong> {bottleneck.suggestion}</p>
-                            </div>
-                        ))}
-                    </div>
-                )}
-
-                {/* Avisos */}
-                {bottleneckAnalysis.warnings && bottleneckAnalysis.warnings.length > 0 && (
-                    <div className="warnings-section">
-                        <h5>⚠️ Avisos</h5>
-                        {bottleneckAnalysis.warnings.map((warning, index) => (
-                            <div key={index} className="warning-item">
-                                <strong>{warning.message}</strong>
-                                <p>{warning.description}</p>
-                                <p className="warning-suggestion">💡 {warning.suggestion}</p>
+                                <p className="bottleneck-description">{b.description}</p>
+                                <p className="bottleneck-impact"><strong>Impacto:</strong> {b.impact}</p>
+                                <p className="bottleneck-suggestion">💡 <strong>Sugestão:</strong> {b.suggestion}</p>
                             </div>
                         ))}
                     </div>
                 )}
             </div>
 
-            {/* Resumo Rápido */}
+            {/* Rodapé de Resumo Rápido */}
             <div className="quick-summary">
                 <div className="summary-stat">
                     <span className="stat-label">Jogos Compatíveis</span>
-                    <span className="stat-value">{summary.playableGames}/{summary.totalGames}</span>
+                    <span className="stat-value">{summary.playableGames || 0}/{summary.totalGames || 0}</span>
                 </div>
                 <div className="summary-stat">
                     <span className="stat-label">Tier</span>
                     <span className="stat-value">{tierInfo.label}</span>
                 </div>
                 <div className="summary-stat">
-                    <span className="stat-label">Resolução Ideal</span>
-                    <span className="stat-value">{summary.primaryResolution}</span>
+                    <span className="stat-label">Resolução</span>
+                    <span className="stat-value">{summary.primaryResolution || 'N/A'}</span>
                 </div>
             </div>
         </div>

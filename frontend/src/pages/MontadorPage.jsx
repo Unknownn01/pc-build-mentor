@@ -239,27 +239,26 @@ function MontadorPage({ build, setBuild, currentUser }) {
     }, [build]);
 
     const handleSaveBuild = async () => {
-        if (!currentUser) {
+        if (!currentUser || !currentUser.id) {
             alert("Você precisa estar logado para salvar uma build.");
             return;
         }
-        if (Object.keys(build).length < 2) {
-            alert("Sua build precisa ter pelo menos 2 peças para ser salva.");
-            return;
-        }
-
+    
         const buildName = prompt("Dê um nome para a sua build:", "Meu PC Gamer");
+    
         if (buildName) {
             try {
+                // O axios já converte o objeto para JSON automaticamente
                 await axios.post(`${API_BASE_URL}/api/builds/save`, {
-                    userId: currentUser.id,
+                    userId: currentUser.id, // O ID que vem do login
                     buildName: buildName,
-                    buildData: build
+                    buildData: build       // O objeto da build atual
                 });
+    
                 alert(`Build "${buildName}" salva com sucesso!`);
             } catch (err) {
+                console.error("Erro no salvamento:", err.response?.data || err.message);
                 alert("Ocorreu um erro ao salvar a build.");
-                console.error(err);
             }
         }
     };

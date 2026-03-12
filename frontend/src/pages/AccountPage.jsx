@@ -36,11 +36,11 @@ const UpdateModal = ({ modalType, currentUser, setCurrentUser, onClose }) => {
 
         switch (modalType) {
             case 'name':
-                url = `${API_BASE_URL}/users/update/name`;
+                url = `${API_BASE_URL}/api/users/update/name`;
                 payload = { userId: currentUser.id, newUsername: newValue, password: currentPassword };
                 break;
             case 'email':
-                url = `${API_BASE_URL}/users/update/email`;
+                url = `${API_BASE_URL}/api/users/update/email`;
                 payload = { userId: currentUser.id, newEmail: newValue, password: currentPassword };
                 break;
             case 'password':
@@ -49,7 +49,7 @@ const UpdateModal = ({ modalType, currentUser, setCurrentUser, onClose }) => {
                     setIsProcessing(false);
                     return;
                 }
-                url = `${API_BASE_URL}/users/update/password`;
+                url = `${API_BASE_URL}/api/users/update/password`;
                 payload = { userId: currentUser.id, currentPassword, newPassword };
                 break;
             default:
@@ -139,7 +139,7 @@ function AccountPage({ currentUser, setCurrentUser }) {
             <FaUserEdit className="info-icon" />
             <div>
               <span className="info-label">Nome de Usuário</span>
-              <p className="info-data">{currentUser.username}</p>
+              <p className="info-data">{currentUser.name}</p>
             </div>
           </div>
           <button className="btn-edit-account" onClick={() => setModalType('name')}>Alterar</button>

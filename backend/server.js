@@ -128,19 +128,38 @@ app.get('/api/refrigeracao', (req, res) => fetchCategory('refrigeracao', 'imagen
 
 // --- ROTAS DE BUILDS SALVAS (MIGRADO) ---
 
+// --- ROTA PARA SALVAR BUILDS (CORRIGIDA PARA INT) ---
 app.post('/api/builds/save', async (req, res) => {
-  const { userId, buildName, buildData } = req.body;
   try {
-    const saved = await prisma.build.create({
-      data: {
-        userId: parseInt(userId),
-        nome: buildName,
-        buildData: JSON.stringify(buildData)
-      }
-    });
-    res.status(201).json({ message: 'Build salva!', build: saved });
+      const { userId, buildName, buildData } = req.body;
+
+      // Log para depuração
+      console.log("--- TENTATIVA DE SALVAMENTO ---");
+      console.log("UserID:", userId);
+      
+      // Calculando o preço total no backend para garantir a integridade
+      const total = Object.values(buildData).reduce((sum, peca) => {
+          return sum + (peca ? parseFloat(peca.preco) || 0 : 0);
+      }, 0);
+
+      const saved = await prisma.build.create({
+          data: {
+              nome: buildName || "Minha Build",
+              descricao: `Build criada em ${new Date().toLocaleDateString()}`,
+              precoTotal: total, // O campo que estava faltando!
+              // No seu Prisma Studio a coluna chama 'pecas' e é um JSON
+              pecas: buildData, 
+              tipo: "Personalizada", // Valor padrão para a coluna 'tipo'
+              userId: Number(userId)
+          }
+      });
+
+      console.log("✅ Build salva com sucesso!");
+      res.status(201).json({ message: 'Build salva!', build: saved });
+
   } catch (error) {
-    res.status(500).json({ message: 'Erro ao salvar build.' });
+      console.error("❌ ERRO NO PRISMA:", error);
+      res.status(500).json({ message: 'Erro ao salvar build.', error: error.message });
   }
 });
 
@@ -277,4 +296,87 @@ app.post('/api/builds/simulate-performance', (req, res) => {
     }
 });
 
+// --- ROTAS DE ATUALIZAÇÃO DE PERFIL (ADICIONE AO SERVER.JS) ---
+
+// 1. Atualizar Nome
+app.put('/api/users/update/name', async (req, res) => {
+  const { userId, newUsername, password } = req.body;
+  
+  try {
+      const user = await prisma.user.findUnique({ where: { id: Number(userId) } });
+
+      if (!user) return res.status(404).json({ message: 'Usuário não encontrado.' });
+
+      // A MÁGICA: Compara o texto puro com o Hash do banco
+      const passwordMatch = await bcrypt.compare(password, user.password);
+
+      if (!passwordMatch) {
+          return res.status(401).json({ message: 'Senha atual incorreta.' });
+      }
+
+      const updatedUser = await prisma.user.update({
+          where: { id: Number(userId) },
+          data: { name: newUsername }
+      });
+
+      // Remove a senha do objeto antes de enviar para o front por segurança
+      delete updatedUser.password;
+
+      res.json({ message: 'Nome atualizado!', user: updatedUser });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erro ao atualizar nome.' });
+  }
+});
+
+// 2. Atualizar Email
+app.put('/api/users/update/email', async (req, res) => {
+  const { userId, newEmail, password } = req.body;
+  try {
+      const user = await prisma.user.findUnique({ where: { id: Number(userId) } });
+      
+      // Compara a senha digitada com o hash do banco
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+          return res.status(401).json({ message: 'Senha atual incorreta.' });
+      }
+
+      const updatedUser = await prisma.user.update({
+          where: { id: Number(userId) },
+          data: { email: newEmail }
+      });
+
+      delete updatedUser.password;
+      res.json({ message: 'E-mail atualizado com sucesso!', user: updatedUser });
+  } catch (error) {
+      res.status(500).json({ message: 'Erro ao atualizar e-mail.' });
+  }
+});
+// 3. Atualizar Senha
+app.put('/api/users/update/password', async (req, res) => {
+  const { userId, currentPassword, newPassword } = req.body;
+  try {
+      const user = await prisma.user.findUnique({ where: { id: Number(userId) } });
+
+      // Valida se a senha atual está certa
+      const isMatch = await bcrypt.compare(currentPassword, user.password);
+      if (!isMatch) {
+          return res.status(401).json({ message: 'A senha atual está incorreta.' });
+      }
+
+      // GERA UM NOVO HASH PARA A SENHA NOVA (Custo 10)
+      const salt = await bcrypt.genSalt(10);
+      const hashedNewPassword = await bcrypt.hash(newPassword, salt);
+
+      const updatedUser = await prisma.user.update({
+          where: { id: Number(userId) },
+          data: { password: hashedNewPassword }
+      });
+
+      res.json({ message: 'Senha alterada com sucesso!' });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erro ao processar alteração de senha.' });
+  }
+});
 startServer();

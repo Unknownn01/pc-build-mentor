@@ -1,5 +1,5 @@
 // ARQUIVO: frontend/src/pages/SavedBuildsPage.jsx
-// (ATUALIZADO COM O BOTÃO "LEVAR PARA O MONTADOR")
+// ATUALIZADO PARA POSTGRES/PRISMA
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -36,8 +36,18 @@ function SavedBuildsPage({ currentUser, setBuild }) {
         fetchSavedBuilds();
     }, [currentUser]);
 
+    // Função auxiliar para processar as peças (blindagem contra JSON ou Objeto)
+    const getParsedPecas = (build) => {
+        // No novo banco a coluna chama-se 'pecas'
+        const data = build.pecas || build.buildData;
+        if (typeof data === 'string') {
+            try { return JSON.parse(data); } catch (e) { return {}; }
+        }
+        return data || {};
+    };
+
     const handleChooseBuild = (build) => {
-        const buildData = JSON.parse(build.buildData);
+        const buildData = getParsedPecas(build);
         setBuild(buildData);
         navigate('/montador');
     };
@@ -55,18 +65,6 @@ function SavedBuildsPage({ currentUser, setBuild }) {
         }
     };
 
-    const handleClearAllBuilds = async () => {
-       if (window.confirm("Tem certeza que deseja excluir TODAS as suas builds salvas? Esta ação não pode ser desfeita.")) {
-            try {
-                await axios.delete(`${API_BASE_URL}/api/builds/clear/${currentUser.id}`);
-                setSavedBuilds([]);
-            } catch (err) {
-                alert("Erro ao limpar as builds.");
-                console.error(err);
-            }
-        }
-    };
-
     if (isLoading) return <div className="loading-screen">Carregando builds salvas...</div>;
     if (error) return <div className="error-screen">{error}</div>;
 
@@ -74,43 +72,32 @@ function SavedBuildsPage({ currentUser, setBuild }) {
         <div className="saved-builds-container">
             <div className="page-header">
                 <h1>Minhas Builds Salvas</h1>
-                {savedBuilds.length > 0 && (
-                    <button onClick={handleClearAllBuilds} className="btn-clear-all">
-                        <FaTrash /> Limpar Todas
-                    </button>
-                )}
             </div>
             {savedBuilds.length === 0 ? (
                 <p className="no-builds-message">Você ainda não salvou nenhuma build.</p>
             ) : (
                 <div className="saved-builds-grid">
                     {savedBuilds.map(savedBuild => {
-                        const buildData = JSON.parse(savedBuild.buildData);
-                        const precoTotal = Object.values(buildData).reduce((total, peca) => total + (peca ? parseFloat(peca.preco?.toFixed(2)) : 0), 0);
+                        const buildData = getParsedPecas(savedBuild);
+                        // Usa precoTotal direto do banco ou calcula se não existir
+                        const precoExibicao = savedBuild.precoTotal || 0;
+                        const nomeBuild = savedBuild.nome || savedBuild.buildName || "Build sem nome";
+
                         return (
                             <div key={savedBuild.id} className="saved-build-card">
                                 <button 
                                     className="btn-delete-card" 
-                                    onClick={(e) => handleDeleteBuild(savedBuild.id, savedBuild.buildName, e)}
+                                    onClick={(e) => handleDeleteBuild(savedBuild.id, nomeBuild, e)}
                                 >
                                     <FaTrash />
                                 </button>
                                 <div className="card-content" onClick={() => setSelectedBuild(savedBuild)}>
-                                    <h3>{savedBuild.buildName}</h3>
+                                    <h3>{nomeBuild}</h3>
                                     <div className="saved-build-specs">
                                         <p><strong>CPU:</strong> {buildData.cpu?.nome || 'N/A'}</p>
-                                        <p>
-                                            <strong>GPU:</strong>
-                                            {/* Verifica se a placa de vídeo existe na build salva */}
-                                            {buildData.placaDeVideo
-                                                // Se existir, monta o nome completo e correto
-                                                ? ` ${buildData.placaDeVideo.marca} ${buildData.placaDeVideo.modelo_especifico} ${buildData.placaDeVideo.nome_chip}`
-                                                // Se não existir, mostra 'N/A'
-                                                : ' N/A'
-                                            }
-                                            </p>
+                                        <p><strong>GPU:</strong> {buildData.placaDeVideo?.nome || 'N/A'}</p>
                                     </div>
-                                    <p className="saved-build-price">R$ {precoTotal.toFixed(2)}</p>
+                                    <p className="saved-build-price">R$ {Number(precoExibicao).toFixed(2)}</p>
                                 </div>
                                 <div className="build-actions-single">
                                     <button className="btn-action-full" onClick={() => handleChooseBuild(savedBuild)}>
@@ -122,7 +109,14 @@ function SavedBuildsPage({ currentUser, setBuild }) {
                     })}
                 </div>
             )}
-            {selectedBuild && <BuildDetailModal build={selectedBuild} onClose={() => setSelectedBuild(null)} currentUser={currentUser} />}
+            {selectedBuild && (
+                <BuildDetailModal 
+                    build={selectedBuild} 
+                    onClose={() => setSelectedBuild(null)} 
+                    onChoose={handleChooseBuild} // Essa função que você já criou e funciona!
+                    currentUser={currentUser}
+                />
+            )}
         </div>
     );
 }
