@@ -425,7 +425,7 @@ const CatalogoPecas = () => {
       {modalAberto && (
         <ComponentDetailModal 
           component={pecaSelecionada} 
-          category={pecaSelecionada.tipo === 'processador' ? 'cpu' : pecaSelecionada.tipo === 'placa_video' ? 'placaDeVideo' : pecaSelecionada.tipo === 'memoria_ram' ? 'memoria' : pecaSelecionada.tipo === 'placa_mae' ? 'placaMae' : pecaSelecionada.tipo === 'fonte' ? 'fonte' : pecaSelecionada.tipo === 'gabinete' ? 'gabinete' : pecaSelecionada.tipo === 'armazenamento' ? 'armazenamento' : pecaSelecionada.tipo === 'refrigeracao' ? 'cooler' : pecaSelecionada.tipo}
+          category={pecaSelecionada.tipo === 'processador' ? 'cpu' : pecaSelecionada.tipo === 'placa_video' ? 'placaDeVideo' : pecaSelecionada.tipo === 'memoria_ram' ? 'memoria' : pecaSelecionada.tipo === 'placa_mae' ? 'placaMae' : pecaSelecionada.tipo === 'fonte' ? 'fonte' : pecaSelecionada.tipo === 'gabinete' ? 'gabinete' : pecaSelecionada.tipo === 'armazenamento' ? 'armazenamento' : pecaSelecionada.tipo === 'refrigeracao' ? 'refrigeracao' : pecaSelecionada.tipo}
           onClose={fecharModal}
         />
       )}
@@ -438,7 +438,7 @@ const CatalogoPecas = () => {
           placaMae: todasPecas.filter(p => p.tipo === 'placa_mae'),
           armazenamento: todasPecas.filter(p => p.tipo === 'armazenamento'),
           fonte: todasPecas.filter(p => p.tipo === 'fonte'),
-          cooler: todasPecas.filter(p => p.tipo === 'refrigeracao'),
+          refrigeracao: todasPecas.filter(p => p.tipo === 'refrigeracao'),
           gabinete: todasPecas.filter(p => p.tipo === 'gabinete')
         }}
         onSelectComponent={null}

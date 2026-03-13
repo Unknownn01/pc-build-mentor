@@ -127,12 +127,14 @@ function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild, todasPecas
                 {buildsFiltradas.map(build => (
                     <div key={build.id} className="build-card">
                         <img 
-                            src={`${API_BASE_URL}/${build.build_image}`} 
-                            alt={build.nome} 
-                            className="build-imagem" 
+                            src={`${API_BASE_URL}/build-images/${build.build_image.split('/').pop()}`}
+                            alt={build.nome}
+                            className="build-image"
                             onClick={() => setViewingBuild(build)}
-                            onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=PC+Build'; }}
-                        />
+                            onError={(e) => { 
+                              e.target.src = 'https://via.placeholder.com/400x300?text=PC+Build'; 
+                            }}
+                          />
                         <div className="build-info">
                             <h3 onClick={() => setViewingBuild(build)}>{build.nome}</h3>
                             <div className="build-specs">

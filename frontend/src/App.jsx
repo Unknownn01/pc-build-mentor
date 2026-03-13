@@ -19,7 +19,11 @@ import SavedBuildsPage from './pages/SavedBuildsPage.jsx';
 import OrdersPage from './pages/OrdersPage.jsx';
 import AccountPage from './pages/AccountPage.jsx';
 import CatalogoPecas from './pages/CatalogoPecas.jsx';
-import NewsPage from './pages/NewsPage'; // Ou o caminho correto para o seu arquivo
+import NewsPage from './pages/NewsPage'; 
+import AdminDashboard from './pages/AdminDashboard.jsx'; 
+import { Navigate } from 'react-router-dom'; // Precisaremos do Navigate para a proteção
+import StockManager from './pages/StockManager.jsx';
+import UserManager from './pages/UserManager.jsx';
 
 import './App.css';
 
@@ -140,6 +144,32 @@ function App() {
           <Route path="/pedidos" element={<OrdersPage currentUser={currentUser} />} />
           <Route path="/conta" element={<AccountPage currentUser={currentUser} setCurrentUser={handleSetCurrentUser} />}/>
           <Route path="/catalogo" element={<CatalogoPecas />} />
+          {/* ROTA ADMIN - PROTEGIDA */}
+          <Route 
+            path="/admin" 
+            element={
+              currentUser?.isAdmin ? (
+                <AdminDashboard />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            } 
+          />
+          {/* ROTA GESTÃO DE ESTOQUE - PROTEGIDA */}
+          <Route 
+            path="/estoque" 
+            element={
+              currentUser?.isAdmin ? (
+                <StockManager />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            } 
+          />
+          <Route 
+            path="/usuarios" 
+            element={currentUser?.isAdmin ? <UserManager currentUser={currentUser} /> : <Navigate to="/" />} 
+          />
         </Routes>
       </main>
       

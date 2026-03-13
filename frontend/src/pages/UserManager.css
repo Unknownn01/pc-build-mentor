@@ -1,0 +1,55 @@
+.user-manager-container {
+    padding: 120px 40px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.user-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 20px;
+}
+
+.user-header h1 { color: #c9d1d9; font-size: 2rem; }
+.user-header p { color: #8b949e; }
+
+.badge-role {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.badge-role.admin {
+    background-color: rgba(91, 195, 226, 0.15);
+    color: #5bc3e2;
+    border: 1px solid #5bc3e2;
+}
+
+.badge-role.client {
+    background-color: #30363d;
+    color: #8b949e;
+}
+
+.current-user-row {
+    background-color: rgba(91, 195, 226, 0.03);
+}
+
+/* Botões de Ação */
+.btn-action.promote { color: #2ea043; }
+.btn-action.demote { color: #d29922; }
+.btn-action.delete { color: #f85149; }
+
+.btn-action:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: scale(1.1);
+}
+
+.loading {
+    color: #c9d1d9;
+    text-align: center;
+    padding: 100px;
+}

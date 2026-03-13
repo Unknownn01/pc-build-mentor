@@ -1,0 +1,77 @@
+/* AdminDashboard.css */
+.admin-container {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #e6edf3;
+}
+
+.admin-container h1 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    border-bottom: 2px solid #30363d;
+    padding-bottom: 10px;
+}
+
+/* Estilização da Tabela */
+.admin-table-container {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table th, .admin-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #30363d;
+}
+
+.admin-table th {
+    background-color: #0d1117;
+    color: #8b949e;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.admin-table tr:hover {
+    background-color: #1f242c;
+}
+
+/* Estilização do Select de Status */
+.status-select {
+    background-color: #0d1117;
+    color: #fff;
+    border: 1px solid #484f58;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.status-select:focus {
+    border-color: #58a6ff;
+}
+
+/* Cores dinâmicas para o texto do Status */
+.status-text {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.status-pendente { color: #f39c12; }
+.status-processando { color: #3498db; }
+.status-montagem { color: #9b59b6; }
+.status-pronto { color: #2ecc71; }
+.status-cancelado { color: #e74c3c; }

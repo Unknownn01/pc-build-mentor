@@ -47,6 +47,42 @@
   color: #8b949e;
 }
 
-.order-card-body strong {
+.order-card-body  {
   color: #c9d1d9;
+  margin: 10px 0;
+  gap: 10px;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 5px;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.pendente { background-color: #f39c12; color: white; }
+.status-badge.processando { background-color: #3498db; color: white; }
+.status-badge.montagem { background-color: #9b59b6; color: white; }
+.status-badge.pronto { background-color: #2ecc71; color: white; }
+.status-badge.entregue { background-color: #27ae60; color: white; }
+.status-badge.cancelado { background-color: #e74c3c; color: white; }
+
+.btn-cancel {
+  background-color: transparent;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.btn-cancel:hover {
+  background-color: #e74c3c;
+  color: white;
 }

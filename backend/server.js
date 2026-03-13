@@ -31,7 +31,7 @@ const pastasDeImagens = [
     'imagens_refrigeracao'
   ];
 
-  app.use('/imagens_geradas', express.static(path.join(__dirname, 'imagens_geradas')));
+  app.use('/build-images', express.static(path.join(__dirname, 'imagens-geradas')));
   
   pastasDeImagens.forEach(pasta => {
     // Diz ao servidor: "Se alguém pedir /images/foto.jpg, procure também dentro desta pasta aqui"
@@ -44,7 +44,9 @@ const pastasDeImagens = [
   // Rota para buscar TODAS as peças
   app.get('/api/pecas/todas', async (req, res) => {
     try {
-      const pecas = await prisma.component.findMany();
+      const pecas = await prisma.component.findMany({
+        orderBy: { id: 'asc' } // <--- ORDENA POR ID PARA O ADMIN
+      });  
       console.log(`📦 Enviando ${pecas.length} peças.`);
       res.json(pecas);
     } catch (error) {
@@ -52,6 +54,47 @@ const pastasDeImagens = [
       res.status(500).json({ error: "Erro interno" });
     }
   });
+
+  // Criar nova peça (exemplo para Processador)
+app.post('/api/admin/pecas/:categoria', async (req, res) => {
+  const { categoria } = req.params;
+  const dados = req.body;
+  try {
+      // O Prisma usa o nome do modelo. Ex: categoria 'processadores' -> modelo 'processador'
+      const novaPeca = await prisma[categoria].create({ data: dados });
+      res.status(201).json(novaPeca);
+  } catch (error) {
+      res.status(500).json({ error: "Erro ao criar peça" });
+  }
+});
+
+// Deletar peça
+// No seu server.js
+
+app.delete('/api/admin/components/:id', async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+      console.log(`🗑️ Tentando excluir componente ID: ${id}`);
+      
+      await prisma.component.delete({
+          where: {
+              id: parseInt(id) // Certifique-se de que é um número
+          }
+      });
+      
+      res.status(204).send(); // Sucesso sem conteúdo
+  } catch (error) {
+      console.error("❌ Erro ao deletar:", error);
+      
+      // Se o erro for P2003, é porque a peça está em um pedido (chave estrangeira)
+      if (error.code === 'P2003') {
+          return res.status(400).json({ error: "Não é possível excluir: esta peça está vinculada a um pedido ou build salva." });
+      }
+      
+      res.status(500).json({ error: "Erro interno ao deletar peça." });
+  }
+});
 
     // Buscar todas as builds prontas do banco
   app.get('/api/builds-prontas', async (req, res) => {
@@ -113,9 +156,49 @@ app.post('/api/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password); // Mude de user.password_hash para user.password
     if (!isMatch) return res.status(401).json({ message: 'Senha incorreta.' });
 
-    res.status(200).json({ user: { id: user.id, username: user.name, email: user.email } });
+    res.status(200).json({ user: { id: user.id, username: user.name, email: user.email, isAdmin: user.isAdmin } });
   } catch (error) {
     res.status(500).json({ message: 'Erro no login.' });
+  }
+});
+
+// --- No seu server.js ---
+
+// Rota para CRIAR (POST)
+app.post('/api/admin/components', async (req, res) => {
+  try {
+      const { nome, preco, categoria, imagem_url, marca, specs } = req.body;
+      const novaPeca = await prisma.component.create({
+          data: {
+              nome,
+              preco: parseFloat(preco),
+              categoria,
+              imagem_url,
+              marca,
+              specs: specs // O Prisma lida com o JSON automaticamente
+          }
+      });
+      res.status(201).json(novaPeca);
+  } catch (error) {
+      console.error("Erro no Prisma:", error);
+      res.status(500).json({ error: "Erro ao cadastrar peça." });
+  }
+});
+
+// Verifique se a rota de ATUALIZAR (PUT) também está com o nome certo
+app.put('/api/admin/components/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+      const pecaAtualizada = await prisma.component.update({
+          where: { id: parseInt(id) },
+          data: {
+              ...req.body,
+              preco: parseFloat(req.body.preco)
+          }
+      });
+      res.json(pecaAtualizada);
+  } catch (error) {
+      res.status(500).json({ error: "Erro ao atualizar peça." });
   }
 });
 
@@ -123,10 +206,24 @@ app.post('/api/login', async (req, res) => {
 
 const fetchCategory = async (cat, folder, res) => {
   try {
-    const items = await prisma.component.findMany({ where: { categoria: cat } });
-    const formatted = items.map(i => ({ ...i, imagem_url: `${folder}/${i.imagem_url}` }));
-    res.json(formatted);
-  } catch (e) { res.status(500).send(e.message); }
+      const items = await prisma.component.findMany({ 
+          where: { categoria: cat },
+          orderBy: { 
+              preco: 'asc' // Ordenação oficial do Prisma
+          }
+      });
+      
+      // Garantimos que o preço seja tratado como número no mapeamento também
+      const formatted = items.map(i => ({ 
+          ...i, 
+          preco: Number(i.preco), // Força conversão para número
+          imagem_url: `${folder}/${i.imagem_url}` 
+      }));
+      
+      res.json(formatted);
+  } catch (e) { 
+      res.status(500).send(e.message); 
+  }
 };
 
 app.get('/api/processadores', (req, res) => fetchCategory('processador', 'imagens_processadores', res));
@@ -195,28 +292,27 @@ app.delete('/api/builds/delete/:buildId', async (req, res) => {
 // --- ROTA DE PEDIDOS (MIGRADO) ---
 
 app.post('/api/orders/create', async (req, res) => {
-    const { userId, totalPrice, assemblyChoice, shippingAddress, items } = req.body;
+  // Verifique se os nomes batem com o que o Modal do Front envia
+  const { userId, total, assemblyChoice, shippingAddress, items } = req.body;
 
-    try {
-        // Concatenando o endereço do objeto que vem do modal para uma string única
-        const enderecoCompleto = `${shippingAddress.rua}, ${shippingAddress.numero} - ${shippingAddress.bairro}, ${shippingAddress.cidade}/${shippingAddress.estado}`;
+  try {
+      const enderecoCompleto = `${shippingAddress.rua}, ${shippingAddress.numero} - ${shippingAddress.bairro}, ${shippingAddress.cidade}/${shippingAddress.estado}`;
 
-        const newOrder = await prisma.order.create({
-            data: {
-                userId: parseInt(userId),        // Converte string para número
-                total: parseFloat(totalPrice), // Converte "6539.69" para número
-                assemblyOption: assemblyChoice,
-                address: enderecoCompleto,
-                items: items,
-                status: "Pendente"      // Transforma o objeto da build em texto
-            }
-        });
-
-        res.status(201).json(newOrder);
-    } catch (error) {
-        console.error("Erro Prisma:", error);
-        res.status(500).json({ error: "Erro ao salvar no banco" });
-    }
+      const newOrder = await prisma.order.create({
+          data: {
+              total: parseFloat(total) || 0, // Garante que se vier vazio, vira 0 e não NaN
+              assemblyOption: assemblyChoice,
+              address: enderecoCompleto,
+              items: items, // Certifique-se que 'items' é o objeto com as peças
+              status: "PENDENTE",
+              user: { connect: { id: parseInt(userId) } }
+          }
+      });
+      res.status(201).json(newOrder);
+  } catch (error) {
+      console.error("Erro Prisma:", error);
+      res.status(500).json({ error: "Erro ao salvar no banco" });
+  }
 });
 
 app.get('/api/orders/user/:userId', async (req, res) => {
@@ -391,4 +487,150 @@ app.put('/api/users/update/password', async (req, res) => {
       res.status(500).json({ message: 'Erro ao processar alteração de senha.' });
   }
 });
+
+  // --- NOVAS ROTAS DE GESTÃO DE PEDIDOS ---
+
+// 1. [ADMIN] Buscar TODOS os pedidos de todos os usuários
+app.get('/api/admin/orders', async (req, res) => {
+  try {
+      // Buscamos os pedidos e incluímos os dados do usuário (join)
+      const orders = await prisma.order.findMany({
+          include: {
+              user: {
+                  select: { name: true, email: true }
+              }
+          },
+          orderBy: { createdAt: 'desc' }
+      });
+      res.json(orders);
+  } catch (error) {
+      res.status(500).json({ error: "Erro ao buscar todos os pedidos." });
+  }
+});
+
+// 2. [ADMIN] Atualizar Status do Pedido
+app.patch('/api/orders/:id/status', async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+  try {
+      const updatedOrder = await prisma.order.update({
+          where: { id: parseInt(id) },
+          data: { status: status }
+      });
+      res.json(updatedOrder);
+  } catch (error) {
+      res.status(500).json({ error: "Erro ao atualizar status." });
+  }
+});
+
+// 3. [USUÁRIO] Cancelar Pedido (com trava de segurança)
+app.patch('/api/orders/:id/cancel', async (req, res) => {
+  const { id } = req.params;
+  try {
+      const order = await prisma.order.findUnique({ where: { id: parseInt(id) } });
+
+      if (!order) return res.status(404).json({ error: "Pedido não encontrado." });
+
+      // Trava técnica: Não cancela se já estiver avançado
+      const statusBloqueados = ["MONTAGEM", "PRONTO", "ENTREGUE"];
+      if (statusBloqueados.includes(order.status.toUpperCase())) {
+          return res.status(400).json({ 
+              message: "Não é possível cancelar um pedido que já está em montagem ou finalizado." 
+          });
+      }
+
+      const cancelledOrder = await prisma.order.update({
+          where: { id: parseInt(id) },
+          data: { status: "CANCELADO" }
+      });
+      res.json({ message: "Pedido cancelado com sucesso.", order: cancelledOrder });
+  } catch (error) {
+      res.status(500).json({ error: "Erro ao processar cancelamento." });
+  }
+});
+
+// 1. LISTAR TODOS OS USUÁRIOS
+app.get('/api/admin/users', async (req, res) => {
+  try {
+      // Tente buscar sem o 'select' primeiro para testar se a tabela existe
+      const users = await prisma.user.findMany({
+          orderBy: { id: 'asc' }
+      });
+      
+      // Removemos a senha de cada usuário antes de enviar para o front
+      const safeUsers = users.map(({ senha, ...user }) => user);
+      
+      res.json(safeUsers);
+  } catch (err) {
+      console.error("❌ Erro detalhado no banco:", err); // ISSO VAI APARECER NO TERMINAL DO VSCODE
+      res.status(500).json({ error: "Erro interno no servidor" });
+  }
+});
+
+// 2. ALTERAR NÍVEL DE ACESSO (PROMOVER/REBAIXAR)
+app.put('/api/admin/users/:id/role', async (req, res) => {
+  const { id } = req.params;
+  const { isAdmin } = req.body;
+  try {
+      const user = await prisma.user.update({
+          where: { id: parseInt(id) },
+          data: { isAdmin }
+      });
+      res.json(user);
+  } catch (err) {
+      res.status(500).json({ error: "Erro ao atualizar permissão" });
+  }
+});
+
+// 3. EXCLUIR USUÁRIO
+app.delete('/api/admin/users/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+      await prisma.user.delete({
+          where: { id: parseInt(id) }
+      });
+      res.status(204).send();
+  } catch (err) {
+      res.status(500).json({ error: "Erro ao deletar usuário" });
+  }
+});
+
+// Rota para exclusão de conta pelo próprio usuário
+// No topo do arquivo: const bcrypt = require('bcrypt'); (ou import se usar ES Modules)
+
+app.put('/api/users/delete-account', async (req, res) => {
+  const { userId, password } = req.body; // 'password' vindo do front
+  const id = parseInt(userId);
+
+  try {
+      // 1. Busca o usuário garantindo que pegamos o campo password
+      const user = await prisma.user.findUnique({ where: { id } });
+
+      if (!user) return res.status(404).json({ message: "Usuário não encontrado." });
+
+      // 2. Compara usando o campo correto: user.password
+      const isMatch = await bcrypt.compare(password, user.password); 
+
+      if (!isMatch) {
+          return res.status(401).json({ message: "Senha atual incorreta." });
+      }
+
+      // 3. Limpeza de dependências (Cascade manual para evitar erro 500)
+      console.log(`🧹 Limpando dados do usuário ${id} antes da exclusão...`);
+      
+      // Ajuste os nomes das tabelas conforme seu schema.prisma
+      await prisma.savedBuild.deleteMany({ where: { userId: id } });
+      await prisma.order.deleteMany({ where: { userId: id } });
+
+      // 4. Deleção final do perfil
+      await prisma.user.delete({ where: { id } });
+
+      res.json({ message: "Sua conta foi excluída permanentemente." });
+      
+  } catch (error) {
+      console.error("❌ Erro na exclusão:", error.message);
+      res.status(500).json({ message: "Erro interno ao processar a exclusão." });
+  }
+});
+
 startServer();

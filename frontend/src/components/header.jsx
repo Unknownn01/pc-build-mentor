@@ -5,6 +5,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import './header.css';
+import { NavLink } from 'react-router-dom';
 
 function Header({ currentUser, onUserClick ,isScrolled}) {
   return (
@@ -25,10 +26,10 @@ function Header({ currentUser, onUserClick ,isScrolled}) {
       </div>
       <nav className="main-nav">
         <ul>
-          <li><Link to="/montador">Montador de PC</Link></li>
-          <li><Link to="/guias">Guias de Builds Prontas</Link></li>
-          <li><Link to="/catalogo">Catálogo de Peças</Link></li>
-          <li><Link to="/noticias">Notícias</Link></li>
+          <li><NavLink to="/montador">Montador de PC</NavLink></li>
+          <li><NavLink to="/guias">Guias de Builds Prontas</NavLink></li>
+          <li><NavLink to="/catalogo">Catálogo de Peças</NavLink></li>
+          <li><NavLink to="/noticias">Notícias</NavLink></li>
         </ul>
       </nav>
       <div className="auth-buttons">

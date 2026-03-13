@@ -84,35 +84,35 @@
   border-radius: 8px;
   transition: all 0.3s;
   position: relative;
+  color: #ffffff
 }
 
 .main-nav a::after {
 
   content: '';
-
   position: absolute;
-
   bottom: 0;
-
   left: 50%;
-
   transform: translateX(-50%);
-
   width: 0;
-
   height: 2px;
-
   background: #ffffff;
-
   transition: width 0.3s;
 
 }
+.main-nav a.active::after {
+  width: 80%;
+}
+/* Mantém o efeito de hover para os outros links */
+.main-nav a:hover::after {
+  width: 80%;
+}
+
 
 .main-nav a:hover {
 
   color: #f0f6fc;
 
-  background-color: rgba(91, 195, 226, 0.1);
 
 }
 

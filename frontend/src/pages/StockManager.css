@@ -1,0 +1,183 @@
+/* frontend/src/pages/StockManager.css */
+
+.stock-manager-container {
+    padding: 100px 40px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #c9d1d9;
+}
+
+/* Header e Controles Superiores */
+.stock-header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #30363d;
+}
+
+.header-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.cat-filter, .modal-form select, .modal-form input {
+    padding: 10px 15px;
+    background-color: #0D1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #c9d1d9;
+    outline: none;
+}
+
+.cat-filter:focus, .modal-form input:focus {
+    border-color: #5bc3e2;
+}
+
+.btn-primary {
+    background-color: #5bc3e2;
+    color: #121212;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: filter 0.2s;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+/* Tabela Profissional */
+.admin-table-container {
+    background-color: #161B22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background-color: #0D1117;
+    padding: 15px;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #8b949e;
+    border-bottom: 1px solid #30363d;
+}
+
+.admin-table td {
+    padding: 15px;
+    border-bottom: 1px solid #30363d;
+}
+
+.admin-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.badge-cat {
+    background-color: #30363d;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* Modal de Cadastro (Estilo Checkout) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4000;
+}
+
+.modal-card {
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    padding: 30px;
+    background-color: #161B22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #30363d;
+}
+
+.modal-header h2 {
+    font-size: 1.8rem;
+    color: #c9d1d9;
+}
+
+.close-x {
+    background: none;
+    border: none;
+    color: #8b949e;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.form-section {
+    margin-bottom: 25px;
+}
+
+.form-section h3 {
+    font-size: 1.2rem;
+    color: #5bc3e2;
+    margin-bottom: 15px;
+}
+
+.grid-inputs, .grid-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Campos que ocupam a linha toda */
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-field label {
+    font-size: 0.85rem;
+    color: #8b949e;
+}
+
+.btn-submit-full {
+    width: 100%;
+    padding: 15px;
+    background-color: #5bc3e2;
+    color: #121212;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+}

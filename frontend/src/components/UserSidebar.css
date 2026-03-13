@@ -99,3 +99,15 @@
   background-color: #8b0000;
   color: white;
 }
+
+.sidebar-link.admin-link {
+  color: #58a6ff; /* Azul característico do GitHub/Prisma */
+  border-bottom: 1px solid #30363d;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+}
+
+.sidebar-link.admin-link:hover {
+  color: #79c0ff;
+  background-color: rgba(88, 166, 255, 0.1);
+}

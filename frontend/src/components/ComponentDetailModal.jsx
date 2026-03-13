@@ -4,7 +4,7 @@
 import React from 'react';
 import { 
     FaTimes, FaStar, FaMicrochip, FaBolt, FaPlug, 
-    FaMemory, FaHdd, FaCheckCircle, FaThermometerHalf, FaList 
+    FaMemory, FaHdd, FaCheckCircle, FaThermometerHalf, FaList , FaFan
 } from 'react-icons/fa';
 import './ComponentDetailModal.css';
 import { API_BASE_URL } from '../config'; // Ajuste o caminho se necessário
