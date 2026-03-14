@@ -3,6 +3,8 @@ import axios from 'axios';
 import { API_BASE_URL } from '../config';
 import './StockManager.css';
 import { FaEdit, FaTrash, FaPlus, FaTimes, FaBox } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 function StockManager() {
     const [components, setComponents] = useState([]);
@@ -66,30 +68,36 @@ function StockManager() {
             
             setIsModalOpen(false);
             fetchComponents();
-            alert("Peça salva com sucesso!");
+            toast.success("Peça salva com sucesso!"); // Substituiu alert
         } catch (err) {
             console.error("Erro detalhado:", err.response?.data); // Isso ajuda a ver o erro real no F12
-            alert("Erro ao salvar. Verifique se todos os campos obrigatórios estão preenchidos.");
+            toast.error("Erro ao salvar. Verifique os campos."); // Substituiu alert
         }
     };
     const handleDelete = async (id) => {
         // 1. Confirmação de segurança (padrão em sistemas profissionais)
-        if (window.confirm("⚠️ Tem certeza que deseja excluir esta peça? Essa ação não pode ser desfeita.")) {
+        const result = await Swal.fire({
+            title: 'Tem certeza?',
+            text: "Essa ação não pode ser desfeita!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar',
+            background: '#161B22',
+            color: '#fff'
+        });
+    
+        if (result.isConfirmed) {
             try {
-                console.log(`🗑️ Solicitando exclusão da peça ID: ${id}`);
-                
-                // 2. Chamada para a rota que acabamos de ajustar no backend
                 await axios.delete(`${API_BASE_URL}/api/admin/components/${id}`);
-                
-                // 3. Feedback e atualização da lista na tela
-                alert("Peça removida com sucesso!");
-                fetchComponents(); 
-                
+                toast.success("Peça removida com sucesso!");
+                fetchComponents();
             } catch (err) {
                 console.error("Erro ao deletar:", err);
-                // Se o erro for 400, provavelmente é o erro de chave estrangeira (peça em uso)
-                const erroMsg = err.response?.data?.error || "Erro ao excluir a peça no servidor.";
-                alert(erroMsg);
+                const errMsg = err.response?.data?.error || "Erro ao excluir a peça.";
+                toast.error(errMsg);
             }
         }
     };

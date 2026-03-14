@@ -24,6 +24,8 @@ import AdminDashboard from './pages/AdminDashboard.jsx';
 import { Navigate } from 'react-router-dom'; // Precisaremos do Navigate para a proteção
 import StockManager from './pages/StockManager.jsx';
 import UserManager from './pages/UserManager.jsx';
+import { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 import './App.css';
 
@@ -117,6 +119,17 @@ function App() {
   
   return (
     <div className="App">
+      <Toaster 
+          position="top-right" 
+          toastOptions={{
+            style: {
+              background: '#161B22', // Cor do seu card (Dark Mode)
+              color: '#fff',
+              border: '1px solid #30363d',
+              zIndex: 99999
+            },
+          }} 
+      />
       <Header 
         currentUser={currentUser} 
         onUserClick={() => setIsSidebarOpen(true)}

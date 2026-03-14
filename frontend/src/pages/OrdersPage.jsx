@@ -3,6 +3,7 @@ import axios from 'axios';
 import BuildDetailModal from '../components/BuildDetailModal.jsx';
 import './OrdersPage.css';
 import { API_BASE_URL } from '../config';
+import toast from 'react-hot-toast';
 
 function OrdersPage({ currentUser }) {
     const [orders, setOrders] = useState([]);
@@ -40,11 +41,11 @@ function OrdersPage({ currentUser }) {
         if (confirm) {
             try {
                 await axios.patch(`${API_BASE_URL}/api/orders/${orderId}/cancel`);
-                alert("Pedido cancelado com sucesso.");
+                toast.success("Pedido cancelado com sucesso.");
                 fetchOrders(); // Recarrega a lista para atualizar o status na tela
             } catch (err) {
                 const msg = err.response?.data?.message || "Erro ao cancelar pedido.";
-                alert(msg);
+                toast.error(msg);
             }
         }
     };

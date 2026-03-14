@@ -59,7 +59,7 @@ function SavedBuildsPage({ currentUser, setBuild }) {
                 await axios.delete(`${API_BASE_URL}/api/builds/delete/${buildId}`);
                 setSavedBuilds(prevBuilds => prevBuilds.filter(b => b.id !== buildId));
             } catch (err) {
-                alert("Erro ao excluir a build.");
+                toast.error("Erro ao excluir a build.");
                 console.error(err);
             }
         }

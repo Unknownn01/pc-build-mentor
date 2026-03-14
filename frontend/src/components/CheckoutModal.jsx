@@ -5,6 +5,8 @@ import React, { useState, useMemo } from 'react';
 import axios from 'axios';
 import './CheckoutModal.css';
 import { API_BASE_URL } from '../config'; // Ajuste o caminho '../' conforme necessário
+import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 
 function CheckoutModal({ build, currentUser, onClose }) {
@@ -26,8 +28,8 @@ function CheckoutModal({ build, currentUser, onClose }) {
 
   const handleSubmitOrder = async (e) => {
     e.preventDefault();
-    if (!currentUser) { alert("Você precisa estar logado para finalizar o pedido."); return; }
-    if (!Object.values(address).every(field => field.trim() !== '')) { alert("Por favor, preencha todos os campos do endereço."); return; }
+    if (!currentUser) { toast.error("Você precisa estar logado para finalizar o pedido."); return; }
+    if (!Object.values(address).every(field => field.trim() !== '')) { toast.error("Por favor, preencha todos os campos do endereço."); return; }
 
     setIsProcessing(true);
     try {
@@ -38,10 +40,17 @@ function CheckoutModal({ build, currentUser, onClose }) {
             shippingAddress: address,
             items: buildData
         });
-        alert("Pedido finalizado com sucesso! Você pode visualizá-lo na página 'Meus Pedidos'.");
+        Swal.fire({
+          title: 'Pedido Finalizado!',
+          text: 'Você pode visualizá-lo na página "Meus Pedidos".',
+          icon: 'success',
+          background: '#161B22',
+          color: '#fff',
+          confirmButtonColor: '#5bc3e2'
+      });
         onClose();
     } catch (error) {
-        alert("Houve um erro ao processar seu pedido. Tente novamente.");
+        toast.error("Houve um erro ao processar seu pedido.");
         console.error("Erro ao criar pedido:", error);
     } finally {
         setIsProcessing(false);

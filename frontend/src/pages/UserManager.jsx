@@ -23,7 +23,7 @@ function UserManager({ currentUser }) {
 
     const toggleAdmin = async (userId, currentStatus) => {
         if (userId === currentUser.id) {
-            alert("Você não pode alterar seu próprio nível de acesso!");
+            toast.error("Você não pode alterar seu próprio nível de acesso!");
             return;
         }
 
@@ -38,24 +38,33 @@ function UserManager({ currentUser }) {
                 });
                 fetchUsers();
             } catch (err) {
-                alert("Erro ao alterar permissão.");
+                toast.error("Erro ao alterar permissão.");
             }
         }
     };
 
     const handleDeleteUser = async (userId) => {
-        if (userId === currentUser.id) {
-            alert("Você não pode excluir sua própria conta enquanto está logado!");
-            return;
-        }
-
-        if (window.confirm("⚠️ EXCLUIR USUÁRIO? Isso apagará o histórico de pedidos deste cliente permanentemente.")) {
+        const result = await Swal.fire({
+            title: 'Excluir Utilizador?',
+            text: "Esta ação removerá permanentemente o acesso deste utilizador!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar',
+            background: '#161B22',
+            color: '#fff'
+        });
+    
+        if (result.isConfirmed) {
             try {
-                await axios.delete(`${API_BASE_URL}/api/admin/users/${userId}`);
-                alert("Usuário removido.");
+                await axios.delete(`${API_BASE_URL}/api/admin/users/${id}`);
+                toast.success("Utilizador excluído com sucesso!");
                 fetchUsers();
             } catch (err) {
-                alert("Erro ao excluir usuário.");
+                console.error("Erro ao excluir:", err);
+                toast.error("Não foi possível excluir o utilizador.");
             }
         }
     };

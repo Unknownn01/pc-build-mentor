@@ -599,37 +599,38 @@ app.delete('/api/admin/users/:id', async (req, res) => {
 // No topo do arquivo: const bcrypt = require('bcrypt'); (ou import se usar ES Modules)
 
 app.put('/api/users/delete-account', async (req, res) => {
-  const { userId, password } = req.body; // 'password' vindo do front
+  const { userId, password } = req.body;
   const id = parseInt(userId);
 
   try {
-      // 1. Busca o usuário garantindo que pegamos o campo password
       const user = await prisma.user.findUnique({ where: { id } });
 
       if (!user) return res.status(404).json({ message: "Usuário não encontrado." });
 
-      // 2. Compara usando o campo correto: user.password
+      // LOG DE DEBUG PARA VOCÊ VER NO TERMINAL
+      console.log("Senha digitada:", password);
+      console.log("Senha no banco (Hash):", user.password); // MUDOU DE .senha PARA .password
+
+      // 1. Validar a senha (usando o campo password do seu schema)
       const isMatch = await bcrypt.compare(password, user.password); 
 
       if (!isMatch) {
           return res.status(401).json({ message: "Senha atual incorreta." });
       }
 
-      // 3. Limpeza de dependências (Cascade manual para evitar erro 500)
-      console.log(`🧹 Limpando dados do usuário ${id} antes da exclusão...`);
-      
-      // Ajuste os nomes das tabelas conforme seu schema.prisma
-      await prisma.savedBuild.deleteMany({ where: { userId: id } });
+      // 2. Limpeza de dependências (usando os nomes do seu schema)
+      // Deleta as builds e os pedidos vinculados
+      await prisma.build.deleteMany({ where: { userId: id } });
       await prisma.order.deleteMany({ where: { userId: id } });
 
-      // 4. Deleção final do perfil
+      // 3. Deleta o usuário
       await prisma.user.delete({ where: { id } });
 
-      res.json({ message: "Sua conta foi excluída permanentemente." });
+      res.json({ message: "Conta excluída com sucesso." });
       
   } catch (error) {
-      console.error("❌ Erro na exclusão:", error.message);
-      res.status(500).json({ message: "Erro interno ao processar a exclusão." });
+      console.error("Erro ao excluir conta:", error.message);
+      res.status(500).json({ message: "Erro interno no servidor." });
   }
 });
 

@@ -14,6 +14,9 @@ import CostBenefitAnalysis from '../components/CostBenefitAnalysis.jsx';
 import SmartRecommendations from '../components/SmartRecommendations.jsx';
 import { API_BASE_URL } from '../config.js';
 import LoadingSpinner from '../components/LoadingSpinner'; // Importe o componente
+import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
+
 
 const CATEGORY_MAP = {
     'processador': 'cpu',
@@ -254,25 +257,34 @@ function MontadorPage({ build, setBuild, currentUser }) {
 
     const handleSaveBuild = async () => {
         if (!currentUser || !currentUser.id) {
-            alert("Você precisa estar logado para salvar uma build.");
+            toast.error("Você precisa estar logado para salvar uma build.");
             return;
         }
     
-        const buildName = prompt("Dê um nome para a sua build:", "Meu PC Gamer");
+        const { value: buildName } = await Swal.fire({
+            title: 'Nome da sua Build',
+            input: 'text',
+            inputValue: 'Meu PC Gamer',
+            inputLabel: 'Como você quer chamar essa máquina?',
+            showCancelButton: true,
+            background: '#161B22',
+            color: '#fff',
+            confirmButtonColor: '#5bc3e2',
+            inputValidator: (value) => {
+                if (!value) return 'Você precisa dar um nome!'
+            }
+        });
     
         if (buildName) {
             try {
-                // O axios já converte o objeto para JSON automaticamente
                 await axios.post(`${API_BASE_URL}/api/builds/save`, {
-                    userId: currentUser.id, // O ID que vem do login
+                    userId: currentUser.id,
                     buildName: buildName,
-                    buildData: build       // O objeto da build atual
+                    buildData: build 
                 });
-    
-                alert(`Build "${buildName}" salva com sucesso!`);
+                toast.success(`Build "${buildName}" salva com sucesso!`);
             } catch (err) {
-                console.error("Erro no salvamento:", err.response?.data || err.message);
-                alert("Ocorreu um erro ao salvar a build.");
+                toast.error("Erro ao salvar.");
             }
         }
     };
@@ -374,8 +386,8 @@ function MontadorPage({ build, setBuild, currentUser }) {
     
     const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
     const handleFinalizarCompra = () => {
-        if (!currentUser) { alert("Você precisa estar logado para finalizar a compra."); return; }
-        if (Object.keys(build).length === 0) { alert("Adicione pelo menos uma peça para finalizar a compra."); return; }
+        if (!currentUser) { toast.error("Você precisa estar logado para finalizar a compra."); return; }
+        if (Object.keys(build).length === 0) { toast.error("Adicione pelo menos uma peça para finalizar a compra."); return; }
         setIsCheckoutOpen(true);
     };
     

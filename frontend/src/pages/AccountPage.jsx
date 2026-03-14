@@ -3,6 +3,8 @@ import axios from 'axios';
 import { FaUserEdit, FaLock, FaEnvelope, FaTimes, FaExclamationTriangle } from 'react-icons/fa';
 import './AccountPage.css';
 import { API_BASE_URL } from '../config';
+import toast from 'react-hot-toast';
+
 
 const UpdateModal = ({ modalType, currentUser, setCurrentUser, onClose }) => {
     const [currentPassword, setCurrentPassword] = useState('');
@@ -59,14 +61,14 @@ const UpdateModal = ({ modalType, currentUser, setCurrentUser, onClose }) => {
             const response = await axios.put(url, payload);
             
             if (modalType === 'delete') {
-                alert("Conta excluída com sucesso.");
+                toast.success("Conta excluída com sucesso.");
                 localStorage.clear(); // Limpa token/dados
                 window.location.href = "/"; 
                 return;
             }
 
             if (response.data.user) setCurrentUser(response.data.user);
-            alert(response.data.message);
+            toast.error(response.data.message);
             onClose();
         } catch (err) {
             setError(err.response?.data?.message || err.message || 'Ocorreu um erro.');
