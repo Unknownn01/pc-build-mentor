@@ -724,3 +724,31 @@
     min-width: 80px;
   }
 }
+
+.scores-container-mini {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.cb-score-badge-mini {
+  background: #2c3e50;
+  color: #bdc3c7;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cb-score-badge-mini.premium {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+}
+
+.mini-diamond {
+  font-size: 0.8rem;
+}

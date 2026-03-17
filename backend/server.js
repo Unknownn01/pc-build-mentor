@@ -633,5 +633,22 @@ app.put('/api/users/delete-account', async (req, res) => {
       res.status(500).json({ message: "Erro interno no servidor." });
   }
 });
+// Exemplo de rota no Express (backend/server.js ou routes/pecas.js)
+app.get('/api/pecas/:id/historico', async (req, res) => {
+  const { id } = req.params;
+  try {
+      const historico = await prisma.priceHistory.findMany({
+          where: { componentId: parseInt(id) },
+          orderBy: { data: 'asc' }, // Do mais antigo para o mais novo
+          select: {
+              preco: true,
+              data: true
+          }
+      });
+      res.json(historico);
+  } catch (error) {
+      res.status(500).json({ error: "Erro ao buscar histórico" });
+  }
+});
 
 startServer();

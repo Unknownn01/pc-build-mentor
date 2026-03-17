@@ -1,22 +1,13 @@
-id,nome,formato,formatos_placa_mae_suportados,max_gpu_length_mm,max_cooler_height_mm,preco_simulado,imagem_url
-601,Corsair 4000D Airflow,Mid Tower,"ATX, Micro-ATX, Mini-ITX",360,170,700,Corsair-4000D-Airflow.jpg
-602,NZXT H510,Mid Tower,"ATX, Micro-ATX, Mini-ITX",381,165,689.90,NZXT-H510.jpg
-603,Cooler Master MB511 ARGB,Mid Tower,"ATX, Micro-ATX, Mini-ITX",410,165,599.90,Cooler-Master-MB511-ARGB.jpg
-604,Redragon Grapple,Mid Tower,"ATX, Micro-ATX, Mini-ITX",320,160,369.00,Redragon-Grapple.jpg
-605,Thermaltake V200,Mid Tower,"ATX, Micro-ATX, Mini-ITX",330,160,449.90,Thermaltake-V200.jpg
-606,Aerocool Bolt Mini,Mini Tower,"Micro-ATX, Mini-ITX",300,150,239.90,Aerocool-Bolt-Mini.jpg
-607,PCYes Tiger,Mid Tower,"ATX, Micro-ATX, Mini-ITX",320,155,319.90,PCYes-Tiger.jpg
-608,Corsair iCUE 5000X RGB,Mid Tower,"ATX, Micro-ATX, Mini-ITX",420,170,1249.90,Corsair-iCUE-5000X-RGB.jpg
-609,NZXT H7 Flow,Mid Tower,"ATX, Micro-ATX, Mini-ITX",400,185,949.00,NZXT-H7-Flow.jpg
-610,Thermaltake Core V1,Cube,"Mini-ITX",285,140,399.90,Thermaltake-Core-V1.jpg
-611,Cooler Master NR200,Mini Tower,"Mini-ITX",330,155,499.00,Cooler-Master-NR200.jpg
-612,LIAN LI Lancool II Mesh,Mid Tower,"ATX, Micro-ATX, Mini-ITX",384,176,679.00,LIAN-LI-Lancool-II-Mesh.jpg
-613,Montech X1,Mid Tower,"ATX, Micro-ATX, Mini-ITX",330,160,299.90,Montech-X1.jpg
-614,Galax Revolution 05,Mid Tower,"ATX, Micro-ATX, Mini-ITX",355,160,379.90,Galax-Revolution-05.jpg
-615,T-Dagger Cayman,Mid Tower,"ATX, Micro-ATX, Mini-ITX",330,158,339.00,T-Dagger-Cayman.jpg
-616,DeepCool MACUBE 110,Mini Tower,"Micro-ATX, Mini-ITX",320,165,369.90,DeepCool-MACUBE-110.jpg
-617,Sharkoon TG5 RGB,Mid Tower,"ATX, Micro-ATX, Mini-ITX",400,167,499.00,Sharkoon-TG5-RGB.jpg
-618,K-MEX CG-01BK,Mini Tower,"Micro-ATX, Mini-ITX",280,150,189.90,K-MEX-CG-01BK.jpg
-619,Fortrek HOLT,Mid Tower,"ATX, Micro-ATX, Mini-ITX",340,160,289.90,Fortrek-Holt.jpg
-620,Mymax Gamer Eclipse,Mid Tower,"ATX, Micro-ATX, Mini-ITX",320,150,219.90,Mymax-Gamer-Eclipse.jpg
-621,TGT Jester,Mini Tower,"Micro-ATX, Mini-ITX",300,148,179.90,TGT-Jester.jpg
+id,nome,formato,formatos_placa_mae_suportados,max_gpu_length_mm,max_cooler_height_mm,preco_simulado,imagem_url,url_loja
+601,Corsair 4000D Airflow,Mid Tower,"ATX, Micro-ATX, Mini-ITX",360,170,700,Corsair-4000D-Airflow.jpg,https://www.kabum.com.br/produto/657433/gabinete-gamer-corsair-frame-4000d-mid-tower-lateral-em-vidro-sem-fans-preto-cc-9011290-ww
+602,NZXT H510,Mid Tower,"ATX, Micro-ATX, Mini-ITX",381,165,689.90,NZXT-H510.jpg,https://www.kabum.com.br/produto/171727/gabinete-nzxt-h510i-mid-tower-atx-com-fita-rgb-lateral-de-vidro-preto-fosco-ca-h510i-b1
+603,Cooler Master MB511 ARGB,Mid Tower,"ATX, Micro-ATX, Mini-ITX",410,165,599.90,Cooler-Master-MB511-ARGB.jpg,https://www.kabum.com.br/produto/138176/gabinete-gamer-cooler-master-masterbox-mb511-mid-tower-3x-fans-argb-frontais-lateral-em-vidro-temperado-preto-mcb-b511d-kgnn-rga
+605,Thermaltake V200,Mid Tower,"ATX, Micro-ATX, Mini-ITX",330,160,449.90,Thermaltake-V200.jpg,https://www.kabum.com.br/produto/291553/gabinete-thermaltake-tt-h200-tg-rgb-snow-tempglass1-120mm-ca-1m3-00m6wn-00
+607,PCYes Tiger,Mid Tower,"ATX, Micro-ATX, Mini-ITX",320,155,319.90,PCYes-Tiger.jpg,https://www.kabum.com.br/produto/515036/gabinete-gamer-pcyes-set-black-vulcan-lateral-em-vidro-gsbvpbr
+608,Corsair iCUE 5000X RGB,Mid Tower,"ATX, Micro-ATX, Mini-ITX",420,170,1249.90,Corsair-iCUE-5000X-RGB.jpg,https://www.kabum.com.br/produto/761504/gabinete-gamer-corsair-icue-link-5000t-lx-rgb-vidro-temperado-mid-tower-branco-cc-9011299-ww
+609,NZXT H7 Flow,Mid Tower,"ATX, Micro-ATX, Mini-ITX",400,185,949.00,NZXT-H7-Flow.jpg,https://www.kabum.com.br/produto/612557/gabinete-gamer-nzxt-h7-flow-mid-tower-e-atx-lateral-em-vidro-temperado-com-3-ventoinhas-preto-cm-h72fb-01
+611,Cooler Master NR200,Mini Tower,"Mini-ITX",330,155,499.00,Cooler-Master-NR200.jpg,https://www.kabum.com.br/produto/172268/gabinete-masterbox-cooler-master-nr200-mini-itx-sfx-preto-mcb-nr200-knnn-s00
+612,LIAN LI Lancool II Mesh,Mid Tower,"ATX, Micro-ATX, Mini-ITX",384,176,679.00,LIAN-LI-Lancool-II-Mesh.jpg,https://www.kabum.com.br/produto/779953/gabinete-gamer-lian-li-lancool-206-rx-mid-tower-argb-atx-lateral-em-vidro-temperado-branco-lancool-206rw
+618,K-MEX CG-01BK,Mini Tower,"Micro-ATX, Mini-ITX",280,150,189.90,K-MEX-CG-01BK.jpg,https://www.kabum.com.br/produto/183492/gabinete-kmex-atx-gm53y1-c-fonte-200w-2-baias-preto
+619,Fortrek HOLT,Mid Tower,"ATX, Micro-ATX, Mini-ITX",340,160,289.90,Fortrek-Holt.jpg,https://www.kabum.com.br/produto/160072/gabinete-gamer-fortrek-holt-mid-tower-rgb-atx-lateral-em-acrilico-preto-70571
+620,Mymax Gamer Eclipse,Mid Tower,"ATX, Micro-ATX, Mini-ITX",320,150,219.90,Mymax-Gamer-Eclipse.jpg,https://www.kabum.com.br/produto/167515/gabinete-gamer-mymax-eternity-usb-3-0-preto-rgb

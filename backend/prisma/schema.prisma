@@ -34,6 +34,9 @@ model Component {
   marca       String?
   preco       Float
   imagem_url  String?
+  url_loja    String?
+  prices      PriceHistory[]
+  
   
   // O CAMPO MÁGICO: 'specs'
   // Aqui dentro salvamos as colunas específicas de cada CSV.
@@ -42,6 +45,14 @@ model Component {
   specs       Json     
 
   createdAt   DateTime @default(now())
+}
+
+model PriceHistory {
+  id          Int       @id @default(autoincrement())
+  preco       Float
+  data        DateTime  @default(now())
+  componentId Int
+  component   Component @relation(fields: [componentId], references: [id])
 }
 
 // Modelo para Builds Salvas (substitui saved_builds.csv e builds.csv)

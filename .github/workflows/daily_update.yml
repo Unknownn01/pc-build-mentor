@@ -1,0 +1,35 @@
+name: Daily Price Update
+
+on:
+  schedule:
+    # Roda todos os dias às 03:00 AM (Horário UTC)
+    # 03:00 UTC é meia-noite no horário de Brasília
+    - cron: '0 3 * * *'
+  workflow_dispatch: # Permite que você rode manualmente pelo site do GitHub para testar
+
+jobs:
+  update-prices:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22' # Use a versão que você está usando no PC
+
+      - name: Instalar dependências
+        run: |
+          cd backend
+          npm install
+
+      - name: Executar o Scraper
+        env:
+          # Aqui injetamos as variáveis de ambiente que o script precisa
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          # Adicione outras se o seu .env tiver (ex: API_KEY)
+        run: |
+          cd backend
+          node update_prices.js

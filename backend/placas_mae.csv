@@ -1,40 +1,24 @@
-id,nome,soquete_cpu,tipo_ram,formato,plataforma,ano_lancamento,slots_ram,slots_m2,dissipacao_vrm,slots_pcie,imagem_url,preco_simulado
-101,ASUS TUF Gaming B550M-PLUS,AM4,DDR4,Micro-ATX,AMD,2020,4,2,Reforçado,3,ASUS-TUF-Gaming-B550M-PLUS.jpg,900
-102,MSI B450M Mortar Max,AM4,DDR4,Micro-ATX,AMD,2019,4,2,Médio,3,MSI-B450M-Mortar-Max.jpg,620
-103,ASRock B550 Steel Legend,AM4,DDR4,ATX,AMD,2020,4,2,Reforçado,4,ASRock-B550-Steel-Legend.jpg,950
-104,Gigabyte B450M DS3H,AM4,DDR4,Micro-ATX,AMD,2018,4,1,Básico,2,Gigabyte-B450M-DS3H.jpg,460
-105,ASUS ROG Strix B550-F,AM4,DDR4,ATX,AMD,2020,4,2,Reforçado,4,ASUS-ROG-Strix-B550-F.jpg,1100
-106,MSI MPG B550 Gaming Edge,AM4,DDR4,ATX,AMD,2020,4,2,Reforçado,4,MSI-MPG-B550-Gaming-Edge.jpg,1080
-107,Gigabyte A520M S2H,AM4,DDR4,Micro-ATX,AMD,2020,2,1,Básico,2,Gigabyte-A520M-S2H.jpg,370
-108,ASUS Prime B450M Gaming/BR,AM4,DDR4,Micro-ATX,AMD,2019,2,1,Básico,2,ASUS-Prime-B450M-Gaming.jpg,420
-109,ASRock X570 Phantom Gaming 4,AM4,DDR4,ATX,AMD,2019,4,2,Médio,4,ASRock-X570-Phantom-Gaming-4.jpg,870
-110,MSI MAG B550M Bazooka,AM4,DDR4,Micro-ATX,AMD,2020,4,2,Médio,3,MSI-MAG-B550M-Bazooka.jpg,780
-111,ASUS PRIME H610M-E,LGA1700,DDR4,Micro-ATX,Intel,2022,2,1,Básico,2,ASUS-PRIME-H610M-E.jpg,480
-112,Gigabyte B660M DS3H DDR4,LGA1700,DDR4,Micro-ATX,Intel,2022,4,2,Médio,3,Gigabyte-B660M-DS3H.jpg,680
-113,MSI PRO B660M-A DDR4,LGA1700,DDR4,Micro-ATX,Intel,2022,4,2,Reforçado,3,MSI-PRO-B660M-A.jpg,790
-114,ASUS TUF Gaming Z690-Plus WiFi D4,LGA1700,DDR4,ATX,Intel,2021,4,4,Reforçado,5,ASUS-TUF-Gaming-Z690-Plus-WiFi.jpg,1490
-115,MSI MAG Z690 Tomahawk WiFi DDR4,LGA1700,DDR4,ATX,Intel,2021,4,4,Reforçado,5,MSI-MAG-Z690-Tomahawk-WiFi.jpg,1590
-116,ASUS PRIME B760M-A D4,LGA1700,DDR4,Micro-ATX,Intel,2023,4,2,Médio,3,ASUS-PRIME-B760M-A-D4.jpg,830
-117,Gigabyte Z790 AORUS Elite AX,LGA1700,DDR5,ATX,Intel,2023,4,4,Reforçado,5,Gigabyte-Z790-AORUS-Elite-AX.jpg,1890
-118,ASUS ROG Maximus Z790 Hero,LGA1700,DDR5,ATX,Intel,2022,4,5,Reforçado,5,ASUS-ROG-Maximus-Z790-Hero.jpg,3390
-119,ASRock B760M PG Riptide,LGA1700,DDR5,Micro-ATX,Intel,2023,4,2,Médio,3,ASRock-B760M-PG-Riptide.jpg,890
-120,MSI PRO H610M-G DDR4,LGA1700,DDR4,Micro-ATX,Intel,2022,2,1,Básico,2,MSI-PRO-H610M-G.jpg,410
-121,ASUS ROG Strix Z790-E Gaming,LGA1700,DDR5,ATX,Intel,2023,4,5,Reforçado,5,ASUS-ROG-Strix-Z790-E.jpg,2990
-122,Gigabyte B450 AORUS M,AM4,DDR4,Micro-ATX,AMD,2019,4,1,Médio,3,Gigabyte-B450-AORUS-M.jpg,620
-123,ASRock A320M-HD,AM4,DDR4,Micro-ATX,AMD,2018,2,1,Básico,2,ASRock-A320M-HD.jpg,350
-124,Biostar B450MH,AM4,DDR4,Micro-ATX,AMD,2019,2,1,Básico,2,Biostar-B450MH.jpg,330
-125,ASUS TUF Gaming A520M-Plus II,AM4,DDR4,Micro-ATX,AMD,2021,4,1,Médio,3,ASUS-TUF-Gaming-A520M-Plus-II.jpg,480
-126,ASRock X670E Steel Legend,AM5,DDR5,ATX,AMD,2023,4,4,Reforçado,5,ASRock-X670E-Steel-Legend.jpg,2090
-127,MSI MPG B650 Carbon WiFi,AM5,DDR5,ATX,AMD,2023,4,3,Reforçado,5,MSI-MPG-B650-Carbon-WiFi.jpg,1890
-128,ASUS ROG Strix B650E-F,AM5,DDR5,ATX,AMD,2023,4,4,Reforçado,5,ASUS-ROG-Strix-B650E-F.jpg,1990
-129,Gigabyte A620M Gaming X,AM5,DDR5,Micro-ATX,AMD,2023,2,1,Médio,2,Gigabyte-A620M-Gaming-X.jpg,680
-130,ASRock B650M-HDV-M.2,AM5,DDR5,Micro-ATX,AMD,2023,2,2,Básico,2,ASRock-B650M-HDV-M.2.jpg,790
-131,ASUS ROG Maximus Z790 Hero,1851,DDR5,ATX,Intel,2024,4,4,Reforçado,5,ASUS-ROG-Maximus-Z790-Hero.jpg,3200
-132,MSI MAG Z790 Tomahawk WiFi,1851,DDR5,ATX,Intel,2024,4,3,Médio,4,MSI-MAG-Z790-Tomahawk-WiFi.jpg,2000
-133,Gigabyte Z790 AORUS Elite AX,1851,DDR5,ATX,Intel,2024,4,3,Básico,4,Gigabyte-Z790-AORUS-Elite-AX.jpg,1800
-134,ASUS ROG Crosshair X670E Hero,AM5,DDR5,ATX,AMD,2024,4,4,Reforçado,5,ASUS-ROG-Crosshair-X670E-Hero.jpg,3400
-135,MSI MEG X670E ACE,AM5,DDR5,ATX,AMD,2024,4,4,Reforçado,5,MSI-MEG-X670E-ACE.jpg,3200
-136,Gigabyte X670 AORUS Master,AM5,DDR5,ATX,AMD,2024,4,4,Reforçado,5,Gigabyte-X670-AORUS-Master.jpg,3100
-137,ASUS ROG Maximus Z890 Hero,LGA1851,DDR5,ATX,Intel,2025,4,4,Reforçado,5,ASUS-ROG-Maximus-Z890-Hero.jpg,3600
-138,MSI MEG Z890 ACE,LGA1851,DDR5,ATX,Intel,2025,4,4,Reforçado,5,MSI-MEG-Z890-ACE.jpg,3400
-139,Gigabyte Z890 AORUS Master,LGA1851,DDR5,ATX,Intel,2025,4,4,Reforçado,5,Gigabyte-Z890-AORUS-Master.jpg,3300
+id,nome,soquete_cpu,tipo_ram,formato,plataforma,ano_lancamento,slots_ram,slots_m2,dissipacao_vrm,slots_pcie,imagem_url,preco_simulado,url_loja
+101,ASUS TUF Gaming B550M-PLUS,AM4,DDR4,Micro-ATX,AMD,2020,4,2,Reforçado,3,ASUS-TUF-Gaming-B550M-PLUS.jpg,900,https://www.kabum.com.br/produto/172706/placa-mae-asus-tuf-gaming-b550m-plus-amd-am4-matx-ddr4-m-2-aura-para-fita-rgb-90mb14a0-c1bay0
+103,ASRock B550 Steel Legend,AM4,DDR4,ATX,AMD,2020,4,2,Reforçado,4,ASRock-B550-Steel-Legend.jpg,950,https://www.kabum.com.br/produto/114850/placa-mae-asrock-b550m-steel-legend-amd-am4-micro-atx-ddr4-preto-90-mxbcu0-a0uayz
+104,Gigabyte B450M DS3H,AM4,DDR4,Micro-ATX,AMD,2018,4,1,Básico,2,Gigabyte-B450M-DS3H.jpg,460,https://www.kabum.com.br/produto/875852/placa-mae-gigabyte-b550m-ds3h-ac-r2-amd-am4-micro-atx-ddr4-rgb-wi-fi-6-bluetooth-preto-b550m-ds3h-ac-r2
+106,MSI MPG B550 Gaming Edge,AM4,DDR4,ATX,AMD,2020,4,2,Reforçado,4,MSI-MPG-B550-Gaming-Edge.jpg,1080,https://www.kabum.com.br/produto/114335/placa-mae-msi-mpg-b550-gaming-plus-amd-am4-atx-ddr4-preto-mpg-b550-gaming-plus
+107,Gigabyte A520M S2H,AM4,DDR4,Micro-ATX,AMD,2020,2,1,Básico,2,Gigabyte-A520M-S2H.jpg,370,https://www.kabum.com.br/produto/474499/placa-mae-gigabyte-a520m-k-v2-socket-amd-am4-m-atx-ddr4-chipset-amd-a520-a520m-k-v2
+111,ASUS PRIME H610M-E,LGA1700,DDR4,Micro-ATX,Intel,2022,2,1,Básico,2,ASUS-PRIME-H610M-E.jpg,480,https://www.kabum.com.br/produto/276263/placa-mae-asus-prime-h610m-a-d4-lga-1700-h610-matx-ddr4-preto-90mb19p0-m0eay0
+112,Gigabyte B660M DS3H DDR4,LGA1700,DDR4,Micro-ATX,Intel,2022,4,2,Médio,3,Gigabyte-B660M-DS3H.jpg,680,https://www.kabum.com.br/produto/534674/placa-mae-gigabyte-b650m-d3hp-amd-am5-micro-atx-ddr5-preto-b650m-d3hp
+113,MSI PRO B660M-A DDR4,LGA1700,DDR4,Micro-ATX,Intel,2022,4,2,Reforçado,3,MSI-PRO-B660M-A.jpg,790,https://www.kabum.com.br/produto/524346/placa-mae-msi-pro-b650m-p-amd-am5-m-atx-ddr5-pro-b650m-p
+114,ASUS TUF Gaming Z690-Plus WiFi D4,LGA1700,DDR4,ATX,Intel,2021,4,4,Reforçado,5,ASUS-TUF-Gaming-Z690-Plus-WiFi.jpg,1490,https://www.kabum.com.br/produto/427131/placa-mae-asus-tuf-gaming-z790-plus-intel-atx-ddr5-rgb-wi-fi-bluetooth-preto-90mb1d80-m1eay0
+115,MSI MAG Z690 Tomahawk WiFi DDR4,LGA1700,DDR4,ATX,Intel,2021,4,4,Reforçado,5,MSI-MAG-Z690-Tomahawk-WiFi.jpg,1590,https://www.kabum.com.br/produto/495667/placa-mae-msi-mag-b760-tomahawk-wifi-intel-lga-1700-atx-12-13-14-geracoes-ddr5-bluetooth-911-7d96-013
+116,ASUS PRIME B760M-A D4,LGA1700,DDR4,Micro-ATX,Intel,2023,4,2,Médio,3,ASUS-PRIME-B760M-A-D4.jpg,830,https://www.kabum.com.br/produto/404816/placa-mae-asus-prime-b760m-a-intel-lga-1700-d4-matx-ddr4-preto-90mb1d00-m0eay0
+117,Gigabyte Z790 AORUS Elite AX,LGA1700,DDR5,ATX,Intel,2023,4,4,Reforçado,5,Gigabyte-Z790-AORUS-Elite-AX.jpg,1890,https://www.kabum.com.br/produto/395136/placa-mae-gigabyte-z790-aorus-elite-ax-lga-1700-atx-ddr5-wi-fi-preto-z790-aorus-elite-ax
+118,ASUS ROG Maximus Z790 Hero,LGA1700,DDR5,ATX,Intel,2022,4,5,Reforçado,5,ASUS-ROG-Maximus-Z790-Hero.jpg,3390,https://www.kabum.com.br/produto/642991/placa-mae-asus-rog-maximus-z890-hero-intel-atx-z890-ddr5-wifi-preto-90mb1id0-m0eay0
+119,ASRock B760M PG Riptide,LGA1700,DDR5,Micro-ATX,Intel,2023,4,2,Médio,3,ASRock-B760M-PG-Riptide.jpg,890,https://www.kabum.com.br/produto/422921/placa-mae-asrock-b760m-hdv-m-2-d4-intel-micro-atx-ddr4-preto-90-mxb
+120,MSI PRO H610M-G DDR4,LGA1700,DDR4,Micro-ATX,Intel,2022,2,1,Básico,2,MSI-PRO-H610M-G.jpg,410,https://www.kabum.com.br/produto/873598/placa-mae-msi-pro-h610m-s-intel-core-ddr4-matx-realtek-alc897-codec-proh610msd4
+121,ASUS ROG Strix Z790-E Gaming,LGA1700,DDR5,ATX,Intel,2023,4,5,Reforçado,5,ASUS-ROG-Strix-Z790-E.jpg,2990,https://www.kabum.com.br/produto/521062/placa-mae-asus-rog-strix-z790-a-gaming-wifi-ii-intel-z790-atx-ddr5-preto-90mb1fn0-m0aay0
+122,Gigabyte B450 AORUS M,AM4,DDR4,Micro-ATX,AMD,2019,4,1,Médio,3,Gigabyte-B450-AORUS-M.jpg,620,https://www.kabum.com.br/produto/114781/placa-mae-gigabyte-b550m-aorus-elite-rev-1-3-amd-am4-micro-atx-ddr4-preto-b550m-aorus-elite
+128,ASUS ROG Strix B650E-F,AM5,DDR5,ATX,AMD,2023,4,4,Reforçado,5,ASUS-ROG-Strix-B650E-F.jpg,1990,https://www.kabum.com.br/produto/427124/placa-mae-asus-rog-strix-b650e-f-gaming-wifi-amd-atx-ddr5-rgb-wifi-bluetooth-90mb1bq0-m0eay1
+129,Gigabyte A620M Gaming X,AM5,DDR5,Micro-ATX,AMD,2023,2,1,Médio,2,Gigabyte-A620M-Gaming-X.jpg,680,https://www.kabum.com.br/produto/619346/placa-mae-gigabyte-a620m-gaming-x-ax-r1-1-ddr5-am5-micro-atx
+130,ASRock B650M-HDV-M.2,AM5,DDR5,Micro-ATX,AMD,2023,2,2,Básico,2,ASRock-B650M-HDV-M.2.jpg,790,https://www.kabum.com.br/produto/525050/placa-mae-asrock-b650m-hdv-m-2-amd-b650-matx-ddr5-preto-90-mxbla
+133,Gigabyte Z790 AORUS Elite AX,1851,DDR5,ATX,Intel,2024,4,3,Básico,4,Gigabyte-Z790-AORUS-Elite-AX.jpg,1800,https://www.kabum.com.br/produto/525593/placa-mae-gigabyte-z790m-aorus-elite-rev-1-1-lga-1700-matx-ddr5-preto-z790m-aorus-elite
+134,ASUS ROG Crosshair X670E Hero,AM5,DDR5,ATX,AMD,2024,4,4,Reforçado,5,ASUS-ROG-Crosshair-X670E-Hero.jpg,3400,https://www.kabum.com.br/produto/463329/placa-mae-asrock-x670e-pg-lightning-chipset-x670-amd-am5-atx-ddr5-x670e-pg-lightning
+139,Gigabyte Z890 AORUS Master,LGA1851,DDR5,ATX,Intel,2025,4,4,Reforçado,5,Gigabyte-Z890-AORUS-Master.jpg,3300,https://www.kabum.com.br/produto/663008/placa-mae-gigabyte-z890-aorus-master-wifi-7-intel-lga-1851-4xddr5-chipset-z890-atx
