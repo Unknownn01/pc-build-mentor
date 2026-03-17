@@ -305,6 +305,9 @@ function MontadorPage({ build, setBuild, currentUser }) {
                             const powerScore = peca.specs?.power_score || 0;
                             const cbScore = peca.specs?.cb_score || 0;
 
+                            const threshold = (peca.categoria === 'placa_video' || categoria.id === 'placaDeVideo') ? 21 : 40;
+                            const isPremium = cbScore >= threshold;
+
                             return (
                                 <div key={peca.id} className="peca-card-enhanced">
                                     <div className="peca-card-main" onClick={() => handleSelectPeca(categoria.id, peca.id)}>
@@ -320,11 +323,10 @@ function MontadorPage({ build, setBuild, currentUser }) {
                                                         <FaStar /> Score: {powerScore}/100
                                                     </div>
                                                     
-                                                    {/* NOVO: EXIBIÇÃO DO CB SCORE NO MODAL DE SELEÇÃO */}
                                                     {cbScore > 0 && (
-                                                        <div className={`cb-score-badge-mini ${cbScore >= 35 ? 'premium' : ''}`}>
+                                                        <div className={`cb-score-badge-mini ${isPremium ? 'premium' : ''}`}>
                                                             <FaTrophy /> C/B: {cbScore}
-                                                            {cbScore >= 35 && <span className="mini-diamond"> 💎</span>}
+                                                            {isPremium && <span className="mini-diamond"> 💎</span>}
                                                         </div>
                                                     )}
                                                 </div>
