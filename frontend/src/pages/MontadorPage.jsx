@@ -431,7 +431,7 @@ function MontadorPage({ build, setBuild, currentUser }) {
                     onClose={() => { setComponentDetailModal(null); setModalAberto(CATEGORIAS.find(c => c.id === componentDetailModal.category)); }}
                 />
             )}
-            <ComponentComparator pecasDisponiveis={pecasFiltradas} onSelectComponent={handleSelectPeca} />
+            <ComponentComparator pecasDisponiveis={pecasDisponiveis} onSelectComponent={handleSelectPeca} />
         </div>
     );
 }

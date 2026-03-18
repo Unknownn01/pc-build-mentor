@@ -53,3 +53,78 @@
     text-align: center;
     padding: 100px;
 }
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+
+@media (max-width: 768px) {
+  .user-manager-container {
+    padding: 20px 10px 100px 10px;
+  }
+
+  /* 1. Removemos o fundo da tabela original e as bordas de célula */
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead { display: none; } /* Esconde o cabeçalho original */
+
+  /* 2. Transformamos a linha (tr) em um Card sólido */
+  tr {
+    background-color: #161B22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 12px;
+  }
+
+  /* 3. Estilizamos os dados (td) como campos de formulário */
+  td {
+    border: none;
+    padding: 4px 0; /* Espaço vertical reduzido */
+    display: flex;
+    flex-direction: column; /* Rótulo em cima, dado embaixo para economizar espaço lateral */
+    align-items: flex-start; /* TUDO ALINHADO À ESQUERDA */
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  /* Remove a borda do último item (que geralmente são os botões) */
+  td:last-child {
+    flex-direction: row; /* Botões lado a lado */
+    justify-content: flex-start; /* Alinhados à esquerda também */
+    gap: 15px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dotted #30363d; /* Linha divisória discreta antes dos botões */
+  }
+
+  /* 4. Criamos os nomes dos campos (Labels) */
+  td::before {
+    content: attr(data-label);
+    font-size: 0.7rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  /* 5. Ajustes específicos de conteúdo */
+  td[data-label="Email"] {
+    word-break: break-all;
+    color: #c9d1d9;
+  }
+  /* Badge de Admin no mobile */
+  .badge-admin {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+
+  .btn-edit, .btn-delete {
+    padding: 5px 10px !important;
+    font-size: 0.9rem !important;
+    background: none !important;
+    border: 1px solid #30363d !important;
+    min-width: auto;
+  }
+}

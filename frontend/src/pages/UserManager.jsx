@@ -3,6 +3,8 @@ import axios from 'axios';
 import { API_BASE_URL } from '../config';
 import { FaTrash, FaUserShield, FaUserEdit, FaUser } from 'react-icons/fa';
 import './UserManager.css';
+import Swal from 'sweetalert2';
+import { toast } from 'react-hot-toast';
 
 function UserManager({ currentUser }) {
     const [users, setUsers] = useState([]);

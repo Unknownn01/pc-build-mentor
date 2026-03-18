@@ -14,3 +14,36 @@
   /* Empurra o conteúdo para baixo com a altura do seu header */
   padding-top: 100px; /* Ajuste este valor para ser um pouco maior que a altura do seu header */
 }
+/* Ajuste global de fontes para celular */
+@media (max-width: 768px) {
+  html {
+      font-size: 14px; /* Diminui levemente o padrão para caber mais coisa */
+  }
+  
+  h2 {
+      font-size: 1.5rem; /* Títulos menores para não quebrarem linha */
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ajustes para telas de celular (até 768px) */
+@media (max-width: 768px) {
+  body {
+      font-size: 14px; /* Facilita a leitura em telas pequenas */
+      overflow-x: hidden; /* Evita que o site "dance" para os lados */
+  }
+
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.3rem; }
+
+  /* Ajusta containers principais para usarem a largura toda */
+  .container, .main-content{
+      width: 100% !important;
+      padding: 10px !important;
+      margin: 0 !important;
+  }
+}
