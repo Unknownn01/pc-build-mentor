@@ -558,7 +558,7 @@ app.get('/api/admin/users', async (req, res) => {
       });
       
       // Removemos a senha de cada usuário antes de enviar para o front
-      const safeUsers = users.map(({ senha, ...user }) => user);
+      const safeUsers = users.map(({ password, ...user }) => user);
       
       res.json(safeUsers);
   } catch (err) {

@@ -61,7 +61,7 @@ function UserManager({ currentUser }) {
     
         if (result.isConfirmed) {
             try {
-                await axios.delete(`${API_BASE_URL}/api/admin/users/${id}`);
+                await axios.delete(`${API_BASE_URL}/api/admin/users/${userId}`);
                 toast.success("Utilizador excluído com sucesso!");
                 fetchUsers();
             } catch (err) {
@@ -95,7 +95,7 @@ function UserManager({ currentUser }) {
                         {users.map(user => (
                             <tr key={user.id} className={user.id === currentUser.id ? "current-user-row" : ""}>
                                 <td>#{user.id}</td>
-                                <td>{user.nome} {user.id === currentUser.id && "(Você)"}</td>
+                                <td>{user.name} {user.id === currentUser.id && "(Você)"}</td>
                                 <td>{user.email}</td>
                                 <td>
                                     <span className={`badge-role ${user.isAdmin ? 'admin' : 'client'}`}>
