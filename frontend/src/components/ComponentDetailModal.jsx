@@ -347,20 +347,7 @@ function ComponentDetailModal({ component, category, onClose}) {
                 </div>
 
             </div>
-            {/* --- INÍCIO DO DEBUG --- */}
-                <div style={{ 
-                    backgroundColor: '#000', 
-                    color: '#0f0', 
-                    padding: '15px', 
-                    marginTop: '20px', 
-                    borderRadius: '8px',
-                    fontSize: '12px',
-                    border: '1px solid #0f0'
-                }}>
-                    <h4 style={{margin: '0 0 10px 0'}}>🕵️‍♂️ RAIO-X DO BANCO DE DADOS:</h4>
-                    <pre>{JSON.stringify(component.specs, null, 2)}</pre>
-                </div>
-                {/* --- FIM DO DEBUG --- */}
+           
 
                 {/* Cole isso ANTES de fechar a última </div> do modal */}
         </div>
