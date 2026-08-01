@@ -1,36 +1,21 @@
-id,marca,modelo_especifico,chipset,nome_chip,vram_gb,tdp_w,ano_lancamento,clock_boost_mhz,power_score,imagem_url,preco_simulado
-301,ASUS,TUF Gaming,NVIDIA,GeForce RTX 3060,12,170,2021,1777,60,asus-tuf-gaming-geforce-rtx-3060.jpg,1800
-302,Gigabyte,Gaming OC,NVIDIA,GeForce RTX 3070,8,220,2020,1725,75,gigabyte-gaming-oc-geforce-rtx-3070.jpg,2700
-303,MSI,Ventus 3X,NVIDIA,GeForce RTX 3080,10,320,2020,1710,90,msi-ventus-3x-geforce-rtx-3080.jpg,4200
-304,Zotac,AMP Holo,NVIDIA,GeForce RTX 3090,24,350,2020,1695,95,zotac-amp-holo-geforce-rtx-3090.jpg,7800
-305,ASUS,Dual,NVIDIA,GeForce RTX 4060,8,115,2023,2460,62,asus-dual-geforce-rtx-4060.jpg,1800
-306,Gigabyte,Windforce OC,NVIDIA,GeForce RTX 4070,12,200,2023,2475,80,gigabyte-windforce-oc-geforce-rtx-4070.jpg,3100
-307,MSI,Gaming X Trio,NVIDIA,GeForce RTX 4080,16,320,2022,2505,94,msi-gaming-x-trio-geforce-rtx-4080.jpg,6500
-308,Zotac,Twin Edge,NVIDIA,GeForce GTX 1660 Super,6,125,2019,1785,50,zotac-twin-edge-geforce-gtx-1660-super.jpg,1200
-309,Gigabyte,OC,NVIDIA,GeForce GTX 1050 Ti,4,75,2016,1392,35,gigabyte-oc-geforce-gtx-1050-ti.jpg,650
-310,ASUS,Phoenix,NVIDIA,GeForce RTX 2060,6,160,2019,1680,55,asus-phoenix-geforce-rtx-2060.jpg,1300
-311,Sapphire,Pulse,AMD,Radeon RX 6600,8,132,2021,2491,58,sapphire-pulse-radeon-rx-6600.jpg,1350
-312,PowerColor,Fighter,AMD,Radeon RX 6600 XT,8,160,2021,2589,65,powercolor-fighter-radeon-rx-6600-xt.jpg,1550
-313,XFX,Speedster QICK 319,AMD,Radeon RX 6700 XT,12,230,2021,2581,80,xfx-speedster-qick-319-radeon-rx-6700-xt.jpg,2300
-314,Sapphire,Nitro+,AMD,Radeon RX 6800,16,250,2020,2105,88,sapphire-nitro-plus-radeon-rx-6800.jpg,3200
-315,PowerColor,Red Devil,AMD,Radeon RX 6900 XT,16,300,2020,2250,95,powercolor-red-devil-radeon-rx-6900-xt.jpg,4300
-316,XFX,Speedster MERC 310,AMD,Radeon RX 7900 XT,20,300,2022,2400,96,xfx-speedster-merc-310-radeon-rx-7900-xt.jpg,5800
-317,Sapphire,Nitro+,AMD,Radeon RX 7900 XTX,24,355,2022,2500,97,sapphire-nitro-plus-radeon-rx-7900-xtx.jpg,6900
-318,PowerColor,Fighter,AMD,Radeon RX 6400,4,53,2022,2321,40,powercolor-fighter-radeon-rx-6400.jpg,700
-319,XFX,Speedster SWFT 210,AMD,Radeon RX 6500 XT,4,107,2022,2815,45,xfx-speedster-swft-210-radeon-rx-6500-xt.jpg,950
-320,MSI,AERO ITX,NVIDIA,GeForce GT 1030,2,30,2017,1468,20,msi-aero-itx-geforce-gt-1030.jpg,380
-321,Zotac,Twin Edge,NVIDIA,GeForce RTX 3050,8,130,2022,1777,56,zotac-twin-edge-geforce-rtx-3050.jpg,1250
-322,Sapphire,Pulse,AMD,Radeon RX 550,4,50,2017,1183,28,sapphire-pulse-radeon-rx-550.jpg,450
-323,ASUS,ROG Strix,NVIDIA,GeForce RTX 5090,24,550,2025,2600,100,asus-rog-strix-geforce-rtx-5090.jpg,21000
-324,Gigabyte,Windforce,NVIDIA,GeForce GTX 960,2,120,2015,1178,30,gigabyte-windforce-geforce-gtx-960.jpg,600
-325,XFX,Core Edition,AMD,Radeon R9 380,4,190,2015,970,38,xfx-core-edition-radeon-r9-380.jpg,500
-326,MSI,Suprim X,NVIDIA,GeForce RTX 4070 Ti,12,285,2023,2610,92,msi-suprim-x-geforce-rtx-4070-ti.jpg,4300
-327,PowerColor,Hellhound,AMD,Radeon RX 7700 XT,12,245,2023,2544,85,powercolor-hellhound-radeon-rx-7700-xt.jpg,3200
-328,Sapphire,Pulse,AMD,Radeon RX 7800 XT,16,263,2023,2430,93,sapphire-pulse-radeon-rx-7800-xt.jpg,4100
-329,ASUS,ROG Strix,NVIDIA,GeForce RTX 4080 Super,16,320,2024,2550,98,asus-rog-strix-geforce-rtx-4080-super.jpg,7200
-330,Gigabyte,Aorus Master,NVIDIA,GeForce RTX 4090,24,450,2022,2520,99,gigabyte-aorus-master-geforce-rtx-4090.jpg,11000
-331,MSI,Ventus 3X,NVIDIA,GeForce RTX 4060 Ti 16GB,16,220,2024,2610,85,msi-ventus-3x-geforce-rtx-4060-ti-16gb.jpg,2600
-332,ASUS,TUF Gaming,NVIDIA,GeForce RTX 5060,8,180,2025,2700,90,asus-tuf-gaming-geforce-rtx-5060.jpg,3000
-333,Gigabyte,Gaming OC,NVIDIA,GeForce RTX 5080,16,320,2025,2700,98,gigabyte-gaming-oc-geforce-rtx-5080.jpg,5200
-334,Sapphire,Nitro+,AMD,Radeon RX 9070,16,250,2025,2650,92,sapphire-nitro-plus-radeon-rx-9070.jpg,3500
-335,XFX,Speedster MERC 319,AMD,Radeon RX 9060 XT,16,220,2025,2600,88,xfx-gaming-edition-oc-radeon-rx-9060-xt.jpg,2800
+id,marca,modelo_especifico,chipset,nome_chip,vram_gb,tdp_w,ano_lancamento,clock_boost_mhz,power_score,imagem_url,preco_simulado,url_loja
+320,MSI,AERO ITX,NVIDIA,GeForce GT 1030,2,30,2017,1468,5,msi-aero-itx-geforce-gt-1030.jpg,380,https://www.kabum.com.br/produto/641729/gpu-gt-1030-4gb-gddr4-64bit-single-fan-low-profile-pagt10304gbg4lp
+322,Sapphire,Pulse,AMD,Radeon RX 550,4,50,2017,1183,8,sapphire-pulse-radeon-rx-550.jpg,450,https://www.kabum.com.br/produto/538966/placa-de-video-gpu-rx-550-4gb-gddr5-128-bits-projeto-edge-pvex5504gbdf
+309,Gigabyte,OC,NVIDIA,GeForce GTX 1050 Ti,4,75,2016,1392,15,gigabyte-oc-geforce-gtx-1050-ti.jpg,650,https://www.kabum.com.br/produto/458704/placa-de-video-pcyes-nvidia-geforce-gtx-1050-ti-4-gb-gddr5-128bits-dual-fan-graffiti-series
+319,XFX,Speedster SWFT 210,AMD,Radeon RX 6500 XT,4,107,2022,2815,25,xfx-speedster-swft-210-radeon-rx-6500-xt.jpg,950,https://www.kabum.com.br/produto/1012485/gpu-powercolor-amd-radeon-rx-6500xt-4gb-gddr6-64bits-4gbd6-dhv3
+308,Zotac,Twin Edge,NVIDIA,GeForce GTX 1660 Super,6,125,2019,1785,35,zotac-twin-edge-geforce-gtx-1660-super.jpg,1200,https://www.kabum.com.br/produto/727452/placa-de-video-galax-geforce-rtx-3050-ex-v2-1-click-oc-6gb-gddr6-35nrldhp9oid
+310,ASUS,Phoenix,NVIDIA,GeForce RTX 2060,6,160,2019,1680,45,asus-phoenix-geforce-rtx-2060.jpg,1300,https://www.kabum.com.br/produto/348098/placa-de-video-pcyes-nvidia-rtx-2060-graffiti-series-6gb-gddr6-preto-pa2060rtx6gdf
+321,Zotac,Twin Edge,NVIDIA,GeForce RTX 3050,8,130,2022,1777,48,zotac-twin-edge-geforce-rtx-3050.jpg,1250,https://www.kabum.com.br/produto/988188/placa-de-video-rtx3050-6gb-gddr6-96bits-zotac-zt-a30510h-10l
+311,Sapphire,Pulse,AMD,Radeon RX 6600,8,132,2021,2491,55,sapphire-pulse-radeon-rx-6600.jpg,1350,https://www.kabum.com.br/produto/695107/placa-de-video-asrock-rx-6600-challenger-white-amd-radeon-8gb-gddr6-directx-12-ultimate-rdna-2-90-ga4uzz-00uanf
+301,ASUS,TUF Gaming,NVIDIA,GeForce RTX 3060,12,170,2021,1777,60,asus-tuf-gaming-geforce-rtx-3060.jpg,1800,https://www.kabum.com.br/produto/996572/placa-de-video-husky-alpha-rtx-3060-nvidia-12gb-gddr6-192-bit-dual-fan-hdmi-3x-displayport-hvg023060
+312,PowerColor,Fighter,AMD,Radeon RX 6600 XT,8,160,2021,2589,63,powercolor-fighter-radeon-rx-6600-xt.jpg,1550,https://www.kabum.com.br/produto/475647/placa-de-video-rx-7600-gaming-oc-8g-amd-radeon-gigabyte-8gb-gddr6-128bits-rgb-gv-r76gaming-oc-8gd
+313,XFX,Speedster QICK 319,AMD,Radeon RX 6700 XT,12,230,2021,2581,72,xfx-speedster-qick-319-radeon-rx-6700-xt.jpg,2300,https://www.kabum.com.br/produto/988754/placa-de-video-rx-6750xt-gaming-xfx-graphics-card-amd-radeon-12gb-gddr6-ray-tracing-fidelity-fx-rx-675tmbaf9
+306,Gigabyte,Windforce OC,NVIDIA,GeForce RTX 4070,12,200,2023,2475,82,gigabyte-windforce-oc-geforce-rtx-4070.jpg,3100,https://www.kabum.com.br/produto/461699/placa-de-video-zotac-gaming-geforce-rtx-4070-twin-edge-12gb-gddr6x-zt-d40700e-10m
+327,PowerColor,Hellhound,AMD,Radeon RX 7700 XT,12,245,2023,2544,85,powercolor-hellhound-radeon-rx-7700-xt.jpg,3200,https://www.kabum.com.br/produto/777660/placa-de-video-xfx-rx-7700xt-speedster-swft210-gaming-amd-radeon-12gb-gddr6-2544mhz-192bits-rdna-4-rx-77swftwp
+332,ASUS,TUF Gaming,NVIDIA,GeForce RTX 5060,8,180,2025,2700,88,asus-tuf-gaming-geforce-rtx-5060.jpg,3000,https://www.kabum.com.br/produto/781227/placa-de-video-asus-tuf-rtx-5060-o8g-gaming-nvidia-geforce-8gb-gddr7-2677mhz-dlss-4-triple-fan-ray-tracing-tuf-rtx5060-o8g-gaming
+335,XFX,Speedster MERC 319,AMD,Radeon RX 9060 XT,16,220,2025,2600,90,xfx-gaming-edition-oc-radeon-rx-9060-xt.jpg,2800,https://www.kabum.com.br/produto/870973/placa-de-video-xfx-rx-9060-xt-oc-amd-radeon-16gb-gddr6-128bits-20-gbps-triple-fan-rdna-4-rx-96ts316b7
+334,Sapphire,Nitro+,AMD,Radeon RX 9070,16,250,2025,2650,94,sapphire-nitro-plus-radeon-rx-9070.jpg,3500,https://www.kabum.com.br/produto/725938/placa-de-video-xfx-swift-rx-9070-oc-white-triple-fan-gaming-edition-with-amd-radeon-16gb-gddr6-hdmi-3xdp-rdna-4-rx-97swfb3w9
+316,XFX,Speedster MERC 310,AMD,Radeon RX 7900 XT,20,300,2022,2400,95,xfx-speedster-merc-310-radeon-rx-7900-xt.jpg,5800,https://www.kabum.com.br/produto/713158/amd-radeon-rx-7900-gre-16gb-gddr6-256bits-xfx-rx-79gmercb9
+317,Sapphire,Nitro+,AMD,Radeon RX 7900 XTX,24,355,2022,2500,97,sapphire-nitro-plus-radeon-rx-7900-xtx.jpg,6900,https://www.kabum.com.br/produto/698457/placa-de-video-gigabyte-rx-9070-xt-gaming-oc-16g-amd-radeon-rgb-16gb-gddr6-256bits-opengl-4-6-gv-r9070xtgaming-oc-16gd
+333,Gigabyte,Gaming OC,NVIDIA,GeForce RTX 5080,16,320,2025,2700,99,gigabyte-gaming-oc-geforce-rtx-5080.jpg,5200,https://www.kabum.com.br/produto/727607/placa-de-video-gigabyte-geforce-rtx-5080-gaming-oc-16gb-gddr7-256-bits
+323,ASUS,ROG Strix,NVIDIA,GeForce RTX 5090,24,550,2025,2600,100,asus-rog-strix-geforce-rtx-5090.jpg,21000,https://www.kabum.com.br/produto/714560/placa-de-video-rtx-5090-aorus-master-ice-32g-gigabyte-nvidia-geforce-32gb-gddr7-512bits-rgb-dlss-ray-tracing-9vn5090ami-00-g10

@@ -1,0 +1,37 @@
+.chart-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.chart-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #5bc3e2;
+    margin-bottom: 15px;
+}
+
+.chart-wrapper {
+    width: 100%;
+    min-height: 200px; /* GARANTE QUE O GRÁFICO TENHA ESPAÇO */
+    display: block;
+}
+
+.chart-loading {
+    color: #888;
+    text-align: center;
+    padding: 20px;
+}
+
+.cb-highlight.is-best {
+    background: rgba(39, 174, 96, 0.1);
+    border-left: 4px solid #27ae60;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.best-buy-tag {
+    margin-left: 5px;
+}

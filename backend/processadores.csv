@@ -1,42 +1,21 @@
-id,nome,marca,soquete,nucleos,tdp_w,ano_lancamento,clock_base_ghz,power_score,imagem_url,preco_simulado
-1,AMD Ryzen 5 5600,AMD,AM4,6,65,2022,3.5,75,ryzen5_5gen.jpg,850
-2,AMD Ryzen 7 5800X,AMD,AM4,8,105,2020,3.8,85,ryzen7_5gen.jpg,1250
-3,AMD Ryzen 9 5900X,AMD,AM4,12,105,2020,3.7,95,ryzen9_5gen.jpg,1990
-4,AMD Ryzen 5 3600,AMD,AM4,6,65,2019,3.6,70,ryzen5_3gen.jpg,750
-5,AMD Ryzen 7 5700X,AMD,AM4,8,65,2022,3.4,83,ryzen7_5gen.jpg,1120
-6,Intel Core i5-12400F,Intel,LGA1700,6,65,2022,2.5,72,i5_12400f.jpg,830
-7,Intel Core i7-12700K,Intel,LGA1700,12,125,2021,3.6,93,i7_12700k.jpg,1850
-8,Intel Core i9-12900K,Intel,LGA1700,16,125,2021,3.2,98,i9_12900k.jpg,2800
-9,Intel Core i3-12100F,Intel,LGA1700,4,58,2022,3.3,60,i3_12100f.jpg,570
-10,Intel Core i5-10400F,Intel,LGA1200,6,65,2020,2.9,65,i5_10400f.jpg,690
-11,AMD Ryzen 5 5600X,AMD,AM4,6,65,2020,3.7,78,ryzen5_5gen.jpg,940
-12,AMD Ryzen 9 5950X,AMD,AM4,16,105,2020,3.4,97,ryzen9_5gen.jpg,2890
-13,Intel Core i7-11700F,Intel,LGA1200,8,65,2021,2.5,80,i7_11700f.jpg,1170
-14,Intel Core i9-10900K,Intel,LGA1200,10,125,2020,3.7,91,i9_10900k.jpg,1990
-15,AMD Ryzen 3 3100,AMD,AM4,4,65,2020,3.6,58,ryzen3_3gen.jpg,480
-16,AMD Ryzen 5 7600,AMD,AM5,6,65,2023,3.8,79,ryzen5_7gen.jpg,980
-17,AMD Ryzen 7 7700X,AMD,AM5,8,105,2022,4.5,90,ryzen7_7gen.jpg,1650
-18,Intel Core i5-13600KF,Intel,LGA1700,14,125,2023,3.5,92,i5_13600kf.jpg,1650
-19,Intel Core i9-13900K,Intel,LGA1700,24,125,2022,3.0,100,i9_13900k.jpg,3200
-20,AMD Ryzen 9 7900X,AMD,AM5,12,170,2022,4.7,96,ryzen9_7gen.jpg,2300
-21,AMD Ryzen 7 5800X3D,AMD,AM4,8,105,2022,3.4,89,ryzen7_5genx3d.jpg,1680
-22,Intel Core i3-10100F,Intel,LGA1200,4,65,2020,3.6,55,i3_10100f.jpg,430
-23,Intel Core i5-11400F,Intel,LGA1200,6,65,2021,2.6,68,i5_11400f.jpg,690
-24,AMD Ryzen 5 4600G,AMD,AM4,6,65,2022,3.7,70,ryzen5_4Ggen.jpg,670
-25,AMD Ryzen 3 3200G,AMD,AM4,4,65,2019,3.6,50,ryzen3_3Ggen.jpg,480
-26,Intel Pentium Gold G6400,Intel,LGA1200,2,58,2020,4.0,30,pentium_g6400.jpg,310
-27,AMD Athlon 3000G,AMD,AM4,2,35,2019,3.5,25,athlon_3000g.jpg,250
-28,Intel Core i9-9900K,Intel,LGA1151,8,95,2018,3.6,85,i9_9900k.jpg,1850
-29,Intel Core i7-8700,Intel,LGA1151,6,65,2017,3.2,75,i7_8700.jpg,950
-30,AMD Ryzen 5 1600 AF,AMD,AM4,6,65,2019,3.2,65,ryzen5_1gen.jpg,520
-31,Intel Core i5-9400F,Intel,LGA1151,6,65,2019,2.9,66,i5_9400f.jpg,720
-32,Intel Core i5-14600K,Intel,LGA1851,14,125,2024,3.5,78,i5_14600k.jpg,1590
-33,Intel Core i7-14700K,Intel,LGA1851,20,125,2024,3.4,88,i7_14700k.jpg,2290
-34,Intel Core i9-14900K,Intel,LGA1851,24,125,2024,3.2,95,i9_14900k.jpg,3490
-35,Intel Core i5-14400,Intel,LGA1851,10,65,2024,2.5,70,i5_14600k.jpg,1170
-36,Intel Core i3-14100,Intel,LGA1851,4,60,2024,3.5,58,i3_14100.jpg,800
-37,AMD Ryzen 9 9900X3D,AMD,AM5,16,170,2025,4.0,100,ryzen9_9genx3d.jpg,3200
-38,AMD Ryzen 7 9800X3D,AMD,AM5,12,120,2025,4.3,99,ryzen7_9genx3d.jpg,2700
-39,Intel Core Ultra i5-13600K,Intel,LGA1851,14,125,2025,3.8,90,i5_13600kf.jpg,1900
-40,Intel Core Ultra i7-14700K,Intel,LGA1851,20,125,2025,4.0,95,i7_14700k.jpg,2800
-41,Intel Core Ultra i9 285k,Intel,LGA1851,24,125,2025,5.7,100,ultrai9_285k.jpg,3500
+id,nome,marca,soquete,nucleos,tdp_w,ano_lancamento,clock_base_ghz,power_score,imagem_url,preco_simulado,url_loja
+25,AMD Ryzen 3 3200G,AMD,AM4,4,65,2019,3.6,5,ryzen3_3Ggen.jpg,480,https://www.kabum.com.br/produto/210014/processador-amd-ryzen-3-3200g-3-6ghz-4-0ghz-turbo-quad-core-am4-yd3200c5fhbox
+22,Intel Core i3-10100F,Intel,LGA1200,4,65,2020,3.6,12,i3_10100f.jpg,430,https://www.kabum.com.br/produto/158284/processador-intel-core-i3-10100f-3-60ghz-4-30ghz-turbo-cache-6mb-lga-1200-bx8070110100f
+23,Intel Core i5-11400F,Intel,LGA1200,6,65,2021,2.6,28,i5_11400f.jpg,690,https://www.kabum.com.br/produto/169444/processador-intel-core-i5-11400f-2-6ghz-cache-12mb-hexa-core-12-threads-lga-1200-bx8070811400f
+1,AMD Ryzen 5 5600,AMD,AM4,6,65,2022,3.5,42,ryzen5_5gen.jpg,850,https://www.kabum.com.br/produto/320798/processador-amd-ryzen-5-5600-3-5ghz-4-4ghz-max-turbo-cache-35mb-am4-sem-video-100-100000927box
+6,Intel Core i5-12400F,Intel,LGA1700,6,65,2022,2.5,45,i5_12400f.jpg,830,https://www.kabum.com.br/produto/283718/processador-intel-core-i5-12400f-2-5ghz-4-4ghz-max-turbo-cache-18mb-lga-1700-bx8071512400f
+5,AMD Ryzen 7 5700X,AMD,AM4,8,65,2022,3.4,52,ryzen7_5gen.jpg,1120,https://www.kabum.com.br/produto/949075/processador-amd-ryzen-7-5700-box-am4-4-6ghz-8-cores-16-threads-20mb-c-cooler-s-video
+2,AMD Ryzen 7 5800XT,AMD,AM4,8,105,2024,3.8,58,ryzen7_5gen.jpg,1250,https://www.kabum.com.br/produto/938498/processador-amd-ryzen-7-5800xt-3-8-ghz-4-8-ghz-max-turbo-cache-32-mb-8-nucleos-16-threads-am4-100-100001582wof
+16,AMD Ryzen 5 7600,AMD,AM5,6,65,2023,3.8,65,ryzen5_7gen.jpg,980,https://www.kabum.com.br/produto/405799/processador-amd-ryzen-5-7600-5-1ghz-max-turbo-cache-38mb-am5-6-nucleos-video-integrado-100-100001015box
+32,Intel Core i5-14600K,Intel,LGA1851,14,125,2024,3.5,78,i5_14600k.jpg,1590,https://www.kabum.com.br/produto/510568/processador-intel-core-i5-14600k-14-geracao-3-5-ghz-5-3-ghz-max-turbo-cache-24mb-lga1700-bx8071514600k
+7,Intel Core i7-12700K,Intel,LGA1700,12,125,2021,3.6,80,i7_12700k.jpg,1850,https://www.kabum.com.br/produto/241048/processador-intel-core-i7-12700k-3-6ghz-5-0ghz-max-turbo-cache-12-nucleos-20-threads-lga-1700-video-integrado-bx8071512700k
+18,Intel Core i5-13600KF,Intel,LGA1700,14,125,2023,3.5,82,i5_13600kf.jpg,1650,https://www.kabum.com.br/produto/241047/processador-intel-core-i5-12600kf-3-7ghz-4-9ghz-max-turbo-cache-20mb-quad-core-16-threads-lga-1700-bx8071512600kf
+17,AMD Ryzen 7 7700X,AMD,AM5,8,105,2022,4.5,85,ryzen7_7gen.jpg,1650,https://www.kabum.com.br/produto/390988/processador-amd-ryzen-7-7700x-5-4ghz-cache-40mb-am5-8-nucleos-16-threads-radeon-graphics-com-video-100-100000591wof
+33,Intel Core i7-14700K,Intel,LGA1851,20,125,2024,3.4,90,i7_14700k.jpg,2290,https://www.kabum.com.br/produto/497575/processador-intel-core-i7-14700k-14-geracao-5-6-ghz-max-turbo-cache-33mb-20-nucleos-28-threads-lga1700-bx8071514700k
+20,AMD Ryzen 9 7900X,AMD,AM5,12,170,2022,4.7,92,ryzen9_7gen.jpg,2300,https://www.kabum.com.br/produto/378412/processador-amd-ryzen-9-7900x-5-6ghz-max-turbo-cache-76mb-am5-12-nucleos-video-integrado-100-100000589wof
+8,Intel Core i9-12900K,Intel,LGA1700,16,125,2021,3.2,93,i9_12900k.jpg,2800,https://www.kabum.com.br/produto/274507/processador-intel-core-i9-12900k-12-geracao-3-2ghz-5-2ghz-max-turbo-cache-30mb-octa-core-24-threads-lga-1700-video-integrado
+34,Intel Core i9-14900K,Intel,LGA1851,24,125,2024,3.2,97,i9_14900k.jpg,3490,https://www.kabum.com.br/produto/497573/processador-intel-core-i9-14900k-14-geracao-6ghz-max-turbo-cache-36mb-24-nucleos-32-threads-lga1700-bx8071514900k
+19,Intel Core i9-13900K,Intel,LGA1700,24,125,2022,3.0,97,i9_13900k.jpg,3200,https://www.kabum.com.br/produto/406142/processador-intel-core-i9-13900ks-6-0ghz-max-turbo-cache-36mb-24-nucleos-32-threads-lga-1700-video-integrado-bx8071513900ks
+38,AMD Ryzen 7 9800X3D,AMD,AM5,12,120,2025,4.3,99,ryzen7_9genx3d.jpg,2700,https://www.kabum.com.br/produto/662405/processador-amd-ryzen-7-9800x3d-cache-8mb-8-nucleos-16-threads-am5-100-100001084wof
+37,AMD Ryzen 9 9900X3D,AMD,AM5,16,170,2025,4.0,100,ryzen9_9genx3d.jpg,3200,https://www.kabum.com.br/produto/708038/processador-amd-ryzen-9-9900x3d-4-4-ghz-max-boos-clock-ate-5-5-ghz-cache-140mb-12-nucleos-threads-24-am5-100-100001368wof
+41,Intel Core Ultra i9 285k,Intel,LGA1851,24,125,2025,5.7,100,ultrai9_285k.jpg,3500,https://www.kabum.com.br/produto/645177/processador-intel-core-ultra-9-285k-5-7ghz-ate-24-nucleos-com-suporte-a-pcie-5-0-e-4-0-e-suporte-a-ddr5-bx80768285k

@@ -1,253 +1,235 @@
-/* --- Header Principal com CSS Grid --- */
-/* --- Header Principal Simplificado --- */
-.main-header {
-  display: grid; 
-  grid-template-columns: auto 1fr auto; 
-  align-items: center; 
-  width: 100%;
-  position: absolute; 
-  top: 0;
-  left: 0; 
-  z-index: 100;
-  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  
-  /* ✨ REMOVA A ALTURA FIXA E CONTROLE COM PADDING ✨ */
-  /* height: 140px; REMOVIDO */
-  padding: 0px 25px; /* Ajuste o padding vertical (20px) e horizontal (40px) */
-  
-  box-sizing: border-box; 
-  background: transparent; 
-  border-bottom: none;
-  box-shadow: none;
-  
-}
+/* ============================================================
+   💻 ESTILOS DESKTOP (PADRÃO)
+   ============================================================ */
 
-/* --- Estado Rolado (Scrolled) --- */
-.main-header.scrolled {
-  position: fixed; 
-  background-color: rgba(22, 27, 34, 0.85); 
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.3);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-
-/* --- Container do Logo --- */
-/* --- Container do Logo --- */
-.logo-container {
-  display: flex; 
-  align-items: center; 
-  text-decoration: none;
-  gap: 8px; 
-}
-
-/* --- Imagem do Logo --- */
-.site-logo {
-  height: 120px; /* Tente 50px ou 60px como ponto de partida */
-  width: auto;
-  margin: 0;
-  /* vertical-align: top; REMOVA */
-}
-/* --- Título do Site --- */
-.site-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-decoration-color: transparent; 
-  text-decoration: none;
-  letter-spacing: 1px;
-  margin: 0; /* Remove margens extras */
-}
-
-/* --- Navegação Principal --- */
-.main-nav {
-  justify-self: center; /* Centraliza a NAV na coluna do meio */
-}
-
-/* O resto dos estilos da NAV (ul, a, ::after, :hover) parecem bons */
-.main-nav ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0; /* Garante que a UL não tenha margens */
-  gap: 60px; /* Mantém seu espaçamento */
-}
-
-.main-nav a {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: all 0.3s;
-  position: relative;
-  color: #ffffff
-}
-
-.main-nav a::after {
-
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: #ffffff;
-  transition: width 0.3s;
-
-}
-.main-nav a.active::after {
-  width: 80%;
-}
-/* Mantém o efeito de hover para os outros links */
-.main-nav a:hover::after {
-  width: 80%;
-}
-
-
-.main-nav a:hover {
-
-  color: #f0f6fc;
-
-
-}
-
-.main-nav a:hover::after {
-
-  width: 80%;
-
-}
-/* (Seu CSS para .auth-buttons e .btn parece bom, mantenha como está) */
-.auth-buttons {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  /* Não precisa de margem específica aqui, ele será empurrado para a direita */
-}
-.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.btn:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.btn-secondary {
-  background: transparent;
-  border: 2px solid #fdfdfd;
-  color: #ffffff;
-  position: relative;
-}
-
-.btn-secondary:hover {
-  transform: translateY(-2px);
-}
-
-.btn-primary {
-  background: transparent;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-}
-
-.btn-primary:active,
-.btn-secondary:active {
-  transform: translateY(0);
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  padding: 8px 16px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(91, 195, 226, 0.2);
-  transition: all 0.3s;
-}
-
-.user-info:hover {
-  background: rgba(91, 195, 226, 0.15);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-}
-
-.user-info span {
-  font-weight: 600;
-  color: #f0f6fc;
-}
-
-.user-icon {
-  font-size: 1.6rem;
-  color: #ffffff;
-  transition: transform 0.3s;
-}
-
-.user-info:hover .user-icon {
-  transform: scale(1.1) rotate(5deg);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .main-header {
-    flex-direction: column;
-    gap: 15px;
-    padding: 0px 5%;
+   .main-header {
+    display: grid; 
+    grid-template-columns: auto 1fr auto; 
+    align-items: center; 
+    width: 100%;
+    position: absolute; 
+    top: 0;
+    left: 0; 
+    z-index: 100;
+    padding: 0px 25px; 
+    box-sizing: border-box; 
+    background: transparent; 
+    transition: all 0.3s ease;
   }
-
+  
+  .main-header.scrolled {
+    position: fixed; 
+    background-color: rgba(22, 27, 34, 0.95); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+  }
+  
+  .logo-container {
+    display: flex; 
+    align-items: center; 
+    text-decoration: none;
+    gap: 10px;
+  }
+  
+  .site-logo {
+    height: 80px;
+    width: auto;
+  }
+  
+  .site-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+  }
+  
   .main-nav ul {
-    gap: 20px;
-    flex-wrap: wrap;
+    display: flex;
+    list-style: none;
+    gap: 30px;
     justify-content: center;
   }
-
+  
   .main-nav a {
-    font-size: 0.9rem;
-    padding: 6px 12px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    position: relative;
+  }
+  
+  .main-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #764ba2;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
   }
 
-  .logo a {
-    font-size: 1.3rem;
+  .auth-buttons .btn {
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
-
-  .btn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+  
+  /* Botão Entrar (Primary) - O ciano da sua imagem */
+  .auth-buttons .btn-primary {
+    background-color: #5bc3e2 !important; /* Cor exata do seu print */
+    color: #000 !important;
+    border: none !important;
   }
-}
+  
+  .auth-buttons .btn-primary:hover {
+    background-color: #4eb0cc !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(91, 195, 226, 0.3);
+  }
+  
+  /* Botão Cadastrar (Secondary) - Apenas texto roxo/lilás */
+  .auth-buttons .btn-secondary {
+    background-color: transparent !important;
+    color: #ffffff !important; /* Texto branco */
+    border: 2px solid #ffffff !important; /* Borda branca firme */
+    border-radius: 12px !important; /* Cantos arredondados como o "Salvar" */
+    padding: 8px 20px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  /* Efeito ao passar o mouse para dar um feedback visual */
+  .auth-buttons .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important; /* Fundo levemente branco */
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+  }
+  
+  /* Esconde a barra mobile no Desktop */
+  .mobile-bottom-nav {
+    display: none;
+  }
+  
+  /* ============================================================
+     📱 ESTILOS MOBILE (ATÉ 768PX)
+     ============================================================ */
+  
+  @media (max-width: 768px) {
+    /* 1. Ajuste do Header Superior */
+    .main-header {
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      padding: 15px 10px;
+      gap: 12px; /* Espaço entre o logo e os botões */
+      background: #0d1117 !important;
+      position: relative;
+      height: auto;
+    }
+  
+    .logo-container {
+      width: 100%;
+      justify-content: center; /* Centraliza o logo e o texto */
+      gap: 12px; /* Aumenta o respiro entre imagem e texto */
+    }
+  
+    /* Aumenta o tamanho da imagem do logo para dar presença */
+    .site-logo {
+      height: 45px !important;
+    }
+  
+    .site-title {
+      font-size: 1.1rem !important;
+    }
+  
+    /* Mantemos a navegação de links escondida (ela continua na barra de baixo) */
+    .main-nav {
+      display: none !important;
+    }
+    .auth-buttons {
+      display: flex !important; /* REVERTE O NONE */
+      flex-direction: row;
+      gap: 10px;
+      width: 100%;
+      justify-content: center;
+    }
+    .auth-buttons .btn {
+      padding: 8px 16px !important;
+      font-size: 0.85rem !important;
+      flex: 1; /* Faz os dois botões terem o mesmo tamanho */
+      max-width: 140px;
+      text-align: center;
+    }
+  
+    /* 2. A "Barra do Polegar" (Bottom Nav) */
+    .mobile-bottom-nav {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 65px;
+      background: #161b22;
+      border-top: 1px solid #30363d;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 9999;
+      padding-bottom: env(safe-area-inset-bottom); /* Suporte para iPhones novos */
+    }
+  
+    .mobile-bottom-nav a, .mobile-user-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #8b949e;
+      text-decoration: none;
+      font-size: 0.7rem;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex: 1;
+    }
+  
+    .mobile-bottom-nav svg {
+      font-size: 1.4rem;
+    }
+  
+    /* Estilo para o link que está aberto no momento */
+    .mobile-bottom-nav a.active {
+      color: #667eea;
+    }
+  
+    /* 3. Ajuste do Corpo do Site */
+    /* Adicionamos um espaço no final de todas as páginas para a barra não cobrir nada */
+    body {
+      padding-bottom: 75px;
+    }
+  }

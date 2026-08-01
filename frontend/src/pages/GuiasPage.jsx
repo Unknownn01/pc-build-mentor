@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaWrench, FaStar } from 'react-icons/fa';
+import { FaWrench } from 'react-icons/fa';
 import BuildDetailModal from '../components/BuildDetailModal.jsx';
 import './GuiasPage.css';
 import { API_BASE_URL } from '../config';
@@ -11,12 +11,13 @@ function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild, todasPecas
     const [viewingBuild, setViewingBuild] = useState(null);
     const navigate = useNavigate();
 
+    // RESTAURADO: Mapeamento para as 5 novas categorias do seu banco
     const mapaUso = {
         'Jogos': 'Gamer',
-        'Edicao': 'Edição',
-        'Trabalho': 'Home Office',
-        'Modelagem': 'Edição',
-        'IA': 'Gamer'
+        'Edição de Vídeo': 'Edição',
+        'Trabalho/Escritório': 'Trabalho',
+        'Modelagem 3D': 'Modelagem',
+        'IA/Machine Learning': 'IA'
     };
 
     const faixasPreco = useMemo(() => [
@@ -28,27 +29,23 @@ function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild, todasPecas
         { label: 'Acima de R$ 12.000', min: 12000, max: Infinity }
     ], []);
 
-    // --- LÓGICA DE PROCESSAMENTO (BLINDADA CONTRA TELA AZUL) ---
+    // --- LÓGICA ORIGINAL RESTAURADA ---
     const buildsProcessadas = useMemo(() => {
-        // Se as peças ainda não carregaram ou o objeto está vazio, retorna vazio e não processa
         if (!buildsProntas || buildsProntas.length === 0 || !todasPecas || Object.keys(todasPecas).length === 0) {
             return [];
         }
 
         const buscarPeca = (id, categoriaAlvo) => {
             if (!id) return null;
-            
-            // Tenta encontrar a chave correta no objeto todasPecas
             const chaveReal = Object.keys(todasPecas).find(key => 
                 key.toLowerCase().replace(/-/g, '') === categoriaAlvo.toLowerCase().replace(/-/g, '')
             );
-            
             const lista = todasPecas[chaveReal || categoriaAlvo] || [];
-            // Compara IDs como Number para evitar erro de String vs Int
             return lista.find(p => Number(p.id) === Number(id)) || null;
         };
 
         return buildsProntas.map(b => {
+            // Voltando para as chaves originais que funcionavam no seu objeto todasPecas
             const cpu = buscarPeca(b.cpu_id, 'cpu');
             const gpu = buscarPeca(b.gpu_id, 'placaDeVideo');
             const mobo = buscarPeca(b.placaMae_id, 'placaMae');
@@ -81,7 +78,7 @@ function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild, todasPecas
             if (faixa) res = res.filter(b => b.preco_total >= faixa.min && b.preco_total < faixa.max);
         }
         return res;
-    }, [buildsProcessadas, filtroUso, filtroPreco]);
+    }, [buildsProcessadas, filtroUso, filtroPreco, faixasPreco]);
 
     const handleChooseBuild = (build) => {
         if (build.buildData?.cpu) {
@@ -103,7 +100,8 @@ function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild, todasPecas
                 <div className="filtro-secao">
                     <h3>Propósito</h3>
                     <div className="filtros-uso">
-                        {['Todos', 'Gamer', 'Home Office', 'Edição'].map(uso => (
+                        {/* CATEGORIAS ATUALIZADAS PARA O NOVO BANCO */}
+                        {['Todos', 'Gamer', 'Edição', 'Trabalho', 'Modelagem', 'IA'].map(uso => (
                             <button key={uso} className={`filtro-btn ${filtroUso === uso ? 'active' : ''}`} onClick={() => setFiltroUso(uso)}>{uso}</button>
                         ))}
                     </div>
@@ -131,9 +129,7 @@ function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild, todasPecas
                             alt={build.nome}
                             className="build-image"
                             onClick={() => setViewingBuild(build)}
-                            onError={(e) => { 
-                              e.target.src = 'https://via.placeholder.com/400x300?text=PC+Build'; 
-                            }}
+                            onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=PC+Build'; }}
                           />
                         <div className="build-info">
                             <h3 onClick={() => setViewingBuild(build)}>{build.nome}</h3>

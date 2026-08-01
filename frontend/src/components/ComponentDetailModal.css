@@ -231,3 +231,28 @@
         font-size: 1.2rem;
     }
 }
+
+.cb-highlight.is-best {
+    background: rgba(0, 184, 148, 0.15);
+    border-left: 4px solid #00b894;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.best-buy-tag {
+    color: #00b894;
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 0.85rem;
+}
+
+.badge-cb-premium {
+    background: #00b894;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}

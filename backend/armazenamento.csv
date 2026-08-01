@@ -1,21 +1,11 @@
-id,nome,tipo,capacidade_gb,preco_simulado,imagem_url
-501,WD Black SN850,SSD M.2,1000,649.90,WD-Black-SN850.jpg
-502,Samsung 980 Pro,SSD M.2,1000,429.99,Samsung-980-Pro.jpg
-503,Kingston KC3000,SSD M.2,2000,1059.00,Kingston-KC3000.jpg
-504,Corsair MP600,SSD M.2,1000,599.90,Corsair-MP600.jpg
-505,ADATA XPG S70,SSD M.2,1000,559.00,ADATA-XPG-S70.jpg
-506,Crucial P5 Plus,SSD M.2,500,389.90,Crucial-P5-Plus.jpg
-507,Lexar NM800,SSD M.2,1000,539.90,Lexar-NM800.jpg
-508,Kingston A400,SSD SATA,240,139.90,Kingston-A400-SATA.jpg
-509,Sandisk SSD Plus,SSD SATA,480,199.99,Sandisk-SSD-Plus-SATA.jpg
-510,Crucial MX500,SSD SATA,1000,349.00,Crucial-MX500-SSD-SATA.jpg
-511,ADATA SU650,SSD SATA,480,189.00,ADATA-SU650-SATA.jpg
-512,WD Blue 3D NAND,SSD SATA,1000,359.90,WD-Blue-3D-NAND-SATA.jpg
-513,Samsung 870 EVO,SSD SATA,500,299.90,Samsung-870-EVO-SATA.jpg
-514,Gigabyte SSD,SSD SATA,240,129.99,Gigabyte-SSD-SATA.jpg
-515,Seagate Barracuda,HD,1000,249.90,Seagate-Barracuda-HD.jpg
-516,WD Blue,HD,2000,289.90,WD-Blue-HD-2000.jpg
-517,Toshiba P300,HD,1000,229.90,Toshiba-P300-HD-1000.jpg
-518,Seagate FireCuda,HD,2000,319.90,Seagate-FireCuda-HD-2000.jpg
-519,WD Purple,HD,4000,449.00,WD-Purple-HD-4000.jpg
-520,Samsung Spinpoint,HD,1000,239.90,Samsung-Spinpoint-HD.jpg
+id,nome,tipo,capacidade_gb,preco_simulado,imagem_url,url_loja
+502,Samsung 980 Pro,SSD M.2,1000,429.99,Samsung-980-Pro.jpg,https://www.kabum.com.br/produto/464267/ssd-samsung-990-pro-1tb-nvme-m-2-2280-mz-v9p1t0b-am-
+503,Kingston KC3000,SSD M.2,2000,1059.00,Kingston-KC3000.jpg,https://www.kabum.com.br/produto/272331/ssd-kingston-kc3000-1tb-m-2-2280-pcie-4-0-x4-nvme-leitura-7000-mb-s-gravacao-6000-mb-s-preto-skc3000s-1024g
+504,Corsair MP600,SSD M.2,1000,599.90,Corsair-MP600.jpg,https://www.kabum.com.br/produto/454660/ssd-corsair-mp600-pro-lpx-1tb-pcie-gen-4-0-x4-nvme-m-2-leitura-7100mb-s-e-gravacao-5800mb-s-branco-cssd-f1000gbmp600plpw
+505,ADATA XPG S70,SSD M.2,1000,559.00,ADATA-XPG-S70.jpg,https://www.kabum.com.br/produto/169967/ssd-adata-xpg-s70-blade-pcie-gen4x4-m-2-2280-nvme-leitura-7400mb-s-e-gravacao-5500mb-s-3d-nand-agammixs70b-1t-cs
+508,Kingston A400,SSD SATA,240,139.90,Kingston-A400-SATA.jpg,https://www.kabum.com.br/produto/85197/ssd-kingston-a400-240gb-sata-iii-2-5-leitura-500mb-s-gravacao-350mb-s-preto-sa400s37-240g
+509,Sandisk SSD Plus,SSD SATA,480,199.99,Sandisk-SSD-Plus-SATA.jpg,https://www.kabum.com.br/produto/256184/ssd-sandisk-plus-480gb-sata-leitura-535mb-gravacao-445mb
+510,Crucial MX500,SSD SATA,1000,349.00,Crucial-MX500-SSD-SATA.jpg,https://www.kabum.com.br/produto/167492/ssd-crucial-bx500-1tb-sata-6gb-s-2-5-leitura-540mb-s-escrita-500mb-s-preto-ct1000bx500ssd1
+511,ADATA SU650,SSD SATA,480,189.00,ADATA-SU650-SATA.jpg,https://www.kabum.com.br/produto/429825/ssd-adata-su650-512gb-sata-iii-2-5-leitura-520mb-s-gravacao-450mb-s-preto-asu650ss-512gt-r
+513,Samsung 870 EVO,SSD SATA,500,299.90,Samsung-870-EVO-SATA.jpg,https://www.kabum.com.br/produto/258669/ssd-samsung-870-evo-500gb-sata-2-5-leitura-560mb-s-gravacao-530mb-s-preto-mz-77e500b-am
+514,Gigabyte SSD,SSD SATA,240,129.99,Gigabyte-SSD-SATA.jpg,https://www.kabum.com.br/produto/212351/hd-sata3-ssd-240gb-gigabyte-500-420mb-s-gp-gstfs31240gntd

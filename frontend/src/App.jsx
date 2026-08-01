@@ -138,11 +138,11 @@ function App() {
       
       {currentUser && (
         <UserSidebar
-          user={currentUser}
-          isOpen={isSidebarOpen}
-          onClose={() => setIsSidebarOpen(false)}
-          onLogout={handleLogout}
-        />
+        user={currentUser} 
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        onLogout={handleLogout}
+      />
       )}
 
        <main className={`main-content ${!isHomePage ? 'content-with-padding' : ''}`}>
