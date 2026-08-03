@@ -15,35 +15,52 @@ async function scrapeKabum(url) {
 
         const $ = cheerio.load(data);
         let precoFinal = null;
+        let produtoEsgotado = false;
 
-        // 🛠️ TENTATIVA 1: Lógica JSON-LD (O que vimos na tua imagem)
         const scripts = $('script[type="application/ld+json"]');
         scripts.each((i, el) => {
             try {
                 const json = JSON.parse($(el).html());
-                // Procuramos pelo objeto que tem o preço (Schema Product)
-                if (json["@type"] === "Product" || json["@graph"]) {
-                    const product = json["@graph"] ? json["@graph"].find(item => item["@type"] === "Product") : json;
-                    
-                    if (product && product.offers) {
-                        // A Kabum costuma colocar o preço direto em product.offers.price
+                const candidatos = json["@graph"] 
+                    ? json["@graph"].filter(item => item["@type"] === "Product")
+                    : (json["@type"] === "Product" ? [json] : []);
+
+                for (const product of candidatos) {
+                    // Só considera o bloco se a URL bater com o produto que pedimos
+                    // (a Kabum inclui a URL do produto no schema)
+                    const urlBate = !product.url || url.includes(product.url) || product.url.includes(url.split('?')[0]);
+
+                    if (urlBate && product.offers) {
                         const offers = product.offers;
-                        const price = Array.isArray(offers) ? offers[0].price : offers.price;
-                        
-                        if (price) {
-                            precoFinal = parseFloat(price);
+                        const offer = Array.isArray(offers) ? offers[0] : offers;
+
+                        // Verifica disponibilidade
+                        if (offer.availability && offer.availability.includes('OutOfStock')) {
+                            produtoEsgotado = true;
+                            continue;
+                        }
+
+                        if (offer.price) {
+                            precoFinal = parseFloat(offer.price);
+                            produtoEsgotado = false;
+                            break; // achou o produto certo, para de procurar
                         }
                     }
                 }
             } catch (e) { /* pula blocos de JSON inválidos */ }
         });
 
-        // 🛠️ TENTATIVA 2: Fallback (Seletor Visual)
-        if (!precoFinal) {
+        // Fallback visual (só tenta se não achou nada estruturado)
+        if (!precoFinal && !produtoEsgotado) {
             const precoTexto = $('h4.priceTag').text() || $('.finalPrice').text();
             if (precoTexto) {
                 precoFinal = parseFloat(precoTexto.replace(/[^\d,]/g, '').replace(',', '.'));
             }
+        }
+
+        if (produtoEsgotado) {
+            console.log(`⚠️ Produto esgotado, preço não atualizado.`);
+            return null;
         }
 
         return precoFinal;
