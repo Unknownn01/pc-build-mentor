@@ -156,8 +156,9 @@ app.post('/api/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password); // Mude de user.password_hash para user.password
     if (!isMatch) return res.status(401).json({ message: 'Senha incorreta.' });
 
-    res.status(200).json({ user: { id: user.id, username: user.name, email: user.email, isAdmin: user.isAdmin } });
+    res.status(200).json({ user: { id: user.id, username: user.name, email: user.email, isAdmin: user.isAdmin, onboardingCompleted: user.onboardingCompleted } });
   } catch (error) {
+    console.error("🔴 Erro no login:", error);   // 👈 ADICIONE ESSA LINHA
     res.status(500).json({ message: 'Erro no login.' });
   }
 });
@@ -201,6 +202,21 @@ app.put('/api/admin/components/:id', async (req, res) => {
       res.status(500).json({ error: "Erro ao atualizar peça." });
   }
 });
+// Marcar onboarding como concluído
+app.put('/api/users/:id/onboarding', async (req, res) => {
+  try {
+      const { id } = req.params;
+      const updatedUser = await prisma.user.update({
+          where: { id: parseInt(id) },
+          data: { onboardingCompleted: true }
+      });
+      const { password, ...safeUser } = updatedUser;
+      res.json(safeUser);
+  } catch (err) {
+      console.error("Erro ao atualizar onboarding:", err);
+      res.status(500).json({ error: "Erro ao atualizar onboarding" });
+  }
+});
 
 // --- ROTAS DE COMPONENTES ---
 
@@ -230,7 +246,7 @@ app.get('/api/processadores', (req, res) => fetchCategory('processador', 'imagen
 app.get('/api/placas-mae', (req, res) => fetchCategory('placa_mae', 'imagens_placa_mae', res));
 app.get('/api/memorias-ram', (req, res) => fetchCategory('memoria_ram', 'imagens_memorias_ram', res));
 app.get('/api/placas-de-video', (req, res) => fetchCategory('placa_video', 'imagens_placa_video', res));
-app.get('/api/fontes', (req, res) => fetchCategory('fonte', 'imagens_fontes', res));
+app.get('/api/fontes', (req, res) => fetchCategory('fonte_alimentacao', 'imagens_fontes', res));
 app.get('/api/gabinetes', (req, res) => fetchCategory('gabinete', 'imagens_gabinetes', res));
 app.get('/api/armazenamento', (req, res) => fetchCategory('armazenamento', 'imagens_armazenamento', res));
 app.get('/api/refrigeracao', (req, res) => fetchCategory('refrigeracao', 'imagens_refrigeracao', res));

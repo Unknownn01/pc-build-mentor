@@ -25,6 +25,11 @@ jobs:
           cd backend
           npm install
 
+      - name: Gerar Prisma Client
+        run: |
+          cd backend
+          npx prisma generate
+
       - name: Executar o Scraper
         env:
           # Aqui injetamos as variáveis de ambiente que o script precisa

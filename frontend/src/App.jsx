@@ -1,5 +1,4 @@
 // ARQUIVO: frontend/src/App.jsx
-// (ATUALIZADO - CATÁLOGO REMOVIDO)
 
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
@@ -20,6 +19,7 @@ import OrdersPage from './pages/OrdersPage.jsx';
 import AccountPage from './pages/AccountPage.jsx';
 import CatalogoPecas from './pages/CatalogoPecas.jsx';
 import NewsPage from './pages/NewsPage'; 
+import WelcomeModal from './components/WelcomeModal.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx'; 
 import { Navigate } from 'react-router-dom'; // Precisaremos do Navigate para a proteção
 import StockManager from './pages/StockManager.jsx';
@@ -36,6 +36,8 @@ function App() {
   const [pecasDisponiveis, setPecasDisponiveis] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [appMode, setAppMode] = useState('advanced');
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
   const location = useLocation();
     const isHomePage = location.pathname === '/';
   // Efeito para checar o login salvo no navegador
@@ -51,6 +53,35 @@ function App() {
       localStorage.removeItem("user");
     }
   }, []);
+  // Mostra o modal só quando o usuário loga E ainda não completou o onboarding
+useEffect(() => {
+  if (currentUser && currentUser.onboardingCompleted === false) {
+      setShowWelcomeModal(true);
+  }
+}, [currentUser]);
+
+useEffect(() => {
+  const savedMode = localStorage.getItem('pcbuildmentor_mode');
+
+  if (savedMode) {
+    setAppMode(savedMode);
+  }
+}, []);
+
+  const handleSelectMode = async (mode) => {
+    setAppMode(mode);
+    localStorage.setItem('pcbuildmentor_mode', mode);
+    setShowWelcomeModal(false);
+
+    if (currentUser) {
+        try {
+            const response = await axios.put(`${API_BASE_URL}/api/users/${currentUser.id}/onboarding`);
+            handleSetCurrentUser(response.data); // atualiza o usuário local com onboardingCompleted: true
+        } catch (err) {
+            console.error("Erro ao salvar onboarding:", err);
+        }
+    }
+};
 
   
 
@@ -119,6 +150,7 @@ function App() {
   
   return (
     <div className="App">
+      {showWelcomeModal && <WelcomeModal onSelectMode={handleSelectMode} />}
       <Toaster 
           position="top-right" 
           toastOptions={{
@@ -148,8 +180,8 @@ function App() {
        <main className={`main-content ${!isHomePage ? 'content-with-padding' : ''}`}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/montador" element={<MontadorPage build={build} setBuild={setBuild} currentUser={currentUser}pecasDisponiveis={pecasDisponiveis}isLoading={isLoading}/>} />
-          <Route path="/guias" element={<GuiasPage buildsProntas={pecasDisponiveis.buildsProntas || []} todasPecas={pecasDisponiveis} currentUser={currentUser} isLoading={isLoading} setBuild={setBuild} />} />
+          <Route path="/montador" element={<MontadorPage build={build} setBuild={setBuild} currentUser={currentUser} pecasDisponiveis={pecasDisponiveis} isLoading={isLoading} appMode={appMode} setAppMode={setAppMode}/>} />
+          <Route path="/guias" element={<GuiasPage buildsProntas={pecasDisponiveis.buildsProntas || []} todasPecas={pecasDisponiveis} currentUser={currentUser} isLoading={isLoading} setBuild={setBuild} setAppMode={setAppMode} />} />
           <Route path="/login" element={<LoginPage setCurrentUser={handleSetCurrentUser} />} />
           <Route path="/noticias" element={<NewsPage />} /> 
           <Route path="/register" element={<RegisterPage />} />

@@ -1,2 +1,3 @@
--- AlterTable
-ALTER TABLE "Component" ADD COLUMN "url_loja" TEXT;
+-- Esta migration foi criada manualmente para corrigir drift, mas a coluna
+-- url_loja já é criada pela migration inicial (init). Mantida vazia
+-- para preservar o histórico já aplicado em produção.

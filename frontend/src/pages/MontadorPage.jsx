@@ -16,6 +16,10 @@ import { API_BASE_URL } from '../config.js';
 import LoadingSpinner from '../components/LoadingSpinner';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import ModeToggle from '../components/ModeToggle.jsx';
+import EasyModeWizard from '../components/EasyModeWizard.jsx';
+import { generateRecommendedBuild } from '../buildGenerator';
+import { FaRedo } from 'react-icons/fa';
 
 const CATEGORY_MAP = {
     'processador': 'cpu',
@@ -47,7 +51,7 @@ const CATEGORIAS = [
     { id: 'gabinete', nome: 'Gabinete', endpoint: 'gabinetes' }
 ];
 
-function MontadorPage({ build, setBuild, currentUser }) {
+function MontadorPage({ build, setBuild, currentUser, appMode, setAppMode}) {
     const [pecasDisponiveis, setPecasDisponiveis] = useState({});
     const [modalAberto, setModalAberto] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -191,6 +195,11 @@ function MontadorPage({ build, setBuild, currentUser }) {
     };
 
     const handleClearBuild = () => setBuild({});
+    const handleRestartWizard = () => {
+        setBuild({});
+        setWizardCompleted(false);
+        setWizardAnswers(null);
+    };
 
     const precoTotal = useMemo(() => {
         return Object.values(build).reduce((total, peca) => total + (peca ? parseFloat(peca.preco || 0) : 0), 0);
@@ -235,12 +244,9 @@ function MontadorPage({ build, setBuild, currentUser }) {
     };
 
     useEffect(() => {
-        if (build.cpu && build.placaDeVideo && Object.keys(build).length >= 3) {
-            const timer = setTimeout(() => fetchAdvancedAnalysis(), 1000);
-            return () => clearTimeout(timer);
-        } else {
-            setShowAdvancedAnalysis(false);
-        }
+        // Se o build mudar (troca de peça), esconde a análise antiga
+        // A pessoa precisa clicar em "Ver Análise Completa" de novo para atualizar
+        setShowAdvancedAnalysis(false);
     }, [build, useCase]);
 
     const bottleneckAnalysis = useMemo(() => {
@@ -271,6 +277,31 @@ function MontadorPage({ build, setBuild, currentUser }) {
             case 'placaDeVideo': return <span className={`badge badge-${peca.marca?.toLowerCase()}`}>{peca.marca}</span>;
             default: return null;
         }
+    };
+
+    const [wizardCompleted, setWizardCompleted] = useState(false);
+    const [wizardAnswers, setWizardAnswers] = useState(null);
+
+    const handleWizardComplete = (answers) => {
+        setWizardAnswers(answers);
+    
+        const { build: recommendedBuild, warnings, precoTotal } = generateRecommendedBuild(answers, pecasDisponiveis);
+        setBuild(recommendedBuild);
+    
+        let mappedUseCase = 'Jogos';
+        if (answers.uso === 'trabalho') {
+            if (answers.trabalho === 'renderizacao') mappedUseCase = 'Edicao';
+            else mappedUseCase = 'Trabalho';
+        }
+        setUseCase(mappedUseCase);
+    
+        if (warnings.length > 0) {
+            warnings.forEach(w => toast.error(w));
+        } else {
+            toast.success(`PC sugerido! Total: R$ ${precoTotal.toFixed(2)}`);
+        }
+    
+        setWizardCompleted(true);
     };
 
     // --- MODAL DE SELEÇÃO COM CB SCORE INTEGRADO ---
@@ -350,78 +381,93 @@ function MontadorPage({ build, setBuild, currentUser }) {
     if (error) return <div className="montador-container error-screen"><h2>Erro</h2><p>{error}</p></div>;
 
     return (
-        <div className="montador-container">
-            <div className="selecao-pecas">
-                <div className="selecao-header">
-                    <h2>Monte seu PC</h2>
-                    <div className="header-buttons">
-                        {currentUser && <button onClick={handleSaveBuild} className="btn btn-salvar"><FaSave /> Salvar</button>}
-                        <button onClick={handleClearBuild} className="btn btn-limpar">Limpar</button>
-                    </div>
-                </div>
+        <>
+            <div className="montador-container">
+                <div className="selecao-pecas">
+                    <ModeToggle mode={appMode} setMode={setAppMode} />
 
-                <div className="use-case-selector">
-                    <h3>Para que você vai usar este PC?</h3>
-                    <div className="use-case-buttons">
-                        {USE_CASES.map(uc => (
-                            <button key={uc.id} className={`use-case-btn ${useCase === uc.id ? 'active' : ''}`} onClick={() => setUseCase(uc.id)}>
-                                <uc.icon className="use-case-icon" />
-                                <span>{uc.nome}</span>
-                            </button>
-                        ))}
-                    </div>
-                </div>
-
-                {CATEGORIAS.map(cat => (
-                    <div key={cat.id} className="categoria-row">
-                        <span>{cat.nome}</span>
-                        {build[cat.id] ? (
-                            <div className="peca-selecionada">
-                                <span className="nome-peca">{build[cat.id].nome}</span>
-                                <button onClick={() => setModalAberto(cat)}>Trocar</button>
+                    {appMode === 'easy' && !wizardCompleted ? (
+                        <EasyModeWizard onComplete={handleWizardComplete} />
+                    ) : (
+                        <>
+                            <div className="selecao-header">
+                                <h2>Monte seu PC</h2>
+                                <div className="header-buttons">
+                                    {currentUser && <button onClick={handleSaveBuild} className="btn btn-salvar"><FaSave /> Salvar</button>}
+                                    <button onClick={handleClearBuild} className="btn btn-limpar">Limpar</button>
+                                    {appMode === 'easy' && (
+                                        <button onClick={handleRestartWizard} className="btn btn-reiniciar">
+                                            <FaRedo /> Reiniciar
+                                        </button>
+                                    )}
+                                </div>
                             </div>
-                        ) : (
-                            <button onClick={() => setModalAberto(cat)}>+ Adicionar</button>
+
+                            <div className="use-case-selector">
+                                <h3>Para que você vai usar este PC?</h3>
+                                <div className="use-case-buttons">
+                                    {USE_CASES.map(uc => (
+                                        <button key={uc.id} className={`use-case-btn ${useCase === uc.id ? 'active' : ''}`} onClick={() => setUseCase(uc.id)}>
+                                            <uc.icon className="use-case-icon" />
+                                            <span>{uc.nome}</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {CATEGORIAS.map(cat => (
+                                <div key={cat.id} className="categoria-row">
+                                    <span>{cat.nome}</span>
+                                    {build[cat.id] ? (
+                                        <div className="peca-selecionada">
+                                            <span className="nome-peca">{build[cat.id].nome}</span>
+                                            <button onClick={() => setModalAberto(cat)}>Trocar</button>
+                                        </div>
+                                    ) : (
+                                        <button onClick={() => setModalAberto(cat)}>+ Adicionar</button>
+                                    )}
+                                </div>
+                            ))}
+                        </>
+                    )}
+                </div>
+    
+                    <div className="resumo-montagem">
+                        <h2>Resumo da Montagem</h2>
+                        {Object.keys(build).length === 0 ? <p className="resumo-vazio">Comece selecionando uma peça...</p> : (
+                            CATEGORIAS.map(cat => build[cat.id] && (
+                                <div key={cat.id} className="resumo-item">
+                                    <span className="resumo-categoria">{cat.nome}</span>
+                                    <span className="resumo-nome">{build[cat.id].nome}</span>
+                                    <div className="preco-e-remover">
+                                        <span className="resumo-preco">R$ {build[cat.id].preco?.toFixed(2)}</span>
+                                        <button onClick={() => handleRemovePeca(cat.id)} className="btn-remover-item"><FaTrash /></button>
+                                    </div>
+                                </div>
+                            ))
+                        )}
+                        <div className={`bottleneck-section ${bottleneckAnalysis.severity}`}>
+                            <div className="bottleneck-message"><p>{bottleneckAnalysis.message}</p></div>
+                        </div>
+                        <div className="resumo-total"><span>Preço Final</span><span>R$ {precoTotal.toFixed(2)}</span></div>
+                        <button onClick={handleFinalizarCompra} className="btn-finalizar">Finalizar e Comprar</button>
+                        {build.cpu && build.placaDeVideo && !showAdvancedAnalysis && (
+                            <button onClick={fetchAdvancedAnalysis} className="btn-analise-avancada" disabled={isAnalyzing}>
+                                <FaChartLine /> {isAnalyzing ? 'Analisando...' : 'Ver Análise Completa'}
+                            </button>
                         )}
                     </div>
-                ))}
-            </div>
-
-            <div className="resumo-montagem">
-                <h2>Resumo da Montagem</h2>
-                {Object.keys(build).length === 0 ? <p className="resumo-vazio">Comece selecionando uma peça...</p> : (
-                    CATEGORIAS.map(cat => build[cat.id] && (
-                        <div key={cat.id} className="resumo-item">
-                            <span className="resumo-categoria">{cat.nome}</span>
-                            <span className="resumo-nome">{build[cat.id].nome}</span>
-                            <div className="preco-e-remover">
-                                <span className="resumo-preco">R$ {build[cat.id].preco?.toFixed(2)}</span>
-                                <button onClick={() => handleRemovePeca(cat.id)} className="btn-remover-item"><FaTrash /></button>
-                            </div>
+    
+                    {showAdvancedAnalysis && performanceAnalysis && (
+                        <div className="advanced-analysis-container">
+                            <PerformanceAnalysis analysis={performanceAnalysis} />
+                            {gamePerformance && useCase === 'Jogos' && <GameSimulation gamePerformance={gamePerformance} />}
+                            {recommendations?.costBenefit && <CostBenefitAnalysis costBenefit={recommendations.costBenefit} />}
+                            {recommendations?.recommendations && <SmartRecommendations recommendations={recommendations.recommendations} />}
                         </div>
-                    ))
-                )}
-                <div className={`bottleneck-section ${bottleneckAnalysis.severity}`}>
-                    <div className="bottleneck-message"><p>{bottleneckAnalysis.message}</p></div>
+                    )}
                 </div>
-                <div className="resumo-total"><span>Preço Final</span><span>R$ {precoTotal.toFixed(2)}</span></div>
-                <button onClick={handleFinalizarCompra} className="btn-finalizar">Finalizar e Comprar</button>
-                {build.cpu && build.placaDeVideo && !showAdvancedAnalysis && (
-                    <button onClick={fetchAdvancedAnalysis} className="btn-analise-avancada" disabled={isAnalyzing}>
-                        <FaChartLine /> {isAnalyzing ? 'Analisando...' : 'Ver Análise Completa'}
-                    </button>
-                )}
-            </div>
-
-            {showAdvancedAnalysis && performanceAnalysis && (
-                <div className="advanced-analysis-container">
-                    <PerformanceAnalysis analysis={performanceAnalysis} />
-                    {gamePerformance && useCase === 'Jogos' && <GameSimulation gamePerformance={gamePerformance} />}
-                    {recommendations?.costBenefit && <CostBenefitAnalysis costBenefit={recommendations.costBenefit} />}
-                    {recommendations?.recommendations && <SmartRecommendations recommendations={recommendations.recommendations} />}
-                </div>
-            )}
-
+        
             {isCheckoutOpen && <CheckoutModal build={{ buildData: build, buildName: "Build Personalizada" }} currentUser={currentUser} onClose={() => setIsCheckoutOpen(false)} />}
             {modalAberto && <SelectionModal categoria={modalAberto} />}
             {componentDetailModal && (
@@ -432,8 +478,8 @@ function MontadorPage({ build, setBuild, currentUser }) {
                 />
             )}
             <ComponentComparator pecasDisponiveis={pecasDisponiveis} onSelectComponent={handleSelectPeca} />
-        </div>
+        </>
     );
-}
-
-export default MontadorPage;
+    }
+    
+    export default MontadorPage;

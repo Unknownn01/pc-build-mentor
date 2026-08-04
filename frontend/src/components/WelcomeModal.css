@@ -1,0 +1,104 @@
+.welcome-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 3000;
+    padding: 20px;
+}
+
+.welcome-modal-content {
+    background-color: #161B22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+}
+
+.welcome-modal-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.welcome-subtitle {
+    color: #8b949e;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.welcome-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.welcome-option {
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid #30363d;
+    border-radius: 12px;
+    padding: 30px 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    color: #fff;
+}
+
+.welcome-option:hover {
+    transform: translateY(-4px);
+}
+
+.welcome-icon {
+    font-size: 2.2rem;
+    margin-bottom: 14px;
+}
+
+.welcome-option h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.welcome-option p {
+    font-size: 0.85rem;
+    color: #8b949e;
+    line-height: 1.5;
+}
+
+.welcome-option.easy {
+    border-color: rgba(45, 212, 191, 0.3);
+}
+.welcome-option.easy:hover {
+    border-color: #2dd4bf;
+    box-shadow: 0 4px 20px rgba(45, 212, 191, 0.25);
+}
+.welcome-option.easy .welcome-icon { color: #2dd4bf; }
+
+.welcome-option.advanced {
+    border-color: rgba(132, 124, 255, 0.3);
+}
+.welcome-option.advanced:hover {
+    border-color: #847cff;
+    box-shadow: 0 4px 20px rgba(132, 124, 255, 0.25);
+}
+.welcome-option.advanced .welcome-icon { color: #847cff; }
+
+.welcome-footer {
+    margin-top: 25px;
+    font-size: 0.8rem;
+    color: #8b949e;
+}
+
+@media (max-width: 600px) {
+    .welcome-options {
+        grid-template-columns: 1fr;
+    }
+    .welcome-modal-content {
+        padding: 25px 20px;
+    }
+}

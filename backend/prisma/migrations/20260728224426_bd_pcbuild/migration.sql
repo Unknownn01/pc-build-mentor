@@ -1,17 +1,3 @@
--- CreateTable
-CREATE TABLE "BuildPronta" (
-    "id" SERIAL NOT NULL,
-    "nome" TEXT NOT NULL,
-    "uso_principal" TEXT NOT NULL,
-    "cpu_id" INTEGER NOT NULL,
-    "gpu_id" INTEGER NOT NULL,
-    "memoria_id" INTEGER NOT NULL,
-    "placaMae_id" INTEGER NOT NULL,
-    "armazenamento_id" INTEGER NOT NULL,
-    "cooler_id" INTEGER NOT NULL,
-    "gabinete_id" INTEGER NOT NULL,
-    "fonte_id" INTEGER NOT NULL,
-    "build_image" TEXT NOT NULL,
-
-    CONSTRAINT "BuildPronta_pkey" PRIMARY KEY ("id")
-);
+-- Esta migration foi mesclada incorretamente durante um merge conflict.
+-- A tabela BuildPronta já é criada pela migration add_price_history.
+-- Mantida vazia para preservar o histórico de migrations já aplicado em produção.

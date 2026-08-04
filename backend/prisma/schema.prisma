@@ -17,6 +17,7 @@ model User {
   email     String   @unique
   password  String   // Importante: No futuro, salvaremos a senha criptografada aqui
   isAdmin   Boolean  @default(false) // Para diferenciar admin de usuários comuns
+   onboardingCompleted  Boolean  @default(false)   // 👈 NOVO
   createdAt DateTime @default(now())
   
   // Relacionamentos

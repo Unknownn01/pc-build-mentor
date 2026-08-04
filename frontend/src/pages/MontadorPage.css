@@ -1,5 +1,5 @@
 /* ARQUIVO 13: frontend/src/pages/MontadorPage.css */
-/* (COM ESTILOS PARA OS NOVOS BOTÕES) */
+
 
 .montador-container {
   display: flex;
@@ -839,4 +839,59 @@
     max-width: 140px; /* Evita que o nome da peça empurre o layout */
     font-size: 0.8rem;
   }
+}
+
+
+/* --- OVERRIDES DE COR PARA O EASY MODE --- */
+.mode-toggle-bar {
+  width: 100%;
+}
+
+.montador-container.easy-mode .categoria-row button {
+  background-color: #2dd4bf;
+}
+
+.montador-container.easy-mode .use-case-btn.active {
+  background: #2dd4bf;
+  border-color: #2dd4bf;
+  color: #0d1117;
+}
+
+.montador-container.easy-mode .btn-finalizar {
+  background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+}
+
+.montador-container.easy-mode .btn-analise-avancada {
+  background: #2dd4bf;
+}
+
+.montador-container.easy-mode .filter-btn.active {
+  background: linear-gradient(135deg, #2dd4bf, #14b8a6);
+  border-color: #2dd4bf;
+  box-shadow: 0 4px 15px rgba(45, 212, 191, 0.4);
+}
+
+@media (max-width: 768px) {
+  .montador-page-wrapper {
+      padding: 15px 3% 0 3%;
+  }
+}
+
+css
+.mode-toggle-bar {
+    margin-bottom: 20px;
+}
+
+.btn-reiniciar {
+  background-color: transparent;
+  border: 2px solid #2dd4bf;
+  color: #2dd4bf;
+  padding: 8px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-reiniciar:hover {
+  background-color: rgba(45, 212, 191, 0.1);
 }

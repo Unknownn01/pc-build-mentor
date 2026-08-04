@@ -5,7 +5,7 @@ import BuildDetailModal from '../components/BuildDetailModal.jsx';
 import './GuiasPage.css';
 import { API_BASE_URL } from '../config';
 
-function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild, todasPecas }) {
+function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild, todasPecas, setAppMode }) {
     const [filtroUso, setFiltroUso] = useState('Todos');
     const [filtroPreco, setFiltroPreco] = useState('Todos');
     const [viewingBuild, setViewingBuild] = useState(null);
@@ -83,6 +83,8 @@ function GuiasPage({ buildsProntas, currentUser, isLoading, setBuild, todasPecas
     const handleChooseBuild = (build) => {
         if (build.buildData?.cpu) {
             setBuild(build.buildData);
+            setAppMode('advanced');
+            localStorage.setItem('pcbuildmentor_mode', 'advanced');
             navigate('/montador');
         }
     };
